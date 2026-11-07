@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chronik der Ewigen – Entwurf</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wood:#2a1b12; --leather:#4a2a1a; --leather2:#6b3b22; --gold:#c9a24a;
+  --paper:#f3e7c9; --paper2:#e9d9b2; --ink:#2b1d12; --ink2:#5a4634; --rule:#b9a27a;
+  --red:#8a2b1d; --green:#3e6b3a; --blue:#2f4f7a;
+  --c-warrior:#c69b6d; --c-mage:#69ccf0; --c-hunter:#aad372; --c-priest:#ffffff; --c-rogue:#fff468; --c-druid:#ff7c0a;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100vh;background:radial-gradient(ellipse at center,#3b2a1e 0%,#1d140e 70%);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif}
+body{display:flex;flex-direction:column;align-items:center;padding:28px 16px 60px}
+h1.site{font-family:"IM Fell English SC",serif;color:var(--gold);font-weight:400;letter-spacing:.08em;margin:0 0 6px;font-size:28px;text-shadow:0 2px 6px #000}
+p.hint{color:#cbb48a;margin:0 0 22px;font-size:17px;font-style:italic}
+
+/* ===== book ===== */
+.scene{perspective:2400px;width:min(1180px,100%);}
+.book{position:relative;width:100%;aspect-ratio:1180/720;background:linear-gradient(90deg,var(--leather) 0,var(--leather2) 50%,var(--leather) 100%);border-radius:10px 16px 16px 10px;box-shadow:0 30px 60px rgba(0,0,0,.7),inset 0 0 0 2px #2a160c,inset 0 0 0 5px var(--gold);padding:18px}
+.spread{position:absolute;inset:18px;display:grid;grid-template-columns:1fr 1fr;gap:0;transform-style:preserve-3d}
+.page{position:relative;background:linear-gradient(90deg,var(--paper2),var(--paper) 12%,var(--paper) 88%,var(--paper2));padding:38px 44px 46px;overflow:hidden;color:var(--ink);font-size:17px;line-height:1.35}
+.page.left{border-radius:6px 0 0 6px;box-shadow:inset -18px 0 24px -16px rgba(0,0,0,.35)}
+.page.right{border-radius:0 6px 6px 0;box-shadow:inset 18px 0 24px -16px rgba(0,0,0,.35)}
+.page::after{content:attr(data-pn);position:absolute;bottom:14px;font-size:14px;color:var(--ink2)}
+.page.left::after{left:44px}.page.right::after{right:44px}
+.page h2{font-family:"IM Fell English SC",serif;font-weight:400;font-size:30px;margin:0 0 6px;letter-spacing:.04em}
+.page h3{font-family:"IM Fell English SC",serif;font-weight:400;font-size:21px;margin:18px 0 6px;border-bottom:1px solid var(--rule);padding-bottom:3px}
+.page .orn{text-align:center;color:var(--rule);letter-spacing:.4em;margin:6px 0 14px}
+.page .small{font-size:14px;color:var(--ink2)}
+.page a.lnk{color:var(--red);text-decoration:none;border-bottom:1px dotted var(--red);cursor:pointer}
+.spine{position:absolute;left:50%;top:0;bottom:0;width:26px;transform:translateX(-50%);background:linear-gradient(90deg,rgba(0,0,0,.0),rgba(0,0,0,.45) 50%,rgba(0,0,0,.0));pointer-events:none;z-index:5}
+
+/* flipping sheets */
+.sheet{position:absolute;top:18px;bottom:18px;left:50%;width:calc(50% - 18px);transform-origin:left center;background:linear-gradient(90deg,var(--paper2),var(--paper) 15%,var(--paper));border-radius:0 6px 6px 0;box-shadow:0 0 18px rgba(0,0,0,.4);backface-visibility:visible;z-index:10;animation:flip 1.1s cubic-bezier(.45,.05,.55,.95) forwards;padding:38px 44px;overflow:hidden;color:var(--ink2);font-size:15px;line-height:1.5;opacity:.98}
+.sheet .ln{height:9px;margin:9px 0;background:rgba(43,29,18,.16);border-radius:3px}
+.sheet .ln.s{width:60%}.sheet .ln.m{width:82%}.sheet .ln.h{height:16px;width:45%;background:rgba(138,43,29,.28);margin-bottom:16px}
+.sheet .ln.img{height:90px;background:rgba(62,107,58,.22);margin:14px 0}
+.sheet .pn{position:absolute;bottom:14px;right:44px;font-size:13px}
+@keyframes flip{0%{transform:rotateY(0);box-shadow:0 0 18px rgba(0,0,0,.4)}50%{box-shadow:-30px 0 40px rgba(0,0,0,.45)}100%{transform:rotateY(-180deg);box-shadow:0 0 18px rgba(0,0,0,.4)}}
+
+/* close / open lid */
+.lid{position:absolute;top:18px;bottom:18px;left:50%;width:calc(50% - 18px);transform-origin:left center;transform-style:preserve-3d;z-index:30;animation-fill-mode:forwards;animation-timing-function:cubic-bezier(.6,.05,.4,1)}
+.lid.closing{animation-name:lidClose;animation-duration:.9s}
+.lid.opening{animation-name:lidOpen;animation-duration:.9s}
+.lid .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:0 6px 6px 0}
+.lid .in{background:linear-gradient(90deg,var(--paper2),var(--paper) 15%,var(--paper));box-shadow:inset 18px 0 24px -16px rgba(0,0,0,.35)}
+.lid .out{transform:rotateY(180deg);background:linear-gradient(90deg,var(--leather2),var(--leather) 60%,#3a2114);border-radius:6px 0 0 6px;box-shadow:inset 0 0 0 10px var(--leather),inset 0 0 0 12px var(--gold),0 0 30px rgba(0,0,0,.6);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--gold);text-align:center;padding:40px}
+.lid .out .emb{font-family:"IM Fell English SC",serif;font-size:34px;letter-spacing:.08em;text-shadow:0 1px 0 #000,0 -1px 0 rgba(255,235,180,.25)}
+.lid .out .sub{font-size:18px;font-style:italic;color:#d9bf7a;margin-top:10px}
+.lid .out .orn{color:var(--gold);letter-spacing:.5em;margin-top:14px}
+@keyframes lidClose{0%{transform:rotateY(0)}100%{transform:rotateY(-180deg)}}
+@keyframes lidOpen{0%{transform:rotateY(-180deg)}100%{transform:rotateY(0)}}
+.book.closed .spread{visibility:hidden}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:10px}
+.char{position:relative;border:1px solid var(--rule);padding:12px 12px 10px 86px;cursor:pointer;transition:transform .15s,box-shadow .15s;background:rgba(255,255,255,.18)}
+.char:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(0,0,0,.2)}
+.char .portrait{position:absolute;left:12px;top:12px;width:62px;height:62px;border-radius:50%;border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:"IM Fell English SC",serif;font-size:26px;color:#1a120b;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.char .name{font-family:"IM Fell English SC",serif;font-size:20px;line-height:1.1}
+.char .meta{font-size:14px;color:var(--ink2)}
+.char .lvl{position:absolute;right:12px;top:10px;font-family:"IM Fell English SC",serif;font-size:26px;color:var(--red)}
+.char .status{display:inline-block;margin-top:5px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:1px 7px;border:1px solid}
+.status.alive{color:var(--green);border-color:var(--green)}
+.status.dead{color:var(--red);border-color:var(--red)}
+.status.rest{color:var(--blue);border-color:var(--blue)}
+.char.fallen{filter:grayscale(.5) sepia(.3)}
+.char.fallen .portrait{border-color:#777}
+
+/* toc */
+.toc{list-style:none;padding:0;margin:8px 0 0}
+.toc li{display:flex;align-items:baseline;gap:6px;padding:4px 0;cursor:pointer}
+.toc li:hover .t{color:var(--red)}
+.toc .t{white-space:nowrap}
+.toc .dots{flex:1;border-bottom:1px dotted var(--ink2);transform:translateY(-4px)}
+.toc .n{font-variant-numeric:tabular-nums}
+.toc li.sub{padding-left:26px;font-size:15px;color:var(--ink2)}
+.hero{display:flex;gap:18px;align-items:center}
+.hero .portrait{width:110px;height:110px;border-radius:50%;border:4px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:"IM Fell English SC",serif;font-size:44px;flex:none;box-shadow:0 4px 10px rgba(0,0,0,.4)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:4px 18px;margin-top:14px;font-size:15px}
+.stats b{font-weight:600}
+.quote{font-style:italic;color:var(--ink2);margin-top:14px;border-left:2px solid var(--rule);padding-left:10px}
+
+/* diary */
+.day{margin:0 0 14px}
+.day .date{font-family:"IM Fell English SC",serif;font-size:18px;color:var(--red);margin-bottom:2px}
+.day .where{font-size:13px;color:var(--ink2);letter-spacing:.04em;text-transform:uppercase}
+.day p{margin:4px 0}
+.shot{margin:8px 0 4px;border:1px solid var(--rule);padding:5px;background:#fff8e6;box-shadow:2px 3px 0 rgba(0,0,0,.08);transform:rotate(-.6deg)}
+.shot .img{height:120px;background:linear-gradient(160deg,#5b7f4e,#243d2a 60%,#0f1a14);display:flex;align-items:flex-end;padding:6px;color:#dfe8c8;font-size:12px}
+.shot .cap{font-size:13px;color:var(--ink2);padding:4px 2px 0;font-style:italic}
+.tag{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--rule);padding:0 5px;margin-right:4px;color:var(--ink2)}
+.tag.death{border-color:var(--red);color:var(--red)}
+.tag.lvl{border-color:var(--green);color:var(--green)}
+.tag.dng{border-color:var(--blue);color:var(--blue)}
+
+/* deaths / tables */
+table.ledger{width:100%;border-collapse:collapse;font-size:15px;margin-top:6px}
+.ledger th{text-align:left;font-weight:600;border-bottom:1px solid var(--ink2);padding:3px 4px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2)}
+.ledger td{padding:4px 4px;border-bottom:1px dotted var(--rule);vertical-align:top}
+.map{height:100%;min-height:380px;border:1px solid var(--rule);background:
+  radial-gradient(circle at 30% 40%,rgba(120,150,90,.35),transparent 40%),
+  radial-gradient(circle at 70% 65%,rgba(170,140,80,.35),transparent 45%),
+  #e4d3a6;position:relative;overflow:hidden}
+.map .trail{position:absolute;inset:0}
+.map .pin{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--red);border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.5);transform:translate(-50%,-50%)}
+.map .pin.lv{background:var(--green)}
+.map .lbl{position:absolute;font-size:12px;color:var(--ink2);transform:translate(-50%,10px)}
+
+/* nav */
+.nav{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:14px;z-index:6}
+.nav button{font-family:inherit;font-size:14px;background:transparent;color:var(--gold);border:1px solid var(--gold);padding:2px 10px;cursor:pointer;letter-spacing:.06em}
+.nav button:hover{background:rgba(201,162,74,.15)}
+.corner{position:absolute;bottom:0;width:0;height:0;border-style:solid;cursor:pointer;z-index:6;opacity:.7}
+.corner.r{right:18px;border-width:0 0 48px 48px;border-color:transparent transparent var(--paper2) transparent;filter:drop-shadow(-2px -2px 2px rgba(0,0,0,.25))}
+.corner.l{left:18px;border-width:48px 0 0 48px;border-color:transparent transparent transparent var(--paper2);filter:drop-shadow(2px -2px 2px rgba(0,0,0,.25))}
+.corner:hover{opacity:1}
+
+/* feedback */
+.fb{width:min(1180px,100%);margin-top:30px;color:#e8dcc0}
+.fb h3{font-family:"IM Fell English SC",serif;font-weight:400;color:var(--gold);margin:0 0 8px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.opt{border:1px solid #6b5636;padding:10px 12px;cursor:pointer;background:rgba(0,0,0,.25);font-size:16px}
+.opt:hover{border-color:var(--gold)}
+.opt.selected{border-color:var(--gold);background:rgba(201,162,74,.18)}
+.opt small{display:block;color:#b8a27a;font-size:13px}
+.credits{margin-top:18px;font-size:14px;color:#b8a27a;text-align:center}
+.credits a{color:var(--gold)}
+@media (max-width:820px){.book{aspect-ratio:auto}.spread{position:static;grid-template-columns:1fr}.page{min-height:420px}.spine{display:none}}
+</style>
+</head>
+<body>
+<h1 class="site">Chronik der Ewigen</h1>
+<p class="hint">Entwurf mit erfundenen Daten. Klick einen Charakter an: das Buch klappt zu und an seinem Kapitel wieder auf.</p>
+
+<div class="scene">
+  <div class="book" id="book">
+    <div class="spread" id="spread"></div>
+    <div class="spine"></div>
+    <div class="corner l" id="prev" title="Zurückblättern"></div>
+    <div class="corner r" id="next" title="Weiterblättern"></div>
+    <div class="nav">
+      <button onclick="go('gallery')">Heldenregister</button>
+      <button onclick="go('toc')">Inhaltsverzeichnis</button>
+    </div>
+  </div>
+</div>
+
+<div class="fb">
+  <h3>Was passt, was nicht? (Mehrfachauswahl, Rest gern im Chat)</h3>
+  <div class="opts" data-multiselect>
+    <div class="opt" data-choice="feel-right" onclick="toggleSelect(this)">Das Buch-Gefühl stimmt so<small>Papier, Schrift, Doppelseite</small></div>
+    <div class="opt" data-choice="close-open-good" onclick="toggleSelect(this)">Zuklappen / Aufklappen gefällt<small>mit Einband und Kapiteltitel</small></div>
+    <div class="opt" data-choice="close-open-shorter" onclick="toggleSelect(this)">Übergang kürzer<small>weniger Pause auf dem Einband</small></div>
+    <div class="opt" data-choice="only-inside-chapter-fade" onclick="toggleSelect(this)">Innerhalb eines Kapitels nur weich überblenden<small>Zuklappen nur beim Char-Wechsel</small></div>
+    <div class="opt" data-choice="more-stats-register" onclick="toggleSelect(this)">Mehr Daten im Heldenregister<small>Spielzeit, Tode, zuletzt gesehen</small></div>
+    <div class="opt" data-choice="bigger-shots" onclick="toggleSelect(this)">Screenshots größer, mehr Fotoalbum<small>weniger Text pro Seite</small></div>
+    <div class="opt" data-choice="darker" onclick="toggleSelect(this)">Düsterer / mehr Forever-Stimmung<small>Grabsteine, Kerzen, dunkleres Papier</small></div>
+  </div>
+  <p class="credits">Daten aus dem Addon <a href="https://www.curseforge.com/wow/addons/mycharforever-an-automatic-character-chronicle">MyCharForever</a> von Devchris. Diese Seite ist ein unabhängiges Tagebuch, nicht die offizielle MCF-Webseite.</p>
+</div>
+
+<script>
+const chars=[
+ {id:'thorgrim',name:'Thorgrim Eisenbart',cls:'Krieger',clsKey:'warrior',race:'Zwerg',lvl:27,status:'alive',played:'38h 12m',deaths:2,last:'gestern, 22:41',color:'var(--c-warrior)',ini:'T'},
+ {id:'lunara',name:'Lunara Mondschatten',cls:'Druidin',clsKey:'druid',race:'Nachtelfe',lvl:14,status:'alive',played:'11h 05m',deaths:0,last:'vor 3 Tagen',color:'var(--c-druid)',ini:'L'},
+ {id:'vexis',name:'Vexis Nachtklinge',cls:'Schurkin',clsKey:'rogue',race:'Mensch',lvl:19,status:'dead',played:'22h 40m',deaths:1,last:'† 28. Okt. 2026, Düsterwald',color:'var(--c-rogue)',ini:'V'},
+ {id:'merrin',name:'Merrin Glutfunke',cls:'Magier',clsKey:'mage',race:'Gnom',lvl:8,status:'rest',played:'3h 20m',deaths:0,last:'vor 2 Wochen',color:'var(--c-mage)',ini:'M'},
+];
+let cur={view:'gallery',char:'thorgrim',diaryPage:0};
+const statusTxt={alive:'lebt',dead:'gefallen',rest:'rastet'};
+
+function pg(cls,pn,html){return `<div class="page ${cls}" data-pn="${pn}">${html}</div>`}
+
+function renderGallery(){
+  const left=pg('left','i',`
+    <h2>Chronik der Ewigen</h2>
+    <div class="orn">✦ ✦ ✦</div>
+    <p>Dies ist das Tagebuch meiner Charaktere in <i>World of Warcraft Forever</i>. Jeder von ihnen hat nur ein Leben. Was hier steht, wurde nicht von Hand geschrieben, sondern vom Spiel selbst aufgezeichnet: jeder Levelaufstieg, jeder Tod, jedes Verlies, jedes Goldstück.</p>
+    <p>Die Seiten füllen sich von selbst, wenn ich das Spiel verlasse. Ein kleines Programm auf meinem Rechner liest die Aufzeichnungen des Addons und legt sie hier ab.</p>
+    <h3>Heldenregister</h3>
+    <p class="small">Vier Charaktere, drei lebend, einer gefallen. Blättere zu einem Kapitel, indem du rechts einen Namen antippst.</p>
+    <div class="quote">„Wer stirbt, verschwindet nicht aus diesem Buch. Sein Kapitel endet nur.“</div>
+    <p class="small" style="position:absolute;bottom:34px;left:44px;right:44px">Aufzeichnung durch das Addon <b>MyCharForever</b> von Devchris. Danke dafür.</p>
+  `);
+  const cards=chars.map(c=>`
+    <div class="char ${c.status==='dead'?'fallen':''}" onclick="selectChar('${c.id}')">
+      <div class="portrait" style="background:${c.color}">${c.ini}</div>
+      <div class="lvl">${c.lvl}</div>
+      <div class="name">${c.name}</div>
+      <div class="meta">${c.race} · ${c.cls}</div>
+      <div class="meta">${c.played} gespielt · ${c.deaths} ${c.deaths===1?'Tod':'Tode'}</div>
+      <span class="status ${c.status}">${statusTxt[c.status]}</span>
+      <div class="small" style="margin-top:4px">${c.last}</div>
+    </div>`).join('');
+  const right=pg('right','ii',`<h2>Die Helden</h2><div class="orn">✦</div><div class="gallery">${cards}</div>`);
+  return left+right;
+}
+
+function ch(){return chars.find(c=>c.id===cur.char)}
+
+function renderToc(){
+  const c=ch();
+  const left=pg('left','12',`
+    <div class="hero">
+      <div class="portrait" style="background:${c.color}">${c.ini}</div>
+      <div><h2 style="margin:0">${c.name}</h2><div class="small">${c.race} · ${c.cls} · Stufe ${c.lvl} · <span class="status ${c.status}" style="font-size:11px">${statusTxt[c.status]}</span></div></div>
+    </div>
+    <div class="orn">✦ ✦ ✦</div>
+    <div class="stats">
+      <div><b>Erschaffen</b> 12. Okt. 2026</div><div><b>Spielzeit</b> ${c.played}</div>
+      <div><b>Tode</b> ${c.deaths}</div><div><b>Verliese</b> 3 (2 vollendet)</div>
+      <div><b>Gold</b> 14g 32s 08k</div><div><b>Besuchte Zonen</b> 9</div>
+      <div><b>Längstes Level</b> 23 → 24, 3h 41m</div><div><b>Davon AFK</b> 47 min</div>
+      <div><b>Gefährten</b> 6</div><div><b>Erfolge</b> 31 / 200+</div>
+    </div>
+    <div class="quote">Zuletzt gesehen ${c.last} in Rotkammgebirge, Seenhain.</div>
+  `);
+  const right=pg('right','13',`
+    <h2>Inhalt</h2><div class="orn">✦</div>
+    <ul class="toc">
+      <li onclick="go('diary')"><span class="t"><b>Tagebuch</b></span><span class="dots"></span><span class="n">14</span></li>
+      <li class="sub" onclick="go('diary')"><span class="t">Oktober 2026 · Stufe 1–18</span><span class="dots"></span><span class="n">14</span></li>
+      <li class="sub" onclick="go('diary')"><span class="t">November 2026 · Stufe 19–27</span><span class="dots"></span><span class="n">31</span></li>
+      <li onclick="go('deaths')"><span class="t"><b>Tode</b> und Beinahe-Tode</span><span class="dots"></span><span class="n">44</span></li>
+      <li><span class="t"><b>Levelaufstiege</b> mit Ausrüstung</span><span class="dots"></span><span class="n">47</span></li>
+      <li><span class="t"><b>Verliese</b> und Beute</span><span class="dots"></span><span class="n">55</span></li>
+      <li><span class="t"><b>Schatzkammer</b> · Goldverlauf</span><span class="dots"></span><span class="n">60</span></li>
+      <li><span class="t"><b>Handwerk</b> · Berufe und Sammeln</span><span class="dots"></span><span class="n">63</span></li>
+      <li><span class="t"><b>Gefährten</b> · mit wem ich zog</span><span class="dots"></span><span class="n">66</span></li>
+      <li><span class="t"><b>Ikonische Momente</b> und Erfolge</span><span class="dots"></span><span class="n">68</span></li>
+      <li><span class="t"><b>Reiseroute</b> · die Karte meiner Wege</span><span class="dots"></span><span class="n">72</span></li>
+      <li><span class="t"><b>Unnütze Statistiken</b></span><span class="dots"></span><span class="n">76</span></li>
+    </ul>
+    <p class="small" style="margin-top:18px"><a class="lnk" onclick="go('gallery')">← zurück zum Heldenregister</a></p>
+  `);
+  return left+right;
+}
+
+function renderDiary(){
+  const left=pg('left','14',`
+    <h2>Tagebuch</h2><div class="orn">✦ ✦ ✦</div>
+    <div class="day">
+      <div class="date">Sonntag, 12. Oktober 2026</div>
+      <div class="where">Dun Morogh · Kaltzahntal · 1h 48m</div>
+      <p><span class="tag">Beginn</span> Die Chronik beginnt. Ein Zwerg mit Axt, ohne Plan, aber mit einem Ziel: nicht sterben.</p>
+      <p><span class="tag lvl">Stufe 2 · 3 · 4 · 5</span> Vier Aufstiege am ersten Abend. Erster Besuch in Kharanos.</p>
+      <div class="shot"><div class="img">WoWScrnShot_101226_204411.jpg</div><div class="cap">Stufe 5 vor dem Gasthaus in Kharanos, es schneit.</div></div>
+    </div>
+    <div class="day">
+      <div class="date">Dienstag, 14. Oktober 2026</div>
+      <div class="where">Dun Morogh · 2h 05m</div>
+      <p><span class="tag lvl">Stufe 6 · 7</span> Trolle in den Höhlen. Zum ersten Mal unter 20 % Leben, geflohen bis zum Wachposten.</p>
+      <p><span class="tag">Gold</span> 1g 12s erreicht. Erste graue Beute verkauft, Taschen voll.</p>
+    </div>
+  `);
+  const right=pg('right','15',`
+    <div class="day">
+      <div class="date">Donnerstag, 16. Oktober 2026</div>
+      <div class="where">Loch Modan · Thelsamar · 3h 12m</div>
+      <p><span class="tag lvl">Stufe 8 · 9 · 10</span> Stufe 10 erreicht. Kampfhaltung gelernt, zum ersten Mal mit Schild.</p>
+      <p><span class="tag death">Tod</span> Von einem Elite-Oger beim Steinwachenlager erschlagen. 1 von 2 Toden. Geisterlauf: 4 Minuten.</p>
+      <div class="shot" style="transform:rotate(.8deg)"><div class="img" style="background:linear-gradient(160deg,#4a4a52,#1c1c22 60%,#000)">WoWScrnShot_101626_221902.jpg</div><div class="cap">Der Moment danach. Automatisch festgehalten.</div></div>
+      <p><span class="tag">Gefährten</span> Mit <b>Brannok</b> (Gilde: Die Ewigen) erstmals in einer Gruppe.</p>
+    </div>
+    <div class="day">
+      <div class="date">Samstag, 18. Oktober 2026</div>
+      <div class="where">Die Todesminen · 1h 34m</div>
+      <p><span class="tag dng">Verlies</span> Die Todesminen, vollendet. 0 Tode in der Gruppe. Beute: <i>Kurzschwert des Kapitäns</i> (grün).</p>
+      <p><span class="tag">Ikonisch</span> Hat VanCleefs Rede bis zum Ende angehört.</p>
+    </div>
+  `);
+  return left+right;
+}
+
+function renderDeaths(){
+  const left=pg('left','44',`
+    <h2>Tode</h2><div class="orn">✦ ✦ ✦</div>
+    <p class="small">Jeder Tod mit Ursache, Ort und dem, was danach kam. In Forever ist nur der letzte endgültig.</p>
+    <table class="ledger">
+      <tr><th>#</th><th>Datum</th><th>Stufe</th><th>Ort</th><th>Ursache</th></tr>
+      <tr><td>1</td><td>16. Okt.</td><td>10</td><td>Loch Modan, Steinwachenlager</td><td>Elite-Oger (Mok'Morokk)</td></tr>
+      <tr><td>2</td><td>2. Nov.</td><td>24</td><td>Rotkammgebirge, Rendersteig</td><td>Ertrunken. Ja, wirklich.</td></tr>
+    </table>
+    <h3>Beinahe</h3>
+    <p class="small">Momente unter 10 % Leben, aus denen der Charakter entkommen ist.</p>
+    <table class="ledger">
+      <tr><th>Datum</th><th>Stufe</th><th>Ort</th><th>Gegner</th><th>Rest</th></tr>
+      <tr><td>14. Okt.</td><td>7</td><td>Dun Morogh</td><td>Frostmähnen-Troll</td><td>6 %</td></tr>
+      <tr><td>27. Okt.</td><td>21</td><td>Sumpfland</td><td>Dreschadon</td><td>3 %</td></tr>
+    </table>
+    <div class="quote">Todesursachen gesamt: 1× Gegner, 1× Ertrinken, 0× Fall, 0× Wache.</div>
+  `);
+  const right=pg('right','45',`
+    <h3 style="margin-top:0">Wo es geschah</h3>
+    <div class="map">
+      <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path d="M18 70 C 28 55, 40 62, 48 48 S 66 30, 78 36" fill="none" stroke="#7a5a2a" stroke-width=".6" stroke-dasharray="1.2 .8"/>
+        <path d="M48 48 L 52 44" fill="none" stroke="#2f4f7a" stroke-width=".7"/>
+      </svg>
+      <div class="pin lv" style="left:18%;top:70%"></div><div class="lbl" style="left:18%;top:70%">Stufe 1</div>
+      <div class="pin" style="left:48%;top:48%"></div><div class="lbl" style="left:48%;top:48%">† Tod 1 · Stufe 10</div>
+      <div class="pin" style="left:78%;top:36%"></div><div class="lbl" style="left:78%;top:36%">† Tod 2 · Stufe 24</div>
+      <div class="small" style="position:absolute;bottom:6px;left:8px">Kartenhintergrund im Entwurf nur angedeutet. Später: echte Zonenkarte mit Laufweg aus dem Addon.</div>
+    </div>
+  `);
+  return left+right;
+}
+
+const views={gallery:renderGallery,toc:renderToc,diary:renderDiary,deaths:renderDeaths};
+const order=['gallery','toc','diary','deaths'];
+
+function show(view){cur.view=view;document.getElementById('spread').innerHTML=views[view]()}
+
+const STAGGER=260, DUR=1100;
+function fakePage(i){
+  const kinds=['h','m','s','m','img','m','s','m','m','s'];
+  let h='';for(let k=0;k<10;k++){const t=kinds[(k+i)%kinds.length];h+=`<div class="ln ${t}"></div>`}
+  return h+`<div class="pn">${20+i*2}</div>`;
+}
+function flipTo(view,sheets){
+  const book=document.getElementById('book');
+  const n=sheets;
+  for(let i=0;i<n;i++){
+    const s=document.createElement('div');s.className='sheet';s.style.animationDelay=(i*STAGGER)+'ms';
+    s.style.zIndex=20+n-i;s.innerHTML=fakePage(i);book.appendChild(s);
+    s.addEventListener('animationend',()=>s.remove());
+    setTimeout(()=>s.remove(),i*STAGGER+DUR+150);
+  }
+  // swap the content while the last sheet is mid-turn, so the new spread is revealed underneath
+  setTimeout(()=>show(view),(n-1)*STAGGER+DUR*0.5);
+}
+
+const titles={gallery:['Chronik der Ewigen','Heldenregister'],toc:[null,'Inhalt'],diary:[null,'Tagebuch'],deaths:[null,'Tode']};
+let busy=false;
+function closeOpen(view){
+  if(busy)return;busy=true;
+  const book=document.getElementById('book');
+  const c=ch();
+  const t=titles[view];
+  const lid=document.createElement('div');lid.className='lid closing';
+  lid.innerHTML=`<div class="face in"></div><div class="face out"><div class="emb">${t[0]||c.name}</div><div class="orn">✦ ✦ ✦</div><div class="sub">${t[1]}</div></div>`;
+  book.appendChild(lid);
+  const phase2=()=>{
+    book.classList.add('closed');show(view);
+    setTimeout(()=>{book.classList.remove('closed');lid.classList.remove('closing');lid.classList.add('opening');
+      setTimeout(()=>{lid.remove();busy=false},950);
+    },650); // pause with the cover showing
+  };
+  setTimeout(phase2,900);
+}
+function selectChar(id){cur.char=id;closeOpen('toc')}
+function go(view){ if(cur.view===view)return; closeOpen(view) }
+document.getElementById('next').onclick=()=>{const i=order.indexOf(cur.view);if(i<order.length-1)go(order[i+1])};
+document.getElementById('prev').onclick=()=>{const i=order.indexOf(cur.view);if(i>0)go(order[i-1])};
+show('gallery');
+
+// fallback if the companion helper is not injected
+if(typeof toggleSelect!=='function'){window.toggleSelect=el=>el.classList.toggle('selected')}
+</script>
+</body>
+</html>
