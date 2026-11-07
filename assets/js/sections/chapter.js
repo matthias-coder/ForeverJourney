@@ -58,7 +58,7 @@ export function renderChapter(record, entry, pageCounts) {
   hero.appendChild(renderPortrait(entry));
   const head = el('div');
   head.appendChild(el('h2', null, entry.displayName ?? entry.name));
-  head.appendChild(el('div', 'small', `${raceName(entry.race)} ${className(entry.class)}, Stufe ${entry.level}`));
+  head.appendChild(el('div', 'small', `${raceName(entry.race)} ${className(entry.class)}, Stufe ${entry.level ?? '–'}`));
   head.appendChild(el('div', 'small', `Status: ${STATUS_LABELS[entry.status] ?? entry.status}`));
   hero.appendChild(head);
   left.appendChild(hero);
