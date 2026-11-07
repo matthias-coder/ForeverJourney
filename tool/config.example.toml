@@ -26,13 +26,18 @@ show_companions = true
 # Charaktere, die komplett ignoriert werden. Einträge sind Charakter-IDs (<name>-<realm>).
 excluded_characters = []
 
-# Wie lange eine Screenshot-Datei unverändert sein muss, bevor sie verarbeitet wird (Sekunden).
+# Wie lange die Export-Datei (MyCharForever.lua) unverändert sein muss, bevor sie
+# verarbeitet wird (Sekunden). Verhindert das Lesen halb geschriebener Dateien.
 stable_seconds = 5.0
 
 # Abstand, in dem das Tool auf neue Daten prüft (Sekunden).
 poll_seconds = 30.0
 
-# Optional: Basis-URL der Website, z. B. für Links in Meldungen.
+# Branch, auf dem veröffentlicht wird. Steht das Repo auf einem anderen Branch, committet
+# und pusht das Tool nicht (Meldung im Log und als Benachrichtigung).
+branch = "main"
+
+# Optional: URL der veröffentlichten Seite. Das Tray-Menü "Seite öffnen" öffnet sie im Browser.
 # site_url = "https://example.com"
 
 # Optionale Überschreibungen pro Charakter. Der Schlüssel ist die Charakter-ID
