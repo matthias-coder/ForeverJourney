@@ -57,6 +57,14 @@ Das Tray-Menü bietet „Jetzt synchronisieren“, „Seite öffnen“ (nur mit 
 „Letzten Lauf anzeigen“, „Log öffnen“ und „Beenden“. Fehler erscheinen nie als Dialog, nur als
 Windows-Benachrichtigung und im Logfile.
 
+## Während des Spielens
+
+Solange WoW läuft, wartet das Tool mit dem Synchronisieren (Option `defer_while_wow_running`,
+Standard `true`). Sobald du WoW beendest, läuft der aufgeschobene Sync automatisch. Welche
+Prozesse als WoW gelten, steht in `wow_process_names`. Das Tray-Programm läuft mit niedriger
+Priorität und stört das Spiel nicht. „Jetzt synchronisieren“ im Tray-Menü erzwingt einen Sync
+auch bei laufendem WoW.
+
 ## Bilder ausdünnen
 
 Screenshots, die nicht veröffentlicht werden sollen, trägst du in `data/exclude.txt` im Repo

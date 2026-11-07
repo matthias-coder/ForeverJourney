@@ -9,6 +9,7 @@ from pathlib import Path
 from .app import App
 from .config import ConfigError, load_config
 from .notify import windows_toast
+from .priority import lower_priority
 
 TOOL_DIR = Path(__file__).resolve().parent.parent
 
@@ -57,6 +58,8 @@ def main(argv: list[str] | None = None) -> int:
                + ". Bitte config.toml prüfen (siehe config.example.toml).")
         return fail(msg)
     notifier = (lambda t, x: None) if args.command == "sync" else windows_toast
+    if args.command in ("tray", "watch"):
+        lower_priority()
     app = App(cfg, notifier=notifier, log=log)
     if args.command == "sync":
         print(app.run_sync("cli", force=True))
