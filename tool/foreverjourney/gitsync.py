@@ -6,6 +6,7 @@ from datetime import datetime
 from pathlib import Path
 
 TIMEOUT = 120
+NOTHING_TO_COMMIT = "nothing to commit"
 
 
 @dataclass
@@ -36,7 +37,7 @@ def commit_and_push(repo_dir: Path, message: str,
         if add.returncode != 0:
             return SyncResult(False, False, f"git add failed: {_err(add)}")
     if _git(repo_dir, "diff", "--cached", "--quiet").returncode == 0:
-        return SyncResult(False, False, "nothing to commit")
+        return SyncResult(False, False, NOTHING_TO_COMMIT)
     commit = _git(repo_dir, "commit", "-m", message)
     if commit.returncode != 0:
         return SyncResult(False, False, f"git commit failed: {_err(commit)}")
@@ -47,6 +48,23 @@ def commit_and_push(repo_dir: Path, message: str,
     if push.returncode != 0:
         return SyncResult(True, False, f"git push failed: {_err(push)}")
     return SyncResult(True, True, "pushed")
+
+
+def push_pending(repo_dir: Path) -> SyncResult:
+    """Push local commits that are ahead of the upstream (e.g. after an offline run)."""
+    repo_dir = Path(repo_dir)
+    ahead = _git(repo_dir, "rev-list", "--count", "@{u}..HEAD")
+    if ahead.returncode != 0:
+        return SyncResult(False, False, f"no upstream configured: {_err(ahead)}")
+    if ahead.stdout.strip() == "0":
+        return SyncResult(False, False, "nothing to push")
+    try:
+        push = _git(repo_dir, "push")
+    except subprocess.TimeoutExpired:
+        return SyncResult(False, False, f"git push timed out after {TIMEOUT} s")
+    if push.returncode != 0:
+        return SyncResult(False, False, f"git push failed: {_err(push)}")
+    return SyncResult(False, True, "pushed")
 
 
 def _dir_size(path: Path) -> int:

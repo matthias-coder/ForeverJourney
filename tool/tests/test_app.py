@@ -27,6 +27,26 @@ def test_run_sync_never_raises_on_bad_config_paths(tmp_path):
     app = App(cfg, notifier=lambda t, x: None, log=logging.getLogger("t"))
     assert isinstance(app.run_sync("test"), str)
 
+def test_run_sync_survives_internal_exception(tmp_path, monkeypatch):
+    cfg = setup(tmp_path); toasts = []
+    def boom(*a, **k): raise RuntimeError("kaputt")
+    monkeypatch.setattr("foreverjourney.app.sync_all", boom)
+    app = App(cfg, notifier=lambda t, x: toasts.append((t, x)), log=logging.getLogger("t"))
+    assert app.run_sync("test").startswith("Fehler") and app.had_error and toasts
+
+def test_pending_push_is_retried_without_new_data(tmp_path):
+    cfg = setup(tmp_path); bare = tmp_path / "remote.git"
+    git(cfg.repo_dir, "remote", "set-url", "origin", str(tmp_path / "missing.git"))
+    app = App(cfg, notifier=lambda t, x: None, log=logging.getLogger("t"))
+    assert "Push fehlgeschlagen" in app.run_sync("test")
+    assert "Push weiterhin fehlgeschlagen" in app.run_sync("test")
+    git(cfg.repo_dir, "remote", "set-url", "origin", str(bare))
+    msg = app.run_sync("test")
+    assert "nachgeholt" in msg and not app.had_error
+    log = subprocess.run(["git", "log", "--oneline", "main"], cwd=bare, capture_output=True, text=True).stdout
+    assert "chronicle: Thorgrim Eisenbart" in log
+    assert app.run_sync("test") == "Keine Änderungen"
+
 def test_run_sync_reports_push_failure_and_keeps_commit(tmp_path):
     cfg = setup(tmp_path); toasts = []
     git(cfg.repo_dir, "remote", "set-url", "origin", str(tmp_path / "missing.git"))

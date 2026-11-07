@@ -6,7 +6,8 @@ from datetime import datetime
 from typing import Callable
 
 from .config import Config
-from .gitsync import check_credentials, commit_and_push, commit_message, repo_size_mb
+from .gitsync import (NOTHING_TO_COMMIT, check_credentials, commit_and_push, commit_message,
+                      push_pending, repo_size_mb)
 from .pipeline import sync_all
 from .watcher import ExportWatcher
 
@@ -80,11 +81,23 @@ class App:
                 parts.append(f"{head}, committed, Push fehlgeschlagen (später erneut)")
                 self._toast("ForeverJourney: Push fehlgeschlagen",
                             hint or "Änderungen sind committed und werden später erneut gepusht.")
-            else:
+            elif res.message != NOTHING_TO_COMMIT:
                 self.had_error = True
                 self._log.error("commit failed: %s", res.message)
                 parts.append(f"{head}, aber Commit fehlgeschlagen: {res.message}")
                 self._toast("ForeverJourney: Fehler", f"Commit fehlgeschlagen: {res.message}")
+        if not parts or not changed:
+            pending = push_pending(self.cfg.repo_dir)
+            if pending.pushed:
+                self._log.info("pending push done")
+                parts.append("Keine Änderungen, ausstehender Push nachgeholt")
+                self._toast("ForeverJourney", "Ausstehender Push nachgeholt")
+            elif pending.message.startswith("git push"):
+                self.had_error = True
+                self._log.warning("pending push failed: %s", pending.message)
+                parts.append("Keine Änderungen, Push weiterhin fehlgeschlagen (später erneut)")
+            else:
+                self._log.info("push_pending: %s", pending.message)
         for r in errors:
             parts.append(f"Fehler bei {r.display_name}: {r.error}")
         if errors:

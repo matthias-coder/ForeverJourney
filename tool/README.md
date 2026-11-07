@@ -79,5 +79,5 @@ Pro Charakter gibt es in `config.toml` optionale Felder:
 (z. B. Repo größer als 700 MB, fehlgeschlagener Push) und Fehler mit Details. Im Tray-Menü
 öffnet „Log öffnen“ die Datei.
 
-Schlägt ein Push fehl (z. B. offline), bleibt der Commit lokal erhalten und wird beim nächsten
-erfolgreichen Lauf mit gepusht.
+Schlägt ein Push fehl (z. B. offline), bleibt der Commit lokal erhalten. Beim nächsten Lauf
+(auch ohne neue Daten, z. B. über „Jetzt synchronisieren“) wird der ausstehende Push nachgeholt.
