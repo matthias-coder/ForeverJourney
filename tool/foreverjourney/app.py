@@ -1,0 +1,113 @@
+"""Application core: serialized sync runs, commit/push, status text and notifications."""
+import logging
+import threading
+import time
+from datetime import datetime
+from typing import Callable
+
+from .config import Config
+from .gitsync import check_credentials, commit_and_push, commit_message, repo_size_mb
+from .pipeline import sync_all
+from .watcher import ExportWatcher
+
+SIZE_WARN_MB = 700
+NO_CHANGES = "Keine Änderungen"
+
+
+def _shots(n: int) -> str:
+    return "1 neues Bild" if n == 1 else f"{n} neue Bilder"
+
+
+class App:
+    def __init__(self, cfg: Config, notifier: Callable[[str, str], None], log: logging.Logger):
+        self.cfg = cfg
+        self._notify = notifier
+        self._log = log
+        self._lock = threading.Lock()
+        self._watcher: ExportWatcher | None = None
+        self.last_status = "Noch kein Lauf"
+        self.had_error = False
+
+    def _toast(self, title: str, text: str) -> None:
+        try:
+            self._notify(title, text)
+        except Exception:
+            self._log.exception("notifier failed")
+
+    def run_sync(self, reason: str) -> str:
+        with self._lock:
+            try:
+                status = self._run(reason)
+            except Exception as e:
+                self._log.exception("sync failed (%s)", reason)
+                self.had_error = True
+                status = f"Fehler: {type(e).__name__}: {e}"
+                self._toast("ForeverJourney: Fehler", status)
+            self.last_status = status
+            return status
+
+    def _run(self, reason: str) -> str:
+        now = int(time.time())
+        self._log.info("sync started (%s)", reason)
+        results = sync_all(self.cfg, now)
+        errors = [r for r in results if r.error]
+        self.had_error = bool(errors)
+        for r in errors:
+            self._log.error("%s: %s", r.display_name, r.error)
+        changed = [r for r in results if r.changed]
+        parts: list[str] = []
+        if changed:
+            shots = sum(r.added_shots for r in changed)
+            if len(changed) == 1:
+                msg = commit_message(changed[0].display_name, now)
+                head = f"{changed[0].display_name} aktualisiert"
+            else:
+                msg = f"chronicle: {len(changed)} Charaktere {datetime.fromtimestamp(now):%Y-%m-%d}"
+                head = f"{len(changed)} Charaktere aktualisiert"
+            if shots:
+                head += f", {_shots(shots)}"
+            res = commit_and_push(self.cfg.repo_dir, msg)
+            if res.pushed:
+                self._log.info("%s (pushed)", head)
+                parts.append(head)
+                self._toast("ForeverJourney", head)
+            elif res.committed:
+                self.had_error = True
+                self._log.warning("push failed: %s", res.message)
+                hint = check_credentials(self.cfg.repo_dir)
+                if hint:
+                    self._log.warning(hint)
+                parts.append(f"{head}, committed, Push fehlgeschlagen (später erneut)")
+                self._toast("ForeverJourney: Push fehlgeschlagen",
+                            hint or "Änderungen sind committed und werden später erneut gepusht.")
+            else:
+                self.had_error = True
+                self._log.error("commit failed: %s", res.message)
+                parts.append(f"{head}, aber Commit fehlgeschlagen: {res.message}")
+                self._toast("ForeverJourney: Fehler", f"Commit fehlgeschlagen: {res.message}")
+        for r in errors:
+            parts.append(f"Fehler bei {r.display_name}: {r.error}")
+        if errors:
+            self._toast("ForeverJourney: Fehler",
+                        "; ".join(f"{r.display_name}: {r.error}" for r in errors))
+        size = repo_size_mb(self.cfg.repo_dir)
+        if size > SIZE_WARN_MB:
+            warn = (f"Repository ist {size:.0f} MB groß (Warnschwelle {SIZE_WARN_MB} MB), "
+                    "bitte Bilder ausdünnen")
+            self._log.warning(warn)
+            parts.append(warn)
+            self._toast("ForeverJourney: Repository wird groß", warn)
+        return "; ".join(parts) if parts else NO_CHANGES
+
+    def start_watching(self) -> None:
+        if self._watcher is not None:
+            return
+        self._watcher = ExportWatcher(
+            self.cfg.account_dir, lambda path: self.run_sync(f"watcher: {path.name}"),
+            self.cfg.stable_seconds, self.cfg.poll_seconds)
+        self._watcher.start()
+
+    def stop(self) -> None:
+        if self._watcher is not None:
+            self._watcher.stop()
+            self._watcher = None
