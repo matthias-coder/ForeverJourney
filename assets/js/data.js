@@ -44,6 +44,9 @@ export function deathsOf(record) {
         subZone: d.subZone,
         cause: d.cause,
         killerName: d.killerName,
+        mapID: d.mapID,
+        x: d.x,
+        y: d.y,
       });
     }
   }

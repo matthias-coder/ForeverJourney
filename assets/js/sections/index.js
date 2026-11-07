@@ -9,13 +9,14 @@ import { buildCraftsPages } from './crafts.js';
 import { buildCompanionsPages } from './companions.js';
 import { buildIconicPages } from './iconic.js';
 import { buildFunPages } from './fun.js';
+import { buildJourneyPages } from './journey.js';
 
 const BUILDERS = {
   diary: buildDiaryPages, gallery: buildGalleryPages, deaths: buildDeathsPages,
   levels: buildLevelPages, dungeons: buildDungeonPages,
   gold: buildGoldPages, crafts: buildCraftsPages, companions: buildCompanionsPages,
-  iconic: buildIconicPages, fun: buildFunPages,
-}; // Task 8 adds journey
+  iconic: buildIconicPages, journey: buildJourneyPages, fun: buildFunPages,
+};
 
 const TITLES = {
   diary: 'Tagebuch', gallery: 'Fotogalerie', deaths: 'Tode', levels: 'Levelaufstiege', dungeons: 'Verliese',

@@ -2,6 +2,7 @@ import { el } from '../dom.js';
 import { deathsOf, playerTime } from '../data.js';
 import { fmtDateShort } from '../format.js';
 import { spreadsFrom } from './spreads.js';
+import { renderMap } from '../map.js';
 
 const CAUSES = { drowned: 'Ertrunken', fatigue: 'Erschöpfung', fall: 'Sturz', guard: 'Wache', pvp: 'Spieler' };
 const ROWS_PER_TABLE = 10;
@@ -44,5 +45,23 @@ export function buildDeathsPages(record, ctx) {
     }
     blocks.push({ el: table, kind: 'deaths' });
   }
-  return spreadsFrom(blocks, 'Tode', ctx);
+  return withDeathMap(record, spreadsFrom(blocks, 'Tode', ctx));
+}
+
+// Map of the zone with the most located deaths goes on the right page of the first spread
+// (replacing its ornament; if that page holds content, a spread of its own follows).
+function withDeathMap(record, spreads) {
+  const located = deathsOf(record).filter((d) => typeof d.x === 'number' && typeof d.y === 'number'
+    && Object.hasOwn(record.maps ?? {}, String(d.mapID)));
+  if (!located.length || !spreads.length) return spreads;
+  const counts = new Map();
+  for (const d of located) counts.set(d.mapID, (counts.get(d.mapID) ?? 0) + 1);
+  const mapID = [...counts.entries()].sort((a, b) => b[1] - a[1])[0][0];
+  const markers = located.filter((d) => d.mapID === mapID).map((d) => ({ x: d.x, y: d.y, kind: 'death', label: '†' }));
+  const page = el('div');
+  page.appendChild(el('h3', null, 'Todesorte'));
+  page.appendChild(renderMap(record, mapID, { markers, width: 340, height: 300 }));
+  if (spreads[0].right.classList.contains('orn')) spreads[0].right = page;
+  else spreads.splice(1, 0, { title: 'Tode', left: page, right: el('div', 'orn', '✦ ✦ ✦') });
+  return spreads;
 }
