@@ -1,0 +1,46 @@
+# ForeverJourney - Beispielkonfiguration
+# Kopiere diese Datei nach config.toml und passe die Werte an.
+
+# Pflicht: WoW-Installationsverzeichnis (mit Unterordnern WTF/ und Screenshots/).
+# Beispiel: C:/Program Files (x86)/World of Warcraft/_forever_
+wow_dir = "C:/Program Files (x86)/World of Warcraft/_forever_"
+
+# Pflicht: Account-Ordner unter WTF/Account/ (Name wie im Dateisystem).
+account = "DEIN_ACCOUNT"
+
+# Pflicht: Pfad zum lokalen Git-Repository der Website.
+repo_dir = "C:/Users/DEIN_NAME/foreverjourney"
+
+# Maximale Breite der Vollbild-Screenshots in Pixeln (Seitenverhältnis bleibt erhalten).
+max_width = 1600
+
+# Breite der Vorschaubilder (Thumbnails) in Pixeln.
+thumb_width = 320
+
+# JPEG-Qualität der exportierten Bilder (1-100).
+jpeg_quality = 80
+
+# Begleiter (Companions/Haustiere) in den Export aufnehmen.
+show_companions = true
+
+# Charaktere, die komplett ignoriert werden. Einträge sind Charakter-IDs (<name>-<realm>).
+excluded_characters = []
+
+# Wie lange eine Screenshot-Datei unverändert sein muss, bevor sie verarbeitet wird (Sekunden).
+stable_seconds = 5.0
+
+# Abstand, in dem das Tool auf neue Daten prüft (Sekunden).
+poll_seconds = 30.0
+
+# Optional: Basis-URL der Website, z. B. für Links in Meldungen.
+# site_url = "https://example.com"
+
+# Optionale Überschreibungen pro Charakter. Der Schlüssel ist die Charakter-ID
+# aus Name und Realm, klein geschrieben und ohne Umlaute (z. B. "thorgrim-eisenbart").
+#
+# [characters."thorgrim-eisenbart"]
+# status = "active"          # active | resting | retired | fallen (weglassen = keiner)
+# mode = "normal"            # normal | hardcore
+# realm_type = "RP-PvP"      # PvP | PvE | RP-PvP | RP-PvE
+# realm_name = "Eisenbart"   # Anzeigename des Realms
+# armory_url = "https://worldofwarcraft.blizzard.com/..."
