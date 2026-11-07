@@ -74,7 +74,17 @@ def test_corrupt_data_file_is_reported(tmp_path):
     results, _ = sync_all(cfg, NOW + 5)
     assert any(r.id == "bad" and r.error for r in results)
 
-def test_write_is_atomic_and_leaves_no_tmp(tmp_path):
+def test_write_is_atomic_old_content_survives_failed_replace(tmp_path, monkeypatch):
+    import os, pytest
+    from foreverjourney.pipeline import _write
+    p = tmp_path / "a.json"; p.write_text("old")
+    def boom(*a, **k): raise OSError("replace failed")
+    monkeypatch.setattr(os, "replace", boom)
+    with pytest.raises(OSError):
+        _write(p, "new")
+    assert p.read_text() == "old" and not list(tmp_path.glob("*.tmp"))
+
+def test_write_replaces_content(tmp_path):
     from foreverjourney.pipeline import _write
     p = tmp_path / "a.json"; p.write_text("old")
     _write(p, "new")

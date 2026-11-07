@@ -43,8 +43,14 @@ def _without_generated(index: dict) -> dict:
 
 
 def _write(path: Path, text: str) -> None:
-    with open(path, "w", encoding="utf-8", newline="\n") as f:
-        f.write(text)
+    tmp = path.with_name(path.name + ".tmp")
+    try:
+        with open(tmp, "w", encoding="utf-8", newline="\n") as f:
+            f.write(text)
+        os.replace(tmp, path)
+    except BaseException:
+        tmp.unlink(missing_ok=True)
+        raise
 
 
 def _ensure_exclude(data_dir: Path) -> Path:

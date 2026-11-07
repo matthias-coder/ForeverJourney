@@ -107,7 +107,7 @@ def check_credentials(repo_dir: Path) -> str | None:
 
 def is_diverged(message: str) -> bool:
     low = message.lower()
-    return "rejected" in low or "non-fast-forward" in low
+    return "non-fast-forward" in low or "fetch first" in low
 
 
 DIVERGED_HINT = ("Das Remote-Repository ist weiter als dein lokales (divergiert). "
