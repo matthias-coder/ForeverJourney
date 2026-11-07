@@ -69,3 +69,18 @@ def test_eof_error_carries_position():
     with pytest.raises(LuaParseError, match=r"at \d+"):
         parse_saved_variables("X = {")
 
+
+def test_block_comment_after_nil_value():
+    t = 'X = {\n["a"] = nil --[[ secret value ]],\n["b"] = 1,\n}\n'
+    assert parse_saved_variables(t)["X"] == {"a": None, "b": 1}
+
+
+def test_multiline_level_block_comment_skipped():
+    t = 'X = {\n["a"] = 1,\n--[==[ multi\nline ]] still comment\n]==]\n["b"] = 2,\n}\n'
+    assert parse_saved_variables(t)["X"] == {"a": 1, "b": 2}
+
+
+def test_line_comment_starting_with_bracket_is_line_comment():
+    t = 'X = {\n["a"] = 1, --[ not a block\n["b"] = 2,\n}\n'
+    assert parse_saved_variables(t)["X"] == {"a": 1, "b": 2}
+

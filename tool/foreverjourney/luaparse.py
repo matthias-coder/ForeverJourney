@@ -9,7 +9,7 @@ class LuaParseError(ValueError):
 _TOKEN = re.compile(
     r"""
     (?P<ws>\s+)
-  | (?P<comment>--[^\n]*)
+  | (?P<comment>--\[(?P<eq>=*)\[.*?\](?P=eq)\]|--[^\n]*)
   | (?P<number>0[xX][0-9a-fA-F]+|(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?)
   | (?P<string>"(?:[^"\\\n]|\\.)*")
   | (?P<name>[A-Za-z_][A-Za-z0-9_]*)

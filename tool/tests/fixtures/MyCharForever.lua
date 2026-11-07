@@ -34,6 +34,7 @@ MyCharForeverExportDB = {
 	["data"] = {
 		["character"] = {
 			["created"] = 1791792000,
+			["specIconID"] = nil --[[ secret value ]],
 		},
 		["levels"] = {
 			{
