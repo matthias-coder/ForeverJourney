@@ -1,7 +1,8 @@
 import { SECTIONS } from '../router.js';
 import { buildDiaryPages } from './diary.js';
+import { buildGalleryPages } from './gallery.js';
 
-const BUILDERS = { diary: buildDiaryPages }; // Tasks 5-8 add their sections here
+const BUILDERS = { diary: buildDiaryPages, gallery: buildGalleryPages }; // Tasks 6-8 add their sections here
 
 // Returns { section: Page[] } for every section; sections without data give [].
 export function buildSections(record, entry, ctx) {

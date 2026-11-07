@@ -2,16 +2,17 @@ import { el } from '../dom.js';
 import { buildDays } from '../diary.js';
 import { paginate } from '../paginate.js';
 import { fmtDuration, fmtMonthKey, fmtTime } from '../format.js';
-import { playerTime } from '../data.js';
+import { playerTime, shotsSorted } from '../data.js';
+import { openLightbox } from '../lightbox.js';
 
 const TAGS = { level: ['lvl', 'Stufe'], death: ['death', 'Tod'], dungeon: ['dng', 'Verlies'] };
 
-function photoBlock(item) {
+function photoBlock(item, all, off) {
   const fig = el('div', 'shot');
-  const a = el('a');
-  a.href = item.shot.file; // Task 5 replaces this with a lightbox
-  a.target = '_blank';
-  a.rel = 'noopener';
+  const a = el('button', 'shot-open');
+  a.type = 'button';
+  a.setAttribute('aria-label', `${item.text} – vergrößern`);
+  a.addEventListener('click', () => openLightbox(all, Math.max(all.findIndex((s) => s.name === item.shot.name), 0), off));
   const img = el('img', 'photo');
   img.loading = 'lazy';
   img.alt = item.text;
@@ -24,8 +25,8 @@ function photoBlock(item) {
   return { el: fig, kind: 'shot' };
 }
 
-function itemBlock(item, off) {
-  if (item.kind === 'shot') return photoBlock(item);
+function itemBlock(item, off, all) {
+  if (item.kind === 'shot') return photoBlock(item, all, off);
   if (item.kind === 'journal') {
     const wrap = el('div', 'entry');
     wrap.appendChild(el('b', null, item.text));
@@ -42,6 +43,7 @@ function itemBlock(item, off) {
 export function diaryBlocks(record) {
   const off = playerTime(record);
   const days = buildDays(record);
+  const all = shotsSorted(record);
   const blocks = [];
   let month = null;
   for (const day of days) {
@@ -60,7 +62,7 @@ export function diaryBlocks(record) {
       .filter(Boolean).join(' · ');
     if (meta) head.appendChild(el('div', 'small', meta));
     blocks.push({ el: head, kind: 'day' });
-    for (const item of day.items) blocks.push(itemBlock(item, off));
+    for (const item of day.items) blocks.push(itemBlock(item, off, all));
   }
   return blocks;
 }
