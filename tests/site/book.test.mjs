@@ -39,3 +39,16 @@ test('drain runs a queued navigation before a pending re-pagination', async () =
   assert.equal(fake.again, false);
   assert.equal(await drain(fake), undefined);
 });
+
+test('keyTarget: arrows navigate unless lightbox, typing or modifiers', async () => {
+  const { keyTarget } = await import('../../assets/js/book.js');
+  const nav = { prev: { view: 'register' }, next: { view: 'chapter', id: 'a' } };
+  assert.equal(keyTarget({ key: 'ArrowLeft' }, nav), nav.prev);
+  assert.equal(keyTarget({ key: 'ArrowRight' }, nav), nav.next);
+  assert.equal(keyTarget({ key: 'ArrowRight' }, nav, { lightbox: true }), null);
+  assert.equal(keyTarget({ key: 'ArrowRight' }, nav, { typing: true }), null);
+  assert.equal(keyTarget({ key: 'ArrowRight', ctrlKey: true }, nav), null);
+  assert.equal(keyTarget({ key: 'a' }, nav), null);
+  assert.equal(keyTarget({ key: 'ArrowLeft' }, { prev: null, next: null }), null);
+  assert.equal(keyTarget({ key: 'ArrowLeft' }, null), null);
+});

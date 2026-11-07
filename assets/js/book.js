@@ -60,6 +60,17 @@ export function drain(book) {
   return undefined;
 }
 
+// Maps a key press to a navigation target (or null). Ignored while the lightbox is open,
+// while typing in a form field, or with modifier keys held.
+export function keyTarget(e, nav, { lightbox = false, typing = false } = {}) {
+  if (lightbox || typing || !nav || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return null;
+  if (e.key === 'ArrowLeft') return nav.prev ?? null;
+  if (e.key === 'ArrowRight') return nav.next ?? null;
+  return null;
+}
+
+const isTyping = (t) => !!t && (/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) || t.isContentEditable === true);
+
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const NARROW = '(max-width: 820px)';
 
@@ -85,6 +96,10 @@ export class Book {
       return;
     }
     window.addEventListener('hashchange', () => this.goto(parseHash(location.hash)));
+    document.addEventListener('keydown', (e) => {
+      const target = keyTarget(e, this.nav, { lightbox: !!document.querySelector('.lightbox'), typing: isTyping(e.target) });
+      if (target) { e.preventDefault(); this.navigate(target); }
+    });
     let timer;
     window.addEventListener('resize', () => {
       clearTimeout(timer);
@@ -122,6 +137,11 @@ export class Book {
     const left = el('div');
     left.appendChild(el('h2', null, 'Das Buch bleibt verschlossen'));
     left.appendChild(el('p', null, msg));
+    if (this.index) {
+      const a = el('a', 'lnk', 'Zum Heldenregister');
+      a.href = toHash({ view: 'register' });
+      left.appendChild(el('p', null)).appendChild(a);
+    }
     this.renderSpread(left, el('div'), ['', '']);
     this.cornerL.hidden = this.cornerR.hidden = true;
   }
@@ -150,7 +170,13 @@ export class Book {
     if (target.view !== 'register' && this.current?.id !== target.id) {
       const entry = (this.index.characters ?? []).find((c) => c.id === target.id);
       if (entry) {
-        const record = await this.loadCharacter(entry);
+        const loading = this.beginLoading(entry);
+        let record;
+        try {
+          [record] = await Promise.all([this.loadCharacter(entry), loading]);
+        } finally {
+          this.book.classList.remove('loading');
+        }
         this.current = { id: entry.id, entry, record, sections: await this.buildSectionsFor(record, entry) };
       }
     }
@@ -162,6 +188,33 @@ export class Book {
     const useKind = kind === 'lid' && window.matchMedia?.(NARROW).matches ? 'fade' : kind;
     await this.transition(useKind, this.embossing(route), draw);
     this.route = route;
+  }
+
+  // While a character loads: the cover closes and stays shut ("... wird aufgeschlagen").
+  // On narrow screens (fade instead of lid) the spread is only dimmed. Resolves when the cover is shut.
+  beginLoading(entry) {
+    if (window.matchMedia?.(NARROW).matches) {
+      this.book.classList.add('loading');
+      return Promise.resolve();
+    }
+    const lid = this.makeLid({ title: entry.displayName ?? entry.name, sub: '… wird aufgeschlagen' });
+    this.book.appendChild(lid);
+    return wait(this.spread.childNodes.length ? 900 : 0).then(() => {
+      if (!lid.isConnected) return; // loading failed meanwhile and recoverState removed the lid
+      this.book.classList.add('closed');
+      lid.classList.replace('closing', 'shut');
+    });
+  }
+
+  makeLid(embossing) {
+    const lid = el('div', 'lid closing');
+    lid.appendChild(el('div', 'face in'));
+    const out = el('div', 'face out');
+    out.appendChild(el('div', 'emb', embossing?.title ?? ''));
+    out.appendChild(el('div', 'orn', '✦ ✦ ✦'));
+    out.appendChild(el('div', 'sub', embossing?.sub ?? ''));
+    lid.appendChild(out);
+    return lid;
   }
 
   // Builds all section spreads, measuring in a hidden probe spread that matches the real page size.
@@ -252,20 +305,23 @@ export class Book {
   // Runs `swap` (which draws the new spread) in the middle of the transition.
   async transition(kind, embossing, swap = () => {}) {
     if (kind === 'lid') {
-      const lid = el('div', 'lid closing');
-      lid.appendChild(el('div', 'face in'));
-      const out = el('div', 'face out');
-      out.appendChild(el('div', 'emb', embossing?.title ?? ''));
-      out.appendChild(el('div', 'orn', '✦ ✦ ✦'));
-      out.appendChild(el('div', 'sub', embossing?.sub ?? ''));
-      lid.appendChild(out);
-      this.book.appendChild(lid);
-      await wait(this.spread.childNodes.length ? 900 : 0);
-      this.book.classList.add('closed');
-      swap();
+      let lid = this.book.querySelector('.lid.shut');
+      if (lid) {
+        // Cover already shut by beginLoading: put the final embossing on it and open it.
+        lid.querySelector('.emb').textContent = embossing?.title ?? '';
+        lid.querySelector('.sub').textContent = embossing?.sub ?? '';
+        swap();
+      } else {
+        lid = this.makeLid(embossing);
+        this.book.appendChild(lid);
+        await wait(this.spread.childNodes.length ? 900 : 0);
+        this.book.classList.add('closed');
+        swap();
+      }
       await wait(650);
       this.book.classList.remove('closed');
-      lid.classList.replace('closing', 'opening');
+      lid.classList.remove('closing', 'shut');
+      lid.classList.add('opening');
       await wait(950);
       lid.remove();
     } else if (kind === 'fade' && this.spread.childNodes.length) {
