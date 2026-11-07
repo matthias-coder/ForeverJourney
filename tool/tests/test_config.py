@@ -58,3 +58,11 @@ def test_find_export_files(tmp_path):
         (d / "MyCharForever.lua").write_text("x", encoding="utf-8")
         (d / "Other.lua").write_text("x", encoding="utf-8")
     assert [p.parts[-3] for p in find_export_files(cfg)] == ["Thorgrim", "Lunara"]
+
+
+def test_defer_options_are_known(tmp_path):
+    p = tmp_path / "c.toml"
+    p.write_text('wow_dir = "x"\naccount = "A"\nrepo_dir = "y"\n'
+                 'defer_while_wow_running = false\nwow_process_names = ["Foo.exe"]\n', encoding="utf-8")
+    cfg = load_config(p)
+    assert cfg.defer_while_wow_running is False and cfg.wow_process_names == ["Foo.exe"]

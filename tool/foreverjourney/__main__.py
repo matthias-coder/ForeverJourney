@@ -59,7 +59,7 @@ def main(argv: list[str] | None = None) -> int:
     notifier = (lambda t, x: None) if args.command == "sync" else windows_toast
     app = App(cfg, notifier=notifier, log=log)
     if args.command == "sync":
-        print(app.run_sync("cli"))
+        print(app.run_sync("cli", force=True))
         return 1 if app.had_error else 0
     if args.command == "watch":
         app.start_watching()

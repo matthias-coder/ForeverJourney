@@ -35,6 +35,9 @@ class Config:
     poll_seconds: float = 30.0
     site_url: str | None = None
     branch: str = "main"
+    defer_while_wow_running: bool = True
+    wow_process_names: list[str] = field(
+        default_factory=lambda: ["Wow.exe", "WowClassic.exe", "WowT.exe", "WowB.exe"])
     account_dir: Path = field(init=False)
     screenshot_dir: Path = field(init=False)
 

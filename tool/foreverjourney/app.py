@@ -11,9 +11,15 @@ from .gitsync import (DIVERGED_HINT, NOTHING_TO_COMMIT, check_credentials, commi
                       push_pending, repo_size_mb)
 from .pipeline import sync_all
 from .watcher import ExportWatcher
+from .wowproc import is_wow_running
 
 SIZE_WARN_MB = 700
 NO_CHANGES = "Keine Änderungen"
+DEFERRED = "Sync aufgeschoben: WoW läuft"
+
+
+def should_defer(cfg: Config, wow_running: bool, force: bool) -> bool:
+    return cfg.defer_while_wow_running and wow_running and not force
 
 
 def _shots(n: int) -> str:
@@ -30,6 +36,9 @@ class App:
         self.last_status = "Noch kein Lauf"
         self.had_error = False
         self._upstream_hinted = False
+        self.deferred = False
+        self._stop = threading.Event()
+        self._defer_thread: threading.Thread | None = None
 
     def wait_idle(self) -> None:
         """Block until a running sync has finished."""
@@ -42,7 +51,15 @@ class App:
         except Exception:
             self._log.exception("notifier failed")
 
-    def run_sync(self, reason: str) -> str:
+    def run_sync(self, reason: str, force: bool = False) -> str:
+        if not force and self.cfg.defer_while_wow_running:
+            if should_defer(self.cfg, is_wow_running(self.cfg.wow_process_names), force):
+                self.deferred = True
+                self._log.info(DEFERRED)
+                self.last_status = DEFERRED
+                return DEFERRED
+        if force:
+            self.deferred = False
         with self._lock:
             try:
                 status = self._run(reason)
@@ -53,6 +70,19 @@ class App:
                 self._toast("ForeverJourney: Fehler", status)
             self.last_status = status
             return status
+
+    def _defer_tick(self) -> None:
+        """Run the deferred sync once WoW has closed."""
+        if self.deferred and not is_wow_running(self.cfg.wow_process_names):
+            self.deferred = False
+            self.run_sync("deferred", force=True)
+
+    def _defer_loop(self) -> None:
+        while not self._stop.wait(self.cfg.poll_seconds):
+            try:
+                self._defer_tick()
+            except Exception:
+                self._log.exception("defer loop failed")
 
     def _run(self, reason: str) -> str:
         now = int(time.time())
@@ -161,8 +191,14 @@ class App:
             self.cfg.account_dir, lambda path: self.run_sync(f"watcher: {path.name}"),
             self.cfg.stable_seconds, self.cfg.poll_seconds)
         self._watcher.start()
+        if self._defer_thread is None:
+            self._stop.clear()
+            self._defer_thread = threading.Thread(target=self._defer_loop, daemon=True)
+            self._defer_thread.start()
 
     def stop(self) -> None:
+        self._stop.set()
+        self._defer_thread = None
         if self._watcher is not None:
             self._watcher.stop()
             self._watcher = None

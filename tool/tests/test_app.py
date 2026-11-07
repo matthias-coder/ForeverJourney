@@ -107,3 +107,44 @@ def test_wait_idle_blocks_while_running(tmp_path):
     threading.Thread(target=lambda: (app.wait_idle(), done.set()), daemon=True).start()
     time.sleep(0.2); assert not done.is_set()
     app._lock.release(); assert done.wait(2)
+
+# --- deferral while WoW is running ---
+from foreverjourney.app import should_defer
+import pytest
+
+
+@pytest.mark.parametrize("flag,running,force,expected", [
+    (True, True, False, True), (True, True, True, False), (True, False, False, False),
+    (False, True, False, False), (False, False, False, False), (False, True, True, False)])
+def test_should_defer_matrix(tmp_path, flag, running, force, expected):
+    cfg = setup(tmp_path); cfg.defer_while_wow_running = flag
+    assert should_defer(cfg, running, force) is expected
+
+
+def test_defer_defaults(tmp_path):
+    cfg = setup(tmp_path)
+    assert cfg.defer_while_wow_running is True and "Wow.exe" in cfg.wow_process_names
+
+
+def test_run_sync_defers_while_wow_runs(tmp_path, monkeypatch):
+    cfg = setup(tmp_path); toasts = []
+    monkeypatch.setattr("foreverjourney.app.is_wow_running", lambda names: True)
+    app = App(cfg, notifier=lambda t, x: toasts.append((t, x)), log=logging.getLogger("t"))
+    msg = app.run_sync("watch")
+    assert "aufgeschoben" in msg and app.last_status == msg and app.deferred
+    assert not (cfg.repo_dir / "data").exists() and bare_log(tmp_path).count("chronicle") == 0
+    msg = app.run_sync("watch", force=True)
+    assert "Thorgrim Eisenbart" in msg and not app.deferred
+
+
+def test_deferred_runs_once_wow_closed(tmp_path, monkeypatch):
+    cfg = setup(tmp_path)
+    state = {"running": True}
+    monkeypatch.setattr("foreverjourney.app.is_wow_running", lambda names: state["running"])
+    app = App(cfg, notifier=lambda t, x: None, log=logging.getLogger("t"))
+    app.run_sync("watch")
+    app._defer_tick()
+    assert app.deferred
+    state["running"] = False
+    app._defer_tick()
+    assert not app.deferred and "Thorgrim Eisenbart" in app.last_status

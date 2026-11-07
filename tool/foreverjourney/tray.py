@@ -17,7 +17,7 @@ def run_tray(app: App, site_url: str | None) -> None:
     from PIL import Image
 
     def sync(icon=None, item=None):
-        threading.Thread(target=app.run_sync, args=("tray",), daemon=True).start()
+        threading.Thread(target=app.run_sync, args=("tray",), kwargs={"force": True}, daemon=True).start()
 
     def show_status(icon=None, item=None):
         windows_toast("ForeverJourney", app.last_status)

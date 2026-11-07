@@ -37,6 +37,14 @@ poll_seconds = 30.0
 # und pusht das Tool nicht (Meldung im Log und als Benachrichtigung).
 branch = "main"
 
+# Syncs aufschieben, solange WoW läuft (schont Leistung und Netzwerk beim Spielen).
+# Nach dem Beenden von WoW läuft der aufgeschobene Sync automatisch.
+# Das Tray-Menü "Jetzt synchronisieren" und der Befehl "sync" ignorieren diese Option.
+defer_while_wow_running = true
+
+# Prozessnamen (Dateinamen der Programme), an denen "WoW läuft" erkannt wird.
+wow_process_names = ["Wow.exe", "WowClassic.exe", "WowT.exe", "WowB.exe"]
+
 # Optional: URL der veröffentlichten Seite. Das Tray-Menü "Seite öffnen" öffnet sie im Browser.
 # site_url = "https://example.com"
 
