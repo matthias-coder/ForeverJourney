@@ -14,7 +14,7 @@ def is_wow_running(names: list[str], run=subprocess.run) -> bool:
         kwargs = {}
         if sys.platform == "win32":
             kwargs["creationflags"] = subprocess.CREATE_NO_WINDOW
-        proc = run(["tasklist", "/FO", "CSV", "/NH"], capture_output=True, text=True,
+        proc = run(["tasklist", "/FO", "CSV", "/NH"], capture_output=True, text=True, errors="replace",
                    timeout=10, **kwargs)
         if proc.returncode != 0:
             _log.debug("tasklist exited with %s", proc.returncode)
