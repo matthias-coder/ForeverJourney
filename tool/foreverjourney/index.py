@@ -5,8 +5,8 @@ STATUS_RANK = {"active": 0, "resting": 1, "retired": 2, "fallen": 2}
 
 def _last_seen(record: dict) -> int:
     sessions = record.get("lists", {}).get("sessions", [])
-    ends = [s.get("endTime", 0) for s in sessions]
-    return max([*ends, record["meta"].get("exportedAt", 0)])
+    ends = [s.get("endTime") or 0 for s in sessions]
+    return max([*ends, record["meta"].get("exportedAt") or 0])
 
 
 def compute_status(record: dict, export_present: bool, now: int) -> str:
@@ -26,8 +26,8 @@ def _level(record: dict) -> int:
 
 def _played_seconds(record: dict) -> int:
     snapshots = record["state"].get("levelSnapshots", {}).values()
-    largest_total = max((s.get("playedTotal", 0) for s in snapshots), default=0)
-    session_sum = sum(s.get("duration", 0) for s in record.get("lists", {}).get("sessions", []))
+    largest_total = max((s.get("playedTotal") or 0 for s in snapshots), default=0)
+    session_sum = sum(s.get("duration") or 0 for s in record.get("lists", {}).get("sessions", []))
     return max(largest_total, session_sum)
 
 

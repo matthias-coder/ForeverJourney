@@ -35,10 +35,21 @@ def test_display_name_prefers_meta_label():
     r["meta"]["displayName"] = "Orkalla Ewigborn"
     assert summarize(r, True, NOW)["displayName"] == "Orkalla Ewigborn"
 
+def test_missing_or_null_timestamps_do_not_crash():
+    export = load_export(FIX)
+    export.pop("exportedAt", None)
+    r = export_to_record(export, None)
+    r["shots"] = {}
+    r["lists"]["sessions"][0]["endTime"] = None
+    r["lists"]["sessions"][0]["duration"] = None
+    idx = build_index([(r, True)], NOW)
+    assert idx["characters"][0]["lastSeen"] == 0
+    assert idx["characters"][0]["playedSeconds"] == 7200
+
 def test_build_index_order():
     a = rec(); b = rec(status="retired"); c = rec()
     c["lists"]["sessions"][0]["endTime"] = 1793908800; c["meta"]["exportedAt"] = 1793908800  # older than a
     idx = build_index([(b, True), (c, True), (a, True)], NOW)
     assert idx["schemaVersion"] == 1 and idx["generatedAt"] == NOW and idx["title"] == "Chronik der Ewigen"
     assert [x["status"] for x in idx["characters"]] == ["active", "active", "retired"]
-    assert idx["characters"][0]["lastSeen"] >= idx["characters"][1]["lastSeen"]
+    assert [x["lastSeen"] for x in idx["characters"]] == [1793998860, 1793908800, 1793998860]
