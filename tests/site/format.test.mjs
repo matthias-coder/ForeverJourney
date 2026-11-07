@@ -17,3 +17,12 @@ test('names', () => {
   assert.equal(qualityColor(2), '#1eff00'); assert.equal(reasonLabel('ICONIC_hogger'), 'Ikonischer Moment'); assert.equal(reasonLabel('X_Y'), 'X_Y');
   assert.equal(reasonLabel('CHRONICLE_START'), 'Beginn der Chronik'); assert.equal(raceName('Skyborne'), 'Skyborne');
 });
+test('prototype keys do not leak', () => {
+  assert.equal(raceName('constructor'), 'constructor'); assert.equal(reasonLabel('toString'), 'toString');
+  assert.equal(className('constructor'), 'constructor');
+});
+test('midnight boundary uses player offset', () => {
+  assert.equal(dayKey(1791847800, 3600), '2026-10-13');
+  assert.equal(fmtDate(1791847800, 3600), 'Dienstag, 13. Oktober 2026');
+  assert.equal(dayKey(1791847800, 0), '2026-10-12');
+});

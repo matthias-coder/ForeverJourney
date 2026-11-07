@@ -3,7 +3,8 @@ export const SECTIONS = ['diary', 'gallery', 'deaths', 'levels', 'dungeons', 'go
 export function parseHash(hash) {
   const parts = String(hash || '').replace(/^#\/?/, '').split('/').filter(Boolean);
   if (parts[0] !== 'c' || !parts[1]) return { view: 'register' };
-  const id = decodeURIComponent(parts[1]);
+  let id = parts[1];
+  try { id = decodeURIComponent(parts[1]); } catch { /* keep raw segment */ }
   const [, , section, pageStr] = parts;
   if (section === undefined) return { view: 'chapter', id };
   const page = /^\d+$/.test(pageStr ?? '') ? Number(pageStr) : 0;

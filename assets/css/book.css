@@ -2,7 +2,6 @@
   --wood:#2a1b12; --leather:#4a2a1a; --leather2:#6b3b22; --gold:#c9a24a;
   --paper:#f3e7c9; --paper2:#e9d9b2; --ink:#2b1d12; --ink2:#5a4634; --rule:#b9a27a;
   --red:#8a2b1d; --green:#3e6b3a; --blue:#2f4f7a;
-  --c-warrior:#c69b6d; --c-mage:#69ccf0; --c-hunter:#aad372; --c-priest:#ffffff; --c-rogue:#fff468; --c-druid:#ff7c0a;
 }
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100vh;background:radial-gradient(ellipse at center,#3b2a1e 0%,#1d140e 70%);color:var(--ink);font-family:"Cormorant Garamond",Georgia,serif}

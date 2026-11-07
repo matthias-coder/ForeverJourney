@@ -15,12 +15,12 @@ const REASONS = {
   CHRONICLE_START: 'Beginn der Chronik',
 };
 
-export const className = (file) => (CLASSES[file] ? CLASSES[file][0] : file);
-export const raceName = (file) => RACES[file] ?? file;
-export const classColor = (file) => (CLASSES[file] ? CLASSES[file][1] : '#ffffff');
+export const className = (file) => (Object.hasOwn(CLASSES, file) ? CLASSES[file][0] : file);
+export const raceName = (file) => Object.hasOwn(RACES, file) ? RACES[file] : file;
+export const classColor = (file) => (Object.hasOwn(CLASSES, file) ? CLASSES[file][1] : '#ffffff');
 export const qualityColor = (q) => QUALITY[q] ?? QUALITY[1];
 export function reasonLabel(reason) {
-  if (REASONS[reason]) return REASONS[reason];
+  if (Object.hasOwn(REASONS, reason)) return REASONS[reason];
   if (reason.startsWith('ICONIC_')) return 'Ikonischer Moment';
   if (reason.startsWith('EQUIP_QUALITY_')) return 'Neue Ausrüstung';
   return reason;

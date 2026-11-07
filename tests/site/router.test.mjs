@@ -13,3 +13,7 @@ test('test_parse_hash_invalid_falls_back', () => {
   assert.deepEqual(parseHash('#/c/x/diary/0'), { view: 'chapter', id: 'x' });
   assert.deepEqual(parseHash('#/what'), { view: 'register' });
 });
+test('parseHash is total on malformed input', () => {
+  assert.deepEqual(parseHash('#/c/%E0%A4%A'), { view: 'chapter', id: '%E0%A4%A' });
+  for (const p of ['abc', '-1', '1.5']) assert.deepEqual(parseHash(`#/c/x/diary/${p}`), { view: 'chapter', id: 'x' });
+});
