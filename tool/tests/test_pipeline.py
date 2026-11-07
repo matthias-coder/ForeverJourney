@@ -62,7 +62,7 @@ def test_failed_export_does_not_retire_character(tmp_path):
     sync_all(cfg, NOW)
     p = cfg.repo_dir / "data" / "thorgrim-eisenbart.json"; before = p.read_text(encoding="utf-8")
     lua.write_text(lua.read_text(encoding="utf-8")[:500], encoding="utf-8")
-    results = sync_all(cfg, NOW + 5)
+    results, _ = sync_all(cfg, NOW + 5)
     idx = json.loads((cfg.repo_dir / "data" / "index.json").read_text(encoding="utf-8"))
     assert any(r.error for r in results)
     assert idx["characters"][0]["status"] == "active" and p.read_text(encoding="utf-8") == before
@@ -71,5 +71,18 @@ def test_corrupt_data_file_is_reported(tmp_path):
     cfg, lua = setup(tmp_path)
     sync_all(cfg, NOW)
     (cfg.repo_dir / "data" / "bad.json").write_text("[1]", encoding="utf-8")
-    results = sync_all(cfg, NOW + 5)
+    results, _ = sync_all(cfg, NOW + 5)
     assert any(r.id == "bad" and r.error for r in results)
+
+def test_write_is_atomic_and_leaves_no_tmp(tmp_path):
+    from foreverjourney.pipeline import _write
+    p = tmp_path / "a.json"; p.write_text("old")
+    _write(p, "new")
+    assert p.read_text() == "new" and not list(tmp_path.glob("*.tmp"))
+
+def test_index_changed_ignores_generated_at(tmp_path):
+    cfg, lua = setup(tmp_path)
+    assert sync_all(cfg, NOW)[1] is True
+    assert sync_all(cfg, NOW + 5)[1] is False
+    lua.unlink()
+    assert sync_all(cfg, NOW + 10)[1] is True

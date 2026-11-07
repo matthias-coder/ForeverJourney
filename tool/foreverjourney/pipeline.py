@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -35,6 +36,10 @@ def _dump(record: dict) -> str:
 
 def _without_updated(record: dict) -> dict:
     return {k: v for k, v in record.items() if k != "updatedAt"}
+
+
+def _without_generated(index: dict) -> dict:
+    return {k: v for k, v in index.items() if k != "generatedAt"}
 
 
 def _write(path: Path, text: str) -> None:
@@ -86,13 +91,15 @@ def sync_character(lua_path: Path, cfg: Config, now: int) -> CharResult:
         return CharResult(cid, name, False, 0, f"{type(e).__name__}: {e}")
 
 
-def sync_all(cfg: Config, now: int) -> list[CharResult]:
+def sync_all(cfg: Config, now: int) -> tuple[list[CharResult], bool]:
+    """Returns (results, index_changed); index_changed ignores the generatedAt timestamp."""
     data_dir = cfg.repo_dir / "data"
     results = [sync_character(p, cfg, now) for p in find_export_files(cfg)]
     exported = {r.id for r in results if r.id}
     # An export that failed without an id may belong to any record: no retirement decision then.
     unknown_failure = any(r.error and not r.id for r in results)
     records = []
+    index_changed = False
     for p in sorted(data_dir.glob("*.json")) if data_dir.exists() else []:
         if p.name == "index.json":
             continue
@@ -110,5 +117,12 @@ def sync_all(cfg: Config, now: int) -> list[CharResult]:
         data_dir.mkdir(parents=True, exist_ok=True)
         _ensure_exclude(data_dir)
         index = build_index(records, now)
-        _write(data_dir / "index.json", _dump(index))
-    return results
+        target = data_dir / "index.json"
+        try:
+            old = json.loads(target.read_text(encoding="utf-8")) if target.exists() else None
+        except (OSError, ValueError):
+            old = None
+        if not isinstance(old, dict) or _without_generated(old) != _without_generated(index):
+            _write(target, _dump(index))
+            index_changed = True
+    return results, index_changed
