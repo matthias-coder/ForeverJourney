@@ -36,9 +36,15 @@ MyCharForeverExportDB = {
 			["created"] = 1791792000,
 		},
 		["levels"] = {
-			1, -- [1]
-			2, -- [2]
-			3, -- [3]
+			{
+				["duration"] = 3600,
+			}, -- [1]
+			{
+				["duration"] = 3600,
+			}, -- [2]
+			{
+				["duration"] = 0,
+			}, -- [3]
 		},
 		["levelSnapshots"] = {
 			[1] = {
