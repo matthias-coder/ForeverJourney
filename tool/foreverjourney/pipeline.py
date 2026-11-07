@@ -37,11 +37,17 @@ def _without_updated(record: dict) -> dict:
     return {k: v for k, v in record.items() if k != "updatedAt"}
 
 
+def _write(path: Path, text: str) -> None:
+    with open(path, "w", encoding="utf-8", newline="
+") as f:
+        f.write(text)
+
+
 def _ensure_exclude(data_dir: Path) -> Path:
     path = data_dir / "exclude.txt"
     if not path.exists():
         data_dir.mkdir(parents=True, exist_ok=True)
-        path.write_text(EXCLUDE_HEADER, encoding="utf-8")
+        _write(path, EXCLUDE_HEADER)
     return path
 
 
@@ -75,7 +81,7 @@ def sync_character(lua_path: Path, cfg: Config, now: int) -> CharResult:
         if changed:
             record["updatedAt"] = now
             data_dir.mkdir(parents=True, exist_ok=True)
-            target.write_text(_dump(record), encoding="utf-8")
+            _write(target, _dump(record))
         return CharResult(cid, name, changed, len(added), None)
     except Exception as e:  # one broken character must not stop the others
         return CharResult(cid, name, False, 0, f"{type(e).__name__}: {e}")
@@ -85,18 +91,25 @@ def sync_all(cfg: Config, now: int) -> list[CharResult]:
     data_dir = cfg.repo_dir / "data"
     results = [sync_character(p, cfg, now) for p in find_export_files(cfg)]
     exported = {r.id for r in results if r.id}
+    # An export that failed without an id may belong to any record: no retirement decision then.
+    unknown_failure = any(r.error and not r.id for r in results)
     records = []
     for p in sorted(data_dir.glob("*.json")) if data_dir.exists() else []:
         if p.name == "index.json":
             continue
         try:
             record = json.loads(p.read_text(encoding="utf-8"))
-        except (OSError, ValueError):
+        except (OSError, ValueError) as e:
+            results.append(CharResult(p.stem, p.stem, False, 0, f"unreadable data file: {e}"))
             continue
-        records.append((record, record.get("id", p.stem) in exported))
+        if not isinstance(record, dict):
+            results.append(CharResult(p.stem, p.stem, False, 0, "data file is not a JSON object"))
+            continue
+        present = unknown_failure or record.get("id", p.stem) in exported
+        records.append((record, present))
     if records or data_dir.exists():
         data_dir.mkdir(parents=True, exist_ok=True)
         _ensure_exclude(data_dir)
         index = build_index(records, now)
-        (data_dir / "index.json").write_text(_dump(index), encoding="utf-8")
+        _write(data_dir / "index.json", _dump(index))
     return results

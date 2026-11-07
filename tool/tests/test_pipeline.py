@@ -56,3 +56,20 @@ def test_show_companions_false_drops_companions(tmp_path):
     sync_character(lua, cfg, NOW)
     data = json.loads((cfg.repo_dir / "data" / "thorgrim-eisenbart.json").read_text(encoding="utf-8"))
     assert "companions" not in data["state"]
+
+def test_failed_export_does_not_retire_character(tmp_path):
+    cfg, lua = setup(tmp_path)
+    sync_all(cfg, NOW)
+    p = cfg.repo_dir / "data" / "thorgrim-eisenbart.json"; before = p.read_text(encoding="utf-8")
+    lua.write_text(lua.read_text(encoding="utf-8")[:500], encoding="utf-8")
+    results = sync_all(cfg, NOW + 5)
+    idx = json.loads((cfg.repo_dir / "data" / "index.json").read_text(encoding="utf-8"))
+    assert any(r.error for r in results)
+    assert idx["characters"][0]["status"] == "active" and p.read_text(encoding="utf-8") == before
+
+def test_corrupt_data_file_is_reported(tmp_path):
+    cfg, lua = setup(tmp_path)
+    sync_all(cfg, NOW)
+    (cfg.repo_dir / "data" / "bad.json").write_text("[1]", encoding="utf-8")
+    results = sync_all(cfg, NOW + 5)
+    assert any(r.id == "bad" and r.error for r in results)
