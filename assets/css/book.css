@@ -124,7 +124,7 @@ button.corner{background:none;padding:0}
   .stats{grid-template-columns:1fr}
   .hero{flex-wrap:wrap}
   /* page corners become labelled buttons under the book */
-  .corner{position:absolute;bottom:-56px;width:auto;height:auto;min-width:120px;min-height:44px;padding:8px 18px;border:1px solid var(--gold);border-radius:4px;background:rgba(0,0,0,.25);color:var(--gold);font-family:inherit;font-size:16px;letter-spacing:.06em;opacity:1;filter:none}
+  button.corner{position:absolute;bottom:-56px;width:auto;height:auto;min-width:120px;min-height:44px;padding:8px 18px;border:1px solid var(--gold);border-radius:4px;background:rgba(0,0,0,.25);color:var(--gold);font-family:inherit;font-size:16px;letter-spacing:.06em;opacity:1;filter:none}
   .corner.l{left:0;border-width:1px;border-color:var(--gold)}
   .corner.r{right:0;border-width:1px;border-color:var(--gold)}
   .corner.l::before{content:'‹ Zurück'}
