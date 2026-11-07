@@ -40,3 +40,6 @@ export function fmtMonthKey(key) {
   const [y, m] = key.split('-');
   return `${MONTHS[Number(m) - 1]} ${y}`;
 }
+
+// German count + noun: plural(1,'Tod','Tode') -> '1 Tod', plural(0,...) -> '0 Tode'.
+export const plural = (n, one, many) => (n === 1 ? `1 ${one}` : `${n} ${many}`);

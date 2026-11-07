@@ -1,6 +1,6 @@
 import { el } from '../dom.js';
 import { className, raceName } from '../names.js';
-import { fmtDateShort, fmtDuration } from '../format.js';
+import { fmtDateShort, fmtDuration, plural } from '../format.js';
 import { renderPortrait } from '../portrait.js';
 import { toHash } from '../router.js';
 
@@ -19,7 +19,7 @@ function card(entry) {
   if (entry.realmType) realm.appendChild(el('span', 'tag', entry.realmType));
   if (entry.realmName) realm.appendChild(document.createTextNode(entry.realmName));
   if (realm.childNodes.length) a.appendChild(realm);
-  a.appendChild(el('div', 'meta', `${fmtDuration(entry.playedSeconds ?? 0)} gespielt · ${entry.deaths ?? 0} Tode`));
+  a.appendChild(el('div', 'meta', `${fmtDuration(entry.playedSeconds ?? 0)} gespielt · ${plural(entry.deaths ?? 0, 'Tod', 'Tode')}`));
   if (entry.lastSeen) a.appendChild(el('div', 'meta', `zuletzt gesehen ${fmtDateShort(entry.lastSeen, 0)}`));
   a.appendChild(el('span', `status ${STATUS_CLASS[entry.status] ?? 'alive'}`, STATUS_LABELS[entry.status] ?? entry.status));
   return a;

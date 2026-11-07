@@ -26,3 +26,10 @@ test('midnight boundary uses player offset', () => {
   assert.equal(fmtDate(1791847800, 3600), 'Dienstag, 13. Oktober 2026');
   assert.equal(dayKey(1791847800, 0), '2026-10-12');
 });
+
+test('plural: singular only for exactly one', async () => {
+  const { plural } = await import('../../assets/js/format.js');
+  assert.equal(plural(0, 'Tod', 'Tode'), '0 Tode');
+  assert.equal(plural(1, 'Tod', 'Tode'), '1 Tod');
+  assert.equal(plural(2, 'Tod', 'Tode'), '2 Tode');
+});
