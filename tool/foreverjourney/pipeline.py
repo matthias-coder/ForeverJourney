@@ -38,8 +38,7 @@ def _without_updated(record: dict) -> dict:
 
 
 def _write(path: Path, text: str) -> None:
-    with open(path, "w", encoding="utf-8", newline="
-") as f:
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write(text)
 
 
