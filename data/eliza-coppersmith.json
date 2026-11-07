@@ -1,0 +1,3046 @@
+{
+ "config": {
+  "armoryUrl": null,
+  "mode": "normal",
+  "realmName": null,
+  "realmType": "PvE",
+  "status": null
+ },
+ "goldHistory": {
+  "2026-11-07": {
+   "categories": {
+    "quest": 65
+   },
+   "categorizedNet": 65,
+   "date": "2026-11-07",
+   "first": 475,
+   "firstTime": 1794062823,
+   "last": 540,
+   "lastTime": 1794070021,
+   "level": 8,
+   "max": 540,
+   "min": 475,
+   "minLevel": 8
+  }
+ },
+ "id": "eliza-coppersmith",
+ "lists": {
+  "dungeons": [],
+  "events": [
+   {
+    "data": {},
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "",
+    "time": 1794062823,
+    "type": "LOGIN",
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": ""
+   },
+   {
+    "data": {},
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Valanaar",
+    "time": 1794062825,
+    "type": "ZONE_CHANGED",
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "level": 8,
+     "reason": "CHRONICLE_START",
+     "screenshotIndex": 1
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Valanaar",
+    "time": 1794062833,
+    "type": "SCREENSHOT",
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "level": 8,
+     "reason": "CHRONICLE_START",
+     "screenshotIndex": 2
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Valanaar",
+    "time": 1794062834,
+    "type": "SCREENSHOT",
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "level": 8,
+     "reason": "ACHIEVEMENT",
+     "screenshotIndex": 3
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Valanaar",
+    "time": 1794063059,
+    "type": "SCREENSHOT",
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "level": 8,
+     "reason": "ACHIEVEMENT",
+     "screenshotIndex": 4
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Valanaar",
+    "time": 1794063061,
+    "type": "SCREENSHOT",
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {},
+    "level": 8,
+    "subZone": "Valanaar",
+    "time": 1794063211,
+    "type": "LOGOUT",
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {},
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "",
+    "time": 1794063262,
+    "type": "LOGIN",
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": ""
+   },
+   {
+    "data": {},
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Valanaar",
+    "time": 1794063263,
+    "type": "ZONE_CHANGED",
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {},
+    "level": 8,
+    "subZone": "Valanaar",
+    "time": 1794063313,
+    "type": "LOGOUT",
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {},
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "",
+    "time": 1794063339,
+    "type": "LOGIN",
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": ""
+   },
+   {
+    "data": {},
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Valanaar",
+    "time": 1794063341,
+    "type": "ZONE_CHANGED",
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {},
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Valanaar",
+    "time": 1794063711,
+    "type": "LOGOUT",
+    "x": 0.6218004822731018,
+    "y": 0.741602897644043,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {},
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Valanaar",
+    "time": 1794063714,
+    "type": "LOGIN",
+    "x": 0.6218004822731018,
+    "y": 0.741602897644043,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "level": 8,
+     "reason": "DEATH",
+     "screenshotIndex": 5
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Die Ostpylonenwacht",
+    "time": 1794068992,
+    "type": "SCREENSHOT",
+    "x": 0.6821094751358032,
+    "y": 0.6638897061347961,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "deathNumber": 1
+    },
+    "killerGUID": "Creature-0-7099-2991-2-270201-FC47BC8318",
+    "killerName": "Muskelprotz der Al'Aketh",
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Die Ostpylonenwacht",
+    "time": 1794068992,
+    "type": "DEATH",
+    "x": 0.6821094751358032,
+    "y": 0.6638897061347961,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "level": 8,
+     "reason": "FIRST_DEATH",
+     "screenshotIndex": 6
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Die Ostpylonenwacht",
+    "time": 1794068994,
+    "type": "SCREENSHOT",
+    "x": 0.6821111440658569,
+    "y": 0.6638756990432739,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "level": 8,
+     "reason": "FIRST_DEATH",
+     "screenshotIndex": 7
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Böenbeerentiefland",
+    "time": 1794068995,
+    "type": "SCREENSHOT",
+    "x": 0.550756573677063,
+    "y": 0.683986485004425,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "useNumber": 1
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Böenbeerentiefland",
+    "time": 1794069027,
+    "type": "HEARTHSTONE",
+    "x": 0.5529485940933228,
+    "y": 0.6819355487823486,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {},
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Shen'dar",
+    "time": 1794069040,
+    "type": "LOGOUT",
+    "x": 0.4305119514465332,
+    "y": 0.4324839115142822,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {},
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Shen'dar",
+    "time": 1794069044,
+    "type": "LOGIN",
+    "x": 0.4305119514465332,
+    "y": 0.4324839115142822,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "money": 65,
+     "questID": 92553,
+     "title": "Die Vorratskammern auffüllen",
+     "xp": 410
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Shen'dar",
+    "time": 1794069076,
+    "type": "QUEST_TURNED_IN",
+    "x": 0.4382845163345337,
+    "y": 0.4383255243301392,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "money": 0,
+     "questID": 97965,
+     "title": "Grundlagen des Zeltens: Erste Hilfe",
+     "xp": 270
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Shen'dar",
+    "time": 1794069097,
+    "type": "QUEST_TURNED_IN",
+    "x": 0.4312829971313477,
+    "y": 0.4630036950111389,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {},
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Shen'dar",
+    "time": 1794070018,
+    "type": "LOGOUT",
+    "x": 0.4678733348846436,
+    "y": 0.4530494809150696,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {},
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Shen'dar",
+    "time": 1794070021,
+    "type": "LOGIN",
+    "x": 0.4678733348846436,
+    "y": 0.4530494809150696,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {},
+    "level": 8,
+    "subZone": "Shen'dar",
+    "time": 1794070545,
+    "type": "LOGOUT",
+    "zone": "Die Insel Zephras"
+   }
+  ],
+  "journal": [
+   {
+    "auto": true,
+    "level": 8,
+    "mapID": 2521,
+    "screenshotFile": "WoWScrnShot_110726_154713.jpg",
+    "screenshotIndex": 1,
+    "source": "CHRONICLE_START",
+    "subZone": "Valanaar",
+    "text": "Neuer Held, leeres Questlog, volle Vorfreude! Für die Allianz! Die Banner wehen, die Reise ruft. Die Natur ruft, und ich antworte. Die Chronik beginnt erst hier, bei Level 8. Was davor war, bleibt ungeschrieben.\nDie Insel Zephras, Valanaar",
+    "time": 1794062833,
+    "title": "Hier beginnt die Chronik",
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "auto": true,
+    "level": 8,
+    "mapID": 2521,
+    "screenshotFile": "WoWScrnShot_110726_172954.jpg",
+    "screenshotIndex": 6,
+    "source": "FIRST_DEATH",
+    "subZone": "Die Ostpylonenwacht",
+    "text": "Zum ersten Mal gefallen. Ein Held lernt aus jeder Niederlage – hoffentlich schnell.\nDie Insel Zephras, Die Ostpylonenwacht",
+    "time": 1794068994,
+    "title": "Mein erster Tod",
+    "x": 0.6821111440658569,
+    "y": 0.6638756990432739,
+    "zone": "Die Insel Zephras"
+   }
+  ],
+  "journeyGhost": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "journeySegments": [
+   [
+    [
+     1794062823,
+     2521,
+     0.6216,
+     0.7279,
+     8
+    ],
+    [
+     1794063714,
+     2521,
+     0.6218,
+     0.7416,
+     8
+    ]
+   ],
+   [
+    [
+     1794065334,
+     2521,
+     0.6217,
+     0.7287,
+     8
+    ]
+   ],
+   [
+    [
+     1794068829,
+     2521,
+     0.6217,
+     0.7407,
+     8
+    ],
+    [
+     1794068925,
+     2521,
+     0.6395,
+     0.6816,
+     8
+    ],
+    [
+     1794068980,
+     2521,
+     0.6773,
+     0.679,
+     8
+    ],
+    [
+     1794068992,
+     2521,
+     0.6821,
+     0.6639,
+     8
+    ]
+   ],
+   [
+    [
+     1794069000,
+     2521,
+     0.5508,
+     0.684,
+     8
+    ],
+    [
+     1794069010,
+     2521,
+     0.5522,
+     0.682,
+     8
+    ]
+   ],
+   [
+    [
+     1794069030,
+     2521,
+     0.4305,
+     0.4325,
+     8
+    ],
+    [
+     1794069098,
+     2521,
+     0.4313,
+     0.463,
+     8
+    ],
+    [
+     1794069163,
+     2521,
+     0.4352,
+     0.4484,
+     8
+    ],
+    [
+     1794069318,
+     2521,
+     0.4587,
+     0.4611,
+     8
+    ],
+    [
+     1794069424,
+     2521,
+     0.4694,
+     0.4504,
+     8
+    ],
+    [
+     1794069699,
+     2521,
+     0.4709,
+     0.4622,
+     8
+    ],
+    [
+     1794070021,
+     2521,
+     0.4679,
+     0.453,
+     8
+    ]
+   ]
+  ],
+  "pvpHistory": [],
+  "screenshots": [
+   {
+    "expectedFileName": "WoWScrnShot_110726_154713.jpg",
+    "fileNameSource": "saved",
+    "level": 8,
+    "mapID": 2521,
+    "reason": "CHRONICLE_START",
+    "savedAt": 1794062833,
+    "subZone": "Valanaar",
+    "time": 1794062833,
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "expectedFileName": "WoWScrnShot_110726_154714.jpg",
+    "fileNameSource": "saved",
+    "level": 8,
+    "mapID": 2521,
+    "noUi": true,
+    "pairOf": 1,
+    "reason": "CHRONICLE_START",
+    "savedAt": 1794062834,
+    "subZone": "Valanaar",
+    "time": 1794062834,
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "achievements": [
+     "camp_1"
+    ],
+    "expectedFileName": "WoWScrnShot_110726_155100.jpg",
+    "fileNameSource": "saved",
+    "level": 8,
+    "mapID": 2521,
+    "reason": "ACHIEVEMENT",
+    "requestedFileName": "WoWScrnShot_110726_155059.jpg",
+    "savedAt": 1794063060,
+    "subZone": "Valanaar",
+    "time": 1794063059,
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "expectedFileName": "WoWScrnShot_110726_155101.jpg",
+    "fileNameSource": "saved",
+    "level": 8,
+    "mapID": 2521,
+    "noUi": true,
+    "pairOf": 3,
+    "reason": "ACHIEVEMENT",
+    "savedAt": 1794063061,
+    "subZone": "Valanaar",
+    "time": 1794063061,
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "expectedFileName": "WoWScrnShot_110726_172952.jpg",
+    "fileNameSource": "saved",
+    "level": 8,
+    "mapID": 2521,
+    "reason": "DEATH",
+    "savedAt": 1794068992,
+    "subZone": "Die Ostpylonenwacht",
+    "time": 1794068992,
+    "x": 0.6821094751358032,
+    "y": 0.6638897061347961,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "expectedFileName": "WoWScrnShot_110726_172954.jpg",
+    "fileNameSource": "saved",
+    "level": 8,
+    "mapID": 2521,
+    "reason": "FIRST_DEATH",
+    "savedAt": 1794068994,
+    "subZone": "Die Ostpylonenwacht",
+    "time": 1794068994,
+    "x": 0.6821111440658569,
+    "y": 0.6638756990432739,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "expectedFileName": "WoWScrnShot_110726_172955.jpg",
+    "fileNameSource": "saved",
+    "level": 8,
+    "mapID": 2521,
+    "noUi": true,
+    "pairOf": 6,
+    "reason": "FIRST_DEATH",
+    "savedAt": 1794068995,
+    "subZone": "Böenbeerentiefland",
+    "time": 1794068995,
+    "x": 0.550756573677063,
+    "y": 0.683986485004425,
+    "zone": "Die Insel Zephras"
+   }
+  ],
+  "sessions": [
+   {
+    "duration": 388,
+    "endTime": 1794063211,
+    "levelEnd": 8,
+    "levelStart": 8,
+    "startTime": 1794062823,
+    "zoneEnd": "Die Insel Zephras",
+    "zoneStart": ""
+   },
+   {
+    "duration": 51,
+    "endTime": 1794063313,
+    "levelEnd": 8,
+    "levelStart": 8,
+    "startTime": 1794063262,
+    "zoneEnd": "Die Insel Zephras",
+    "zoneStart": ""
+   },
+   {
+    "duration": 372,
+    "endTime": 1794063711,
+    "levelEnd": 8,
+    "levelStart": 8,
+    "startTime": 1794063339,
+    "zoneEnd": "Die Insel Zephras",
+    "zoneStart": ""
+   },
+   {
+    "duration": 5326,
+    "endTime": 1794069040,
+    "levelEnd": 8,
+    "levelStart": 8,
+    "startTime": 1794063714,
+    "zoneEnd": "Die Insel Zephras",
+    "zoneStart": "Die Insel Zephras"
+   },
+   {
+    "duration": 975,
+    "endTime": 1794070018,
+    "levelEnd": 8,
+    "levelStart": 8,
+    "startTime": 1794069044,
+    "zoneEnd": "Die Insel Zephras",
+    "zoneStart": "Die Insel Zephras"
+   },
+   {
+    "duration": 524,
+    "endTime": 1794070545,
+    "levelEnd": 8,
+    "levelStart": 8,
+    "startTime": 1794070021,
+    "zoneEnd": "Die Insel Zephras",
+    "zoneStart": "Die Insel Zephras"
+   }
+  ],
+  "worldDrops": []
+ },
+ "maps": {
+  "2521": {
+   "name": "Insel Zephras",
+   "parent": 947
+  }
+ },
+ "meta": {
+  "class": "DRUID",
+  "client": {
+   "build": "70862",
+   "flavor": "forever",
+   "interface": 16001,
+   "name": "Forever",
+   "version": "1.60.1"
+  },
+  "clientFlavor": "forever",
+  "dbVersion": 9,
+  "displayName": "Eliza Coppersmith",
+  "exportedAt": 1794070545,
+  "faction": "Alliance",
+  "gameBuild": 16001,
+  "name": "Eliza",
+  "race": "Skyborne",
+  "realm": "Coppersmith",
+  "screenshotFolder": "Screenshots",
+  "screenshotFormat": "jpeg",
+  "utcOffset": 3600
+ },
+ "schemaVersion": 1,
+ "shots": {
+  "WoWScrnShot_110726_154713.jpg": {
+   "file": "shots/eliza-coppersmith/WoWScrnShot_110726_154713.jpg",
+   "height": 1000,
+   "level": 8,
+   "mapID": 2521,
+   "reason": "CHRONICLE_START",
+   "source": "export",
+   "subZone": "Valanaar",
+   "thumb": "shots/eliza-coppersmith/t_WoWScrnShot_110726_154713.jpg",
+   "time": 1794062833,
+   "width": 1600,
+   "zone": "Die Insel Zephras"
+  },
+  "WoWScrnShot_110726_154714.jpg": {
+   "file": "shots/eliza-coppersmith/WoWScrnShot_110726_154714.jpg",
+   "height": 1000,
+   "level": 8,
+   "mapID": 2521,
+   "reason": "CHRONICLE_START",
+   "source": "export",
+   "subZone": "Valanaar",
+   "thumb": "shots/eliza-coppersmith/t_WoWScrnShot_110726_154714.jpg",
+   "time": 1794062834,
+   "width": 1600,
+   "zone": "Die Insel Zephras"
+  },
+  "WoWScrnShot_110726_155059.jpg": {
+   "file": "shots/eliza-coppersmith/WoWScrnShot_110726_155059.jpg",
+   "height": 1000,
+   "level": 8,
+   "reason": "GAME",
+   "source": "session",
+   "thumb": "shots/eliza-coppersmith/t_WoWScrnShot_110726_155059.jpg",
+   "time": 1794063059,
+   "width": 1600,
+   "zone": ""
+  },
+  "WoWScrnShot_110726_155101.jpg": {
+   "file": "shots/eliza-coppersmith/WoWScrnShot_110726_155101.jpg",
+   "height": 1000,
+   "level": 8,
+   "mapID": 2521,
+   "reason": "ACHIEVEMENT",
+   "source": "export",
+   "subZone": "Valanaar",
+   "thumb": "shots/eliza-coppersmith/t_WoWScrnShot_110726_155101.jpg",
+   "time": 1794063061,
+   "width": 1600,
+   "zone": "Die Insel Zephras"
+  },
+  "WoWScrnShot_110726_172952.jpg": {
+   "file": "shots/eliza-coppersmith/WoWScrnShot_110726_172952.jpg",
+   "height": 1000,
+   "level": 8,
+   "mapID": 2521,
+   "reason": "DEATH",
+   "source": "export",
+   "subZone": "Die Ostpylonenwacht",
+   "thumb": "shots/eliza-coppersmith/t_WoWScrnShot_110726_172952.jpg",
+   "time": 1794068992,
+   "width": 1600,
+   "zone": "Die Insel Zephras"
+  },
+  "WoWScrnShot_110726_172954.jpg": {
+   "file": "shots/eliza-coppersmith/WoWScrnShot_110726_172954.jpg",
+   "height": 1000,
+   "level": 8,
+   "mapID": 2521,
+   "reason": "FIRST_DEATH",
+   "source": "export",
+   "subZone": "Die Ostpylonenwacht",
+   "thumb": "shots/eliza-coppersmith/t_WoWScrnShot_110726_172954.jpg",
+   "time": 1794068994,
+   "width": 1600,
+   "zone": "Die Insel Zephras"
+  },
+  "WoWScrnShot_110726_172955.jpg": {
+   "file": "shots/eliza-coppersmith/WoWScrnShot_110726_172955.jpg",
+   "height": 1000,
+   "level": 8,
+   "mapID": 2521,
+   "reason": "FIRST_DEATH",
+   "source": "export",
+   "subZone": "Böenbeerentiefland",
+   "thumb": "shots/eliza-coppersmith/t_WoWScrnShot_110726_172955.jpg",
+   "time": 1794068995,
+   "width": 1600,
+   "zone": "Die Insel Zephras"
+  }
+ },
+ "state": {
+  "afk": {
+   "byLevel": {
+    "8": 3956.002000000037
+   },
+   "stationary": {
+    "byLevel": {
+     "8": 7269.67200000005
+    },
+    "longest": {
+     "level": 8,
+     "seconds": 3343.477000000014,
+     "time": 1794068677
+    },
+    "since": 1794062823,
+    "total": 7269.67200000005
+   },
+   "total": 3956.002000000037,
+   "trackingSince": 1794062823
+  },
+  "camping": {
+   "learned": {},
+   "maxAtOnce": 0,
+   "presenceActive": false,
+   "seen": {},
+   "tent": 0,
+   "version": 2,
+   "visits": 2
+  },
+  "character": {
+   "class": "Druidin",
+   "classFile": "DRUID",
+   "classID": 11,
+   "created": 1794062823,
+   "firstSeenLevel": 8,
+   "guid": "Player-6939-00CD5CC2",
+   "lastSeen": 1794070545,
+   "name": "Eliza",
+   "popupAsked": {
+    "achievement": true
+   },
+   "race": "Himmelsgeborene des Hohen Ordens",
+   "raceFile": "Skyborne",
+   "raceID": 95,
+   "realm": "Coppersmith",
+   "sex": 3
+  },
+  "combat": {
+   "critterIDs": {},
+   "critterRun": 0,
+   "deathsByMob": {
+    "npc:270201": {
+     "count": 1,
+     "guid": "Creature-0-7099-2991-2-270201-FC47BC8318",
+     "name": "Muskelprotz der Al'Aketh",
+     "npcID": 270201
+    }
+   },
+   "kills": {
+    "mobs": {
+     "npc:254588": {
+      "count": 5,
+      "guid": "Creature-0-0-0-0-254588-0000000000",
+      "name": "Windweisenkriecher",
+      "npcID": 254588
+     }
+    },
+    "total": 5
+   },
+   "streak": {
+    "count": 5,
+    "key": "npc:254588",
+    "name": "Windweisenkriecher"
+   },
+   "streakBest": {
+    "count": 5,
+    "critter": 0,
+    "level": 8,
+    "name": "Windweisenkriecher",
+    "revenge": 0,
+    "time": 1794069897
+   }
+  },
+  "companions": {
+   "people": {},
+   "version": 1
+  },
+  "firstVisitedZones": {
+   "Die Insel Zephras": {
+    "level": 8,
+    "mapID": 2521,
+    "time": 1794062825
+   }
+  },
+  "fun": {
+   "activeSec": 7594.748000000051,
+   "aliveActSec": 1101.617999999988,
+   "aliveSec": 1517.231,
+   "bestAlive": 6062.494000000064,
+   "bestAliveAct": 1101.617999999988,
+   "byLevel": {
+    "8": {
+     "activeSec": 7594.748000000051,
+     "chat": {
+      "AFK": 4
+     },
+     "chatTotal": 4,
+     "combatSec": 165.1880000000238,
+     "craftSec": 35.36100000003353,
+     "ghostSec": 10.0109999999986,
+     "greyLoot": {
+      "2646": 1,
+      "2774": 1,
+      "4873": 2,
+      "4874": 3
+     },
+     "jumps": 7,
+     "lootQ": {
+      "0": 7,
+      "1": 7
+     },
+     "mapOpened": 18,
+     "questDiff": {
+      "yellow": 2
+     }
+    }
+   },
+   "chat": {
+    "AFK": 4
+   },
+   "chatTotal": 4,
+   "combatSec": 165.1880000000238,
+   "craftSec": 35.36100000003353,
+   "deathDungeon": {},
+   "destroyed": {},
+   "drunk": {},
+   "eaten": {},
+   "emotes": {},
+   "fall": {
+    "bestHeight": 588.4580490430354,
+    "count": 2
+   },
+   "flasks": {},
+   "follow": {},
+   "followCount": {},
+   "ghostSec": 10.0109999999986,
+   "greyLoot": {
+    "2646": 1,
+    "2774": 1,
+    "4873": 2,
+    "4874": 3
+   },
+   "hourSec": {
+    "15": 681.457000000024,
+    "16": 3590.445000000036,
+    "17": 3322.84599999999
+   },
+   "items": {
+    "1251": {
+     "t": 1794062827
+    },
+    "211780": {
+     "t": 1794062827
+    },
+    "2318": {
+     "t": 1794062827
+    },
+    "2320": {
+     "t": 1794062827
+    },
+    "252022": {
+     "t": 1794062827
+    },
+    "252030": {
+     "t": 1794062827
+    },
+    "252031": {
+     "t": 1794062827
+    },
+    "255663": {
+     "t": 1794062827
+    },
+    "257941": {
+     "t": 1794069375
+    },
+    "263428": {
+     "t": 1794062827
+    },
+    "263493": {
+     "t": 1794062827
+    },
+    "263509": {
+     "t": 1794069079
+    },
+    "263511": {
+     "t": 1794069079
+    },
+    "2646": {
+     "t": 1794069902
+    },
+    "264908": {
+     "t": 1794062827
+    },
+    "267474": {
+     "t": 1794062827
+    },
+    "2675": {
+     "t": 1794069375
+    },
+    "2774": {
+     "t": 1794069375
+    },
+    "279978": {
+     "t": 1794062827
+    },
+    "2934": {
+     "t": 1794062827
+    },
+    "4873": {
+     "t": 1794069375
+    },
+    "4874": {
+     "t": 1794069418
+    },
+    "5469": {
+     "t": 1794062827
+    },
+    "6889": {
+     "t": 1794062827
+    },
+    "7005": {
+     "t": 1794062827
+    },
+    "774": {
+     "t": 1794062827
+    }
+   },
+   "jumps": 7,
+   "lootQ": {
+    "0": 7,
+    "1": 7
+   },
+   "mapOpened": 18,
+   "mates": {},
+   "potions": {},
+   "quality": {},
+   "questDiff": {
+    "yellow": 2
+   },
+   "rolls": {
+    "hundreds": 0,
+    "ones": 0,
+    "total": 0
+   },
+   "routes": {},
+   "timeSub": {
+    "craftSec": {
+     "Leatherworking": 35.36100000003353
+    }
+   }
+  },
+  "gearByLevel": {
+   "8": {
+    "cloak": false,
+    "helm": false,
+    "level": 8,
+    "slots": {},
+    "src": "live",
+    "t": 1794070545
+   }
+  },
+  "goldByLevel": {
+   "8": {
+    "earned": 65,
+    "maxEarn": {
+     "amount": 65,
+     "category": "quest",
+     "time": 1794069076
+    },
+    "spent": 0,
+    "src": {
+     "quest": {
+      "e": 65,
+      "s": 0
+     }
+    }
+   }
+  },
+  "journeyMeta": {
+   "epsilon": 0.007,
+   "exportedPoints": 17,
+   "fields": [
+    "timestamp",
+    "mapID",
+    "x",
+    "y",
+    "level"
+   ],
+   "format": 2,
+   "originalPoints": 47,
+   "simplified": true
+  },
+  "levelActivity": {
+   "8": {
+    "bosses": {},
+    "deaths": [
+     {
+      "ctx": {
+       "activity": "idle",
+       "broken": 0,
+       "buffs": 0,
+       "durability": 64,
+       "ghost": true,
+       "group": "solo",
+       "myLevel": 8,
+       "playedSec": 15186,
+       "runSec": 15,
+       "sessionSec": 5278
+      },
+      "killerGUID": "Creature-0-7099-2991-2-270201-FC47BC8318",
+      "killerName": "Muskelprotz der Al'Aketh",
+      "mapID": 2521,
+      "subZone": "Die Ostpylonenwacht",
+      "time": 1794068992,
+      "x": 0.6821094751358032,
+      "y": 0.6638897061347961,
+      "zone": "Die Insel Zephras"
+     }
+    ],
+    "deathsByMob": {
+     "npc:270201": {
+      "count": 1,
+      "guid": "Creature-0-7099-2991-2-270201-FC47BC8318",
+      "name": "Muskelprotz der Al'Aketh",
+      "npcID": 270201
+     }
+    },
+    "dungeons": {},
+    "journal": {},
+    "mobKillTypes": {
+     "npc:254588": {
+      "count": 5,
+      "guid": "Creature-0-0-0-0-254588-0000000000",
+      "name": "Windweisenkriecher",
+      "npcID": 254588
+     }
+    },
+    "mobKills": 5,
+    "quests": [
+     {
+      "money": 65,
+      "questID": 92553,
+      "subZone": "Shen'dar",
+      "time": 1794069076,
+      "title": "Die Vorratskammern auffüllen",
+      "xp": 410,
+      "zone": "Die Insel Zephras"
+     },
+     {
+      "money": 0,
+      "questID": 97965,
+      "subZone": "Shen'dar",
+      "time": 1794069097,
+      "title": "Grundlagen des Zeltens: Erste Hilfe",
+      "xp": 270,
+      "zone": "Die Insel Zephras"
+     }
+    ],
+    "requiredXP": 5400,
+    "screenshots": {},
+    "sessions": [
+     {
+      "sessionIndex": 1,
+      "time": 1794062823
+     },
+     {
+      "sessionIndex": 2,
+      "time": 1794063262
+     },
+     {
+      "sessionIndex": 3,
+      "time": 1794063339
+     },
+     {
+      "sessionIndex": 4,
+      "time": 1794063714
+     },
+     {
+      "sessionIndex": 5,
+      "time": 1794069044
+     },
+     {
+      "sessionIndex": 6,
+      "time": 1794070021
+     }
+    ],
+    "zoneSeconds": {
+     "Die Insel Zephras": 7620
+    },
+    "zones": {
+     "Die Insel Zephras": {
+      "first": 1794062825,
+      "firstEver": true,
+      "mapID": 2521,
+      "subZone": "Valanaar"
+     }
+    }
+   }
+  },
+  "levelSnapshots": {},
+  "levels": {
+   "8": {
+    "blizzardLevelTime": 7931,
+    "duration": 7637.290999999968,
+    "firstSeen": 1794062823,
+    "level": 8,
+    "mapID": 2521,
+    "playedTotalLastSeen": 16216,
+    "sessions": 6,
+    "x": 0.6216447353363037,
+    "y": 0.727863609790802,
+    "zone": ""
+   }
+  },
+  "locationTime": {
+   "categories": {
+    "resting": 4290,
+    "world": 3330
+   },
+   "maps": {
+    "2521": {
+     "seconds": 7620,
+     "zone": "Die Insel Zephras"
+    }
+   },
+   "subZones": {
+    "Die Insel Zephras > Böenbeerentiefland": 95,
+    "Die Insel Zephras > Die Ostpylonenwacht": 25,
+    "Die Insel Zephras > Shen'dar": 1045,
+    "Die Insel Zephras > Valanaar": 5995,
+    "Die Insel Zephras > Windweisensee": 460
+   },
+   "zones": {
+    "Die Insel Zephras": 7620
+   }
+  },
+  "professions": {
+   "byLevel": {
+    "8": {
+     "id:129": {
+      "maxSkill": 75,
+      "name": "Erste Hilfe",
+      "skill": 21
+     },
+     "id:165": {
+      "maxSkill": 75,
+      "name": "Lederverarbeitung",
+      "skill": 25
+     },
+     "id:393": {
+      "maxSkill": 150,
+      "name": "Kürschnerei",
+      "skill": 61
+     }
+    }
+   },
+   "current": {
+    "id:129": {
+     "firstSeen": 1794062824,
+     "icon": 135966,
+     "key": "id:129",
+     "lastSeen": 1794070115,
+     "maxSkill": 75,
+     "name": "Erste Hilfe",
+     "skill": 21,
+     "skillLine": 129
+    },
+    "id:165": {
+     "firstSeen": 1794062824,
+     "icon": 136247,
+     "key": "id:165",
+     "lastSeen": 1794070115,
+     "maxSkill": 75,
+     "name": "Lederverarbeitung",
+     "skill": 25,
+     "skillLine": 165
+    },
+    "id:393": {
+     "firstSeen": 1794062824,
+     "icon": 134366,
+     "key": "id:393",
+     "lastSeen": 1794070115,
+     "maxSkill": 150,
+     "name": "Kürschnerei",
+     "skill": 61,
+     "skillLine": 393
+    }
+   },
+   "history": [
+    {
+     "key": "id:393",
+     "kind": "FIRST_SEEN",
+     "level": 8,
+     "mapID": 2521,
+     "maxSkill": 150,
+     "name": "Kürschnerei",
+     "skill": 61,
+     "skillLine": 393,
+     "subZone": "",
+     "time": 1794062824,
+     "zone": ""
+    },
+    {
+     "key": "id:129",
+     "kind": "FIRST_SEEN",
+     "level": 8,
+     "mapID": 2521,
+     "maxSkill": 75,
+     "name": "Erste Hilfe",
+     "skill": 21,
+     "skillLine": 129,
+     "subZone": "",
+     "time": 1794062824,
+     "zone": ""
+    },
+    {
+     "key": "id:165",
+     "kind": "FIRST_SEEN",
+     "level": 8,
+     "mapID": 2521,
+     "maxSkill": 75,
+     "name": "Lederverarbeitung",
+     "skill": 21,
+     "skillLine": 165,
+     "subZone": "",
+     "time": 1794062824,
+     "zone": ""
+    }
+   ],
+   "initialized": true,
+   "lastScan": 1794070115,
+   "milestones": {
+    "id:129:FIRST_SEEN:21": {
+     "key": "id:129",
+     "kind": "FIRST_SEEN",
+     "level": 8,
+     "mapID": 2521,
+     "maxSkill": 75,
+     "name": "Erste Hilfe",
+     "skill": 21,
+     "skillLine": 129,
+     "subZone": "",
+     "time": 1794062824,
+     "value": 21,
+     "zone": ""
+    },
+    "id:165:FIRST_SEEN:21": {
+     "key": "id:165",
+     "kind": "FIRST_SEEN",
+     "level": 8,
+     "mapID": 2521,
+     "maxSkill": 75,
+     "name": "Lederverarbeitung",
+     "skill": 21,
+     "skillLine": 165,
+     "subZone": "",
+     "time": 1794062824,
+     "value": 21,
+     "zone": ""
+    },
+    "id:165:SKILL:25": {
+     "key": "id:165",
+     "kind": "SKILL",
+     "level": 8,
+     "mapID": 2521,
+     "maxSkill": 75,
+     "name": "Lederverarbeitung",
+     "skill": 25,
+     "skillLine": 165,
+     "subZone": "Shen'dar",
+     "time": 1794070115,
+     "value": 25,
+     "zone": "Die Insel Zephras"
+    },
+    "id:393:FIRST_SEEN:61": {
+     "key": "id:393",
+     "kind": "FIRST_SEEN",
+     "level": 8,
+     "mapID": 2521,
+     "maxSkill": 150,
+     "name": "Kürschnerei",
+     "skill": 61,
+     "skillLine": 393,
+     "subZone": "",
+     "time": 1794062824,
+     "value": 61,
+     "zone": ""
+    }
+   },
+   "recipes": [
+    {
+     "level": 8,
+     "mapID": 2521,
+     "name": "Verbandtasche",
+     "source": "OTHER",
+     "subZone": "Shen'dar",
+     "time": 1794069097,
+     "zone": "Die Insel Zephras"
+    }
+   ]
+  },
+  "social": {
+   "addonUsers": {
+    "group": 0,
+    "guild": 0,
+    "meetings": 0,
+    "total": 0
+   },
+   "buffs": {
+    "given": {
+     "bySpell": {},
+     "casts": 0,
+     "people": 0
+    },
+    "received": {
+     "byClass": {},
+     "bySpell": {},
+     "total": 0
+    }
+   },
+   "emotes": {
+    "byToken": {
+     "READ": 18
+    },
+    "total": 18
+   },
+   "group": {
+    "joined": 0,
+    "mates": 0
+   },
+   "resurrect": {
+    "cast": 0,
+    "received": 0
+   },
+   "wave": {
+    "players": 0,
+    "total": 0
+   },
+   "whisper": {
+    "received": 0,
+    "receivedFrom": 0,
+    "sent": 0,
+    "sentTo": 0
+   }
+  },
+  "statistics": {
+   "baseline": {
+    "level": 8,
+    "time": 1794062835,
+    "values": {
+     "107": "154",
+     "1197": "154",
+     "1198": "154",
+     "1199": "2",
+     "1200": "2",
+     "1201": "2",
+     "1202": "5",
+     "1336": "97 (Bestien)",
+     "1337": "3",
+     "1466": "4",
+     "1487": "142",
+     "1524": "1",
+     "1536": "21",
+     "1541": "61",
+     "1740": "16",
+     "1745": "10",
+     "1748": "4",
+     "281": "21",
+     "321": "2",
+     "326": "8|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t",
+     "328": "20|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 5|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "333": "4|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 44|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "334": "7|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 33|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "339": "2",
+     "346": "2",
+     "347": "2",
+     "353": "1",
+     "60": "2",
+     "64222": "1",
+     "753": "20|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 5|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "921": "7|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 61|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "923": "1",
+     "931": "8",
+     "95": "27",
+     "98": "27"
+    }
+   },
+   "byLevel": {},
+   "categories": {
+    "122": {
+     "name": "Tode",
+     "parent": -1,
+     "stats": [
+      60
+     ]
+    },
+    "124": {
+     "name": "Schlachtfelder",
+     "parent": 122,
+     "stats": [
+      57,
+      59,
+      56,
+      58,
+      64182
+     ]
+    },
+    "125": {
+     "name": "Dungeons & Schlachtzüge",
+     "parent": 122,
+     "stats": [
+      321,
+      918,
+      917,
+      64183,
+      64185
+     ]
+    },
+    "126": {
+     "name": "Welt",
+     "parent": 122,
+     "stats": [
+      112,
+      594,
+      113,
+      114,
+      115
+     ]
+    },
+    "127": {
+     "name": "Wiederbelebung",
+     "parent": 122,
+     "stats": [
+      796,
+      798,
+      1229,
+      799,
+      800,
+      801
+     ]
+    },
+    "128": {
+     "name": "Siege",
+     "parent": -1,
+     "stats": [
+      1197,
+      1198
+     ]
+    },
+    "130": {
+     "name": "Charakter",
+     "parent": -1,
+     "stats": [
+      64222,
+      1149
+     ]
+    },
+    "131": {
+     "name": "Geselligkeit",
+     "parent": -1,
+     "stats": [
+      1042,
+      1047,
+      1067,
+      1066,
+      1045,
+      1065
+     ]
+    },
+    "132": {
+     "name": "Fertigkeiten",
+     "parent": -1,
+     "stats": [
+      1199,
+      1201,
+      1200,
+      1202
+     ]
+    },
+    "133": {
+     "name": "Quests",
+     "parent": -1,
+     "stats": [
+      98,
+      95,
+      94
+     ]
+    },
+    "134": {
+     "name": "Reise",
+     "parent": -1,
+     "stats": [
+      349,
+      2277,
+      350,
+      1339,
+      353
+     ]
+    },
+    "135": {
+     "name": "Kreaturen",
+     "parent": 128,
+     "stats": [
+      107,
+      1337,
+      1336,
+      108
+     ]
+    },
+    "136": {
+     "name": "Ehrenhafte Siege",
+     "parent": 128,
+     "stats": [
+      588,
+      381,
+      1458,
+      382,
+      1719,
+      1113,
+      1114,
+      1115,
+      64180
+     ]
+    },
+    "137": {
+     "name": "Todesstöße",
+     "parent": 128,
+     "stats": [
+      1487,
+      1488,
+      1489,
+      1491,
+      1716,
+      1495,
+      1496,
+      1497,
+      64181
+     ]
+    },
+    "140": {
+     "name": "Vermögen",
+     "parent": 130,
+     "stats": [
+      328,
+      753,
+      333,
+      326,
+      919,
+      329,
+      330,
+      331,
+      332,
+      921,
+      1146,
+      1147,
+      1148,
+      1150,
+      334
+     ]
+    },
+    "141": {
+     "name": "Kampf",
+     "parent": -1,
+     "stats": [
+      193,
+      527,
+      197,
+      528,
+      189,
+      829,
+      198,
+      830
+     ]
+    },
+    "145": {
+     "name": "Verbrauchsgüter",
+     "parent": 130,
+     "stats": [
+      344,
+      1125,
+      345,
+      922,
+      923,
+      811,
+      346,
+      347,
+      812
+     ]
+    },
+    "147": {
+     "name": "Ruf",
+     "parent": 130,
+     "stats": [
+      377,
+      378,
+      529,
+      1466,
+      931
+     ]
+    },
+    "14807": {
+     "name": "Dungeons & Schlachtzüge",
+     "parent": -1,
+     "stats": [
+      932,
+      933,
+      934,
+      64184
+     ]
+    },
+    "14821": {
+     "name": "Boss-Kills",
+     "parent": 14807,
+     "stats": [
+      1093,
+      63570,
+      63571,
+      63572,
+      63589,
+      63573,
+      63574,
+      63575,
+      63580,
+      63581,
+      15027,
+      15028,
+      1092,
+      15029,
+      6137,
+      6139,
+      6140,
+      6141,
+      6786,
+      6142,
+      1094,
+      6143,
+      6144,
+      1095,
+      6146,
+      6145,
+      1096,
+      15030,
+      15031,
+      1098
+     ]
+    },
+    "153": {
+     "name": "Schlachtfelder",
+     "parent": 21,
+     "stats": [
+      839,
+      840,
+      53,
+      49,
+      55,
+      51,
+      52,
+      105,
+      64179,
+      64176,
+      393,
+      394,
+      395,
+      586,
+      64348,
+      64349,
+      64350,
+      64351,
+      64352
+     ]
+    },
+    "154": {
+     "name": "Welt",
+     "parent": 21,
+     "stats": [
+      319,
+      320
+     ]
+    },
+    "173": {
+     "name": "Berufe",
+     "parent": 132,
+     "stats": [
+      1527,
+      1729,
+      1532,
+      1730,
+      1535,
+      178,
+      183,
+      181,
+      1544,
+      1734,
+      1538,
+      1539,
+      1735,
+      1536,
+      1740,
+      1537,
+      3216,
+      1541,
+      1542,
+      1741
+     ]
+    },
+    "178": {
+     "name": "Sekundäre Fertigkeiten",
+     "parent": 132,
+     "stats": [
+      1524,
+      1525,
+      1745,
+      1976,
+      281,
+      1748,
+      1519,
+      1518,
+      1456,
+      1526
+     ]
+    },
+    "191": {
+     "name": "Ausrüstung",
+     "parent": 130,
+     "stats": [
+      927,
+      342,
+      341,
+      336,
+      339,
+      338,
+      928,
+      1043,
+      1044
+     ]
+    },
+    "21": {
+     "name": "Spieler gegen Spieler",
+     "parent": -1,
+     "stats": [
+      1501,
+      318
+     ]
+    }
+   },
+   "current": {
+    "level": 8,
+    "time": 1794070033,
+    "values": {
+     "107": "159",
+     "1197": "159",
+     "1198": "159",
+     "1199": "2",
+     "1200": "2",
+     "1201": "2",
+     "1202": "5",
+     "1336": "102 (Bestien)",
+     "1337": "3",
+     "1466": "4",
+     "1487": "147",
+     "1524": "1",
+     "1536": "21",
+     "1541": "61",
+     "1740": "16",
+     "1745": "10",
+     "1748": "6",
+     "281": "21",
+     "321": "3",
+     "326": "8|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 65|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "328": "20|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 70|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "333": "4|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 44|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "334": "7|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 33|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "339": "2",
+     "346": "2",
+     "347": "2",
+     "353": "2",
+     "60": "3",
+     "64222": "5",
+     "753": "20|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 70|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "921": "7|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 61|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "923": "1",
+     "931": "8",
+     "95": "29",
+     "98": "29"
+    }
+   },
+   "levelEnd": {
+    "level": 8,
+    "time": 1794062835,
+    "values": {
+     "107": "154",
+     "1197": "154",
+     "1198": "154",
+     "1199": "2",
+     "1200": "2",
+     "1201": "2",
+     "1202": "5",
+     "1336": "97 (Bestien)",
+     "1337": "3",
+     "1466": "4",
+     "1487": "142",
+     "1524": "1",
+     "1536": "21",
+     "1541": "61",
+     "1740": "16",
+     "1745": "10",
+     "1748": "4",
+     "281": "21",
+     "321": "2",
+     "326": "8|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t",
+     "328": "20|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 5|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "333": "4|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 44|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "334": "7|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 33|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "339": "2",
+     "346": "2",
+     "347": "2",
+     "353": "1",
+     "60": "2",
+     "64222": "1",
+     "753": "20|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 5|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "921": "7|TInterface\\MoneyFrame\\UI-SilverIcon:0:0:2:0|t 61|TInterface\\MoneyFrame\\UI-CopperIcon:0:0:2:0|t",
+     "923": "1",
+     "931": "8",
+     "95": "27",
+     "98": "27"
+    }
+   },
+   "names": {
+    "1042": "Anzahl an Umarmungen",
+    "1043": "Würfe für Gier bei Plünderungen",
+    "1044": "Würfe für Bedarf bei Plünderungen",
+    "1045": "Anzahl /jubeln",
+    "1047": "Anzahl /ohgotts",
+    "105": "Siege in der Kriegshymnenschlucht",
+    "1065": "Anzahl /winken",
+    "1066": "Anzahl /LOLs",
+    "1067": "Anzahl des Musizierens auf der kleinsten Geige der Welt",
+    "107": "Kreaturen getötet",
+    "108": "Kleintiere getötet",
+    "1092": "Siege über Erzmagier Arugal (Burg Schattenfang)",
+    "1093": "Siege über Kommandant Mograine (Scharlachrotes Kloster)",
+    "1094": "Siege über Häuptling Ukorz Sandskalp (Zul'Farrak)",
+    "1095": "Siege über Imperator Dagran Thaurissan (Schwarzfelstiefen)",
+    "1096": "Siege über General Drakkisath (Obere Schwarzfelsspitze)",
+    "1098": "Siege über Onyxia (Onyxias Hort)",
+    "1113": "Ehrenhafte Siege im Alteractal",
+    "1114": "Ehrenhafte Siege im Arathibecken",
+    "1115": "Ehrenhafte Siege in der Kriegshymnenschlucht",
+    "112": "Tode durch Ertrinken",
+    "1125": "Am häufigsten angelegter Verband",
+    "113": "Tode durch Erschöpfung",
+    "114": "Tode durch Stürze",
+    "1146": "Für Reisen ausgegebenes Gold",
+    "1147": "Gold beim Barbier ausgegeben",
+    "1148": "Für Post ausgegebenes Gold",
+    "1149": "Talentneuverteilungen",
+    "115": "Tode durch Feuer und Lava",
+    "1150": "Gold für Talentneuverteilungen ausgegeben",
+    "1197": "Siege insgesamt",
+    "1198": "Siege insgesamt, die Erfahrung oder Ehrenpunkte verleihen",
+    "1199": "Erlernte Berufe",
+    "1200": "Sekundäre Fertigkeiten auf maximaler Stufe",
+    "1201": "Berufe auf maximaler Stufe",
+    "1202": "Waffenfertigkeiten auf maximaler Fertigkeit",
+    "1229": "Von Druiden wiederbelebt",
+    "1336": "Am häufigsten getöteter Kreaturtyp",
+    "1337": "Unterschiedliche Arten von Kreaturen getötet",
+    "1339": "Am häufigsten benutztes Magierportal",
+    "1456": "Fische und andere geangelte Dinge",
+    "1458": "Kontinent mit den meisten ehrenhaften Siegen",
+    "1466": "Meiste Allianzfraktionen auf Ehrfürchtig",
+    "1487": "Todesstöße insgesamt",
+    "1488": "Todesstöße weltweit",
+    "1489": "Kontinent mit den meisten Todesstößen",
+    "1491": "Todesstöße auf dem Schlachtfeld",
+    "1495": "Todesstöße im Alteractal",
+    "1496": "Todesstöße im Arathibecken",
+    "1497": "Todesstöße in der Kriegshymnenschlucht",
+    "1501": "Tode durch andere Spieler insgesamt",
+    "15027": "Siege über Bazzalan (Flammenschlund)",
+    "15028": "Siege über Mutanus den Verschlinger (Höhlen des Wehklagens)",
+    "15029": "Siege über Bazil Thredd (Verlies von Stormwind)",
+    "15030": "Siege über Dunkelmeister Gandling (Scholomance)",
+    "15031": "Siege über Baron Rivendare (Stratholme)",
+    "1518": "Gefangene Fische",
+    "1519": "Angelfertigkeit",
+    "1524": "Kochfertigkeit",
+    "1525": "Tägliche Kochquests abgeschlossen",
+    "1526": "Tägliche Angelquests abgeschlossen",
+    "1527": "Höchste Alchemiefertigkeit",
+    "1532": "Höchste Schmiedefertigkeit",
+    "1535": "Höchste Verzauberfertigkeit",
+    "1536": "Höchste Lederverarbeitungsfertigkeit",
+    "1537": "Höchste Bergbaufertigkeit",
+    "1538": "Höchste Kräuterkundefertigkeit",
+    "1539": "Höchste Inschriftenfertigkeit",
+    "1541": "Höchste Kürschnerfertigkeit",
+    "1542": "Höchste Schneiderfertigkeit",
+    "1544": "Höchste Ingenieursfertigkeit",
+    "1716": "Schlachtfeld mit den meisten Todesstößen",
+    "1719": "Schlachtfeld mit den meisten ehrenhaften Siegen",
+    "1729": "Erlernte Alchemierezepte",
+    "1730": "Erlernte Schmiedepläne",
+    "1734": "Erlernte Ingenieurskunstschemata",
+    "1735": "Erlernte Inschriften",
+    "1740": "Erlernte Lederverarbeitungsmuster",
+    "1741": "Erlernte Schnittmuster",
+    "1745": "Bekannte Kochrezepte",
+    "1748": "Erlernte Erste Hilfe-Anleitungen",
+    "178": "Erlernte Verzauberungsformeln",
+    "181": "Entzauberte Gegenstände",
+    "183": "Durch Entzaubern produzierte Materialien",
+    "189": "Höchste gewirkte Heilung",
+    "193": "Schwerster verursachter Treffer",
+    "197": "Verursachter Schaden insgesamt",
+    "1976": "Erhaltene Kochpreise von Dalaran",
+    "198": "Heilung durchgeführt insgesamt",
+    "2277": "Beschwörungen angenommen",
+    "281": "Erste-Hilfe-Fertigkeit",
+    "318": "Gesamtzahl der Tode durch die gegnerische Fraktion",
+    "319": "Duelle gewonnen",
+    "320": "Duelle verloren",
+    "321": "Tode in Schlachtzügen und Dungeons insgesamt",
+    "3216": "Erlernte Verhüttungsmethoden",
+    "326": "Durch Questbelohnungen erhaltenes Gold",
+    "328": "Erhaltenes Gold insgesamt",
+    "329": "Erstellte Auktionen",
+    "330": "Auktionserwerbungen",
+    "331": "Höchstes Gebot auf eine Auktion",
+    "332": "Teuerste verkaufte Auktion",
+    "333": "Geplündertes Gold",
+    "334": "Die größte Menge jemals besessenen Goldes",
+    "336": "Erhaltene Legendäre Gegenstände",
+    "338": "Anzahl der besessenen Haustiere",
+    "339": "Reittiere besessen",
+    "341": "Geplünderte epische Gegenstände",
+    "342": "Erhaltene epische Gegenstände",
+    "344": "Angelegte Verbände",
+    "345": "Heiltränke verbraucht",
+    "346": "Getränke verbraucht",
+    "347": "Nahrung konsumiert",
+    "349": "Bereiste Flugrouten",
+    "350": "Benutzte Magierportale",
+    "353": "Anzahl der Nutzungen des Ruhesteins",
+    "377": "Höchste Anzahl Fraktionen auf Ehrfürchtig",
+    "378": "Höchste Anzahl Fraktionen auf Respektvoll oder höher",
+    "381": "Weltweite ehrenhafte Siege",
+    "382": "Ehrenhafte Siege auf Schlachtfeldern",
+    "393": "Im Alteractal verteidigte Türme",
+    "394": "Im Alteractal eingenommene Türme",
+    "395": "In der Kriegshymnenschlucht eingenommene Flaggen",
+    "49": "Siege im Alteractal",
+    "51": "Siege im Arathibecken",
+    "52": "Schlachten in der Kriegshymnenschlucht",
+    "527": "Schwerster erlittener Treffer",
+    "528": "Erlittener Schaden insgesamt",
+    "529": "Höchste Anzahl Fraktionen auf Wohlwollend oder höher",
+    "53": "Schlachten im Alteractal",
+    "55": "Schlachten im Arathibecken",
+    "56": "Tode in der Kriegshymnenschlucht",
+    "57": "Tode im Alteractal",
+    "58": "Tode durch Drek'Thar",
+    "586": "Verteidigte Flaggen in der Kriegshymnenschlucht",
+    "588": "Ehrenhafte Siege insgesamt",
+    "59": "Tode im Arathibecken",
+    "594": "Tode durch Hogger",
+    "60": "Tode insgesamt",
+    "6137": "Siege über Aku'mai (Blackfathom-Tiefe)",
+    "6139": "Siege über Charlga Razorflank (Kral von Razorfen)",
+    "6140": "Siege über Robogenieur Thermadraht (Gnomeregan)",
+    "6141": "Siege über Amnennar den Kältebringer (Hügel von Razorfen)",
+    "6142": "Siege über Archaedas (Uldaman)",
+    "6143": "Siege über Prinzessin Theradras (Maraudon)",
+    "6144": "Siege über Eranikus' Schemen (Versunkener Tempel)",
+    "6145": "Siege über Oberanführer Wyrmthalak (Untere Schwarzfelsspitze)",
+    "6146": "Siege über König Gordok (Düsterbruch)",
+    "63570": "Siege über Edwin van Cleef (Todesminen)",
+    "63571": "Siege über Rath'mael (Ruinen von Lordaeron)",
+    "63572": "Siege über den Schemen des Erzmagiers (Dalaran)",
+    "63573": "Siege über Durgen Dirgehammer (Halle der Thanen)",
+    "63574": "Siege über Nanaya (Terrasse des Formers)",
+    "63575": "Siege über Blazeroar (Das Gefängnis von Alcaz)",
+    "63580": "Siege über den Wildniskönig (Hyjalgipfel)",
+    "63581": "Siege über Sonya Darkhallow (Tiefengrabhügel)",
+    "63589": "Siege über Lyn der Ignorierte (Dalaran)",
+    "64176": "Siege auf den Darkspear-Inseln",
+    "64179": "Schlachten auf den Darkspear-Inseln",
+    "64180": "Ehrenhafte Siege auf den Darkspear-Inseln",
+    "64181": "Todesstöße auf den Darkspear-Inseln",
+    "64182": "Tode auf den Darkspear-Inseln",
+    "64183": "Tode in 20-Spieler-Schlachtzügen insgesamt",
+    "64184": "40-Spieler-Schlachtzügen beigetreten",
+    "64185": "Tode in 40-Spieler-Schlachtzügen insgesamt",
+    "64222": "Ruhezeiten im Lager",
+    "64348": "Basen des Arathibeckens erobert",
+    "64349": "Basen des Arathibeckens verteidigt",
+    "64350": "Basen der Darkspear-Inseln erobert",
+    "64351": "Basen der Darkspear-Inseln verteidigt",
+    "64352": "Flaggen der Darkspear-Inseln erobert",
+    "6786": "Siege über Flammenwirker Koegler (Scharlachrote Hallen)",
+    "753": "Im Durchschnitt pro Tag verdientes Gold",
+    "796": "Wiederbelebungen durch Priester",
+    "798": "Wiedergeburten durch Druiden",
+    "799": "Wiederbelebungen durch Schamanen",
+    "800": "Erlösungen durch Paladine",
+    "801": "Wiederbelebungen durch Seelensteine",
+    "811": "Fläschchen verbraucht",
+    "812": "Gesundheitssteine benutzt",
+    "829": "Höchste erhaltene Heilung",
+    "830": "Erhaltene Heilung insgesamt",
+    "839": "Gespielte Schlachtfelder",
+    "840": "Schlachtfelder gewonnen",
+    "917": "Tode in 10-Spieler-Schlachtzügen insgesamt",
+    "918": "Tode in 5-Spieler-Dungeons insgesamt",
+    "919": "Durch Auktionen erhaltenes Gold",
+    "921": "Gold von Händlern",
+    "922": "Manatränke verbraucht",
+    "923": "Elixiere verbraucht",
+    "927": "Angelegte epische Gegenstände",
+    "928": "Zusätzliche Bankplätze angeschafft",
+    "931": "Fraktionen begegnet insgesamt",
+    "932": "5-Spieler-Dungeons betreten",
+    "933": "10-Spieler-Schlachtzügen beigetreten",
+    "934": "20-Spieler-Schlachtzügen beigetreten",
+    "94": "Quests abgebrochen",
+    "95": "Durchschnittlich abgeschlossene Quests pro Tag",
+    "98": "Quests abgeschlossen"
+   },
+   "order": [
+    124,
+    130,
+    135,
+    140,
+    153,
+    178,
+    14821,
+    21,
+    125,
+    136,
+    145,
+    154,
+    173,
+    126,
+    137,
+    141,
+    147,
+    127,
+    191,
+    14807,
+    128,
+    122,
+    133,
+    132,
+    134,
+    131
+   ]
+  },
+  "stats": {
+   "deaths": 1,
+   "dungeonCompletions": 0,
+   "dungeonGoldRepaired": true,
+   "dungeonVisits": 0,
+   "firstLogin": 1794062823,
+   "lastKnownMoney": 540,
+   "levelUps": 0,
+   "totalSessionTime": 7636,
+   "zoneChanges": 3
+  },
+  "tracking": {
+   "capitals": {},
+   "durability": {
+    "byLevel": {
+     "8": {
+      "min": 16,
+      "rep": 0
+     }
+    }
+   },
+   "enchant": {
+    "count": 0,
+    "items": {}
+   },
+   "levels": {
+    "8": {
+     "game": {
+      "addon": "1.1.4.1",
+      "b": "70862",
+      "d": "Nov  6 2026",
+      "toc": 16001,
+      "v": "1.60.1"
+     },
+     "languages": [
+      "Darnassisch",
+      "Gemeinsprache"
+     ],
+     "reason": "login",
+     "stats": {
+      "agi": [
+       28,
+       28
+      ],
+      "ap": 24,
+      "armor": 225,
+      "block": 0,
+      "crit": 5.61,
+      "dodge": 5.77,
+      "healPower": 0,
+      "hp": 163,
+      "int": [
+       32,
+       32
+      ],
+      "parry": 0,
+      "power": 320,
+      "powerType": 0,
+      "rangedCrit": 4.33,
+      "spellCrit": 5.46,
+      "spellPower": 0,
+      "spi": [
+       26,
+       26
+      ],
+      "sta": [
+       23,
+       23
+      ],
+      "str": [
+       22,
+       22
+      ]
+     },
+     "talents": {
+      "api": "traits",
+      "points": 0,
+      "ranks": {},
+      "tree": 1089,
+      "unspent": 0
+     },
+     "time": 1794062835
+    }
+   },
+   "quests": {
+    "active": {
+     "q92516": {
+      "id": 92516,
+      "level": 8,
+      "qlevel": 7,
+      "time": 1794062825,
+      "title": "Hippogryphenschikane",
+      "trk": 1.6
+     },
+     "q92517": {
+      "id": 92517,
+      "level": 8,
+      "qlevel": 7,
+      "time": 1794062825,
+      "title": "Das kriminelle Element",
+      "trk": 1.6
+     },
+     "q92679": {
+      "id": 92679,
+      "level": 8,
+      "qlevel": 9,
+      "time": 1794062825,
+      "title": "Blutzoll",
+      "trk": 1.6
+     },
+     "q93317": {
+      "id": 93317,
+      "level": 8,
+      "qlevel": 9,
+      "time": 1794062825,
+      "title": "Krabbensaison",
+      "trk": 1.6
+     },
+     "q93318": {
+      "id": 93318,
+      "level": 8,
+      "qlevel": 9,
+      "time": 1794062825,
+      "title": "GESUCHT: Vulgara der Unersättliche",
+      "trk": 1.6
+     },
+     "q93951": {
+      "id": 93951,
+      "level": 8,
+      "qlevel": 7,
+      "time": 1794062825,
+      "title": "Ein wenig Schönheit",
+      "trk": 1.6
+     },
+     "q94484": {
+      "id": 94484,
+      "level": 8,
+      "qlevel": 11,
+      "time": 1794062825,
+      "title": "Unangenehme Stille",
+      "trk": 1.6
+     }
+    },
+    "byLevel": {},
+    "done": 2,
+    "longest": {
+     "from": 8,
+     "id": 97965,
+     "sec": 6177.9,
+     "span": 0,
+     "time": 1794069097,
+     "title": "Grundlagen des Zeltens: Erste Hilfe",
+     "to": 8
+    },
+    "widest": {
+     "from": 8,
+     "id": 92553,
+     "sec": 6156.9,
+     "span": 0,
+     "time": 1794069076,
+     "title": "Die Vorratskammern auffüllen",
+     "to": 8
+    }
+   },
+   "respecs": {
+    "byLevel": {},
+    "count": 0,
+    "gold": 0
+   },
+   "specTime": {},
+   "talentLast": {
+    "points": 0,
+    "ranks": {}
+   },
+   "talentLayout": {
+    "class": "DRUID",
+    "nodes": [
+     {
+      "ic": 136107,
+      "id": 104909,
+      "m": 2,
+      "n": "Verbesserte Gelassenheit",
+      "s": 17123,
+      "x": 10880,
+      "y": 4530
+     },
+     {
+      "ic": 236153,
+      "id": 104910,
+      "m": 1,
+      "n": "Wildwuchs",
+      "s": 408120,
+      "x": 9680,
+      "y": 5730
+     },
+     {
+      "ic": 136037,
+      "id": 104911,
+      "m": 3,
+      "n": "Geist des Lebens",
+      "s": 1309631,
+      "to": [
+       104910
+      ],
+      "x": 9680,
+      "y": 4530
+     },
+     {
+      "ic": 134914,
+      "id": 104912,
+      "m": 1,
+      "n": "Rasche Heilung",
+      "s": 18562,
+      "x": 10880,
+      "y": 3930
+     },
+     {
+      "ic": 136085,
+      "id": 104913,
+      "m": 5,
+      "n": "Verbessertes Nachwachsen",
+      "s": 17074,
+      "x": 10280,
+      "y": 5130
+     },
+     {
+      "ic": 136081,
+      "id": 104914,
+      "m": 3,
+      "n": "Verbesserte Verjüngung",
+      "s": 17111,
+      "to": [
+       104913
+      ],
+      "x": 10280,
+      "y": 3930
+     },
+     {
+      "ic": 135900,
+      "id": 104915,
+      "m": 5,
+      "n": "Gelassener Geist",
+      "s": 24968,
+      "x": 9680,
+      "y": 3930
+     },
+     {
+      "ic": 136074,
+      "id": 104916,
+      "m": 5,
+      "n": "Geschenk der Natur",
+      "s": 17104,
+      "x": 10280,
+      "y": 3330
+     },
+     {
+      "ic": 132150,
+      "id": 104917,
+      "m": 3,
+      "n": "Feingefühl",
+      "s": 17118,
+      "x": 9680,
+      "y": 3330
+     },
+     {
+      "ic": 134206,
+      "id": 104918,
+      "m": 1,
+      "n": "Bloom",
+      "s": 1328621,
+      "x": 10880,
+      "y": 3330
+     },
+     {
+      "ic": 136116,
+      "id": 104919,
+      "m": 3,
+      "n": "Schnellwandlung",
+      "s": 16833,
+      "x": 10280,
+      "y": 2730
+     },
+     {
+      "ic": 135863,
+      "id": 104920,
+      "m": 3,
+      "n": "Reflexion",
+      "s": 17106,
+      "x": 9680,
+      "y": 2730
+     },
+     {
+      "ic": 136076,
+      "id": 104921,
+      "m": 1,
+      "n": "Schnelligkeit der Natur",
+      "s": 17116,
+      "x": 9080,
+      "y": 4530
+     },
+     {
+      "ic": 136041,
+      "id": 104922,
+      "m": 5,
+      "n": "Naturalist",
+      "s": 17069,
+      "to": [
+       104921
+      ],
+      "x": 9080,
+      "y": 2730
+     },
+     {
+      "ic": 136006,
+      "id": 104923,
+      "m": 5,
+      "n": "Verbesserter Zorn",
+      "s": 16814,
+      "x": 1620,
+      "y": 2130
+     },
+     {
+      "ic": 135730,
+      "id": 104924,
+      "m": 5,
+      "n": "Genesis",
+      "s": 1223081,
+      "x": 2220,
+      "y": 2130
+     },
+     {
+      "ic": 136087,
+      "id": 104925,
+      "m": 3,
+      "n": "Mondschein",
+      "s": 16845,
+      "x": 1020,
+      "y": 2730
+     },
+     {
+      "ic": 136100,
+      "id": 104926,
+      "m": 3,
+      "n": "Verbesserte Wucherwurzeln",
+      "s": 16918,
+      "x": 1020,
+      "y": 3330
+     },
+     {
+      "ic": 135138,
+      "id": 104927,
+      "m": 2,
+      "n": "Erhabenheit der Natur",
+      "s": 1223082,
+      "to": [
+       104928
+      ],
+      "x": 2220,
+      "y": 2730
+     },
+     {
+      "ic": 136061,
+      "id": 104928,
+      "m": 1,
+      "n": "Pracht der Natur",
+      "s": 1223083,
+      "to": [
+       104927
+      ],
+      "x": 2220,
+      "y": 3330
+     },
+     {
+      "ic": 136065,
+      "id": 104929,
+      "m": 2,
+      "n": "Reichweite der Natur",
+      "s": 16819,
+      "x": 2820,
+      "y": 2730
+     },
+     {
+      "ic": 136045,
+      "id": 104930,
+      "m": 1,
+      "n": "Insektenschwarm",
+      "s": 5570,
+      "x": 1020,
+      "y": 3930
+     },
+     {
+      "ic": 136096,
+      "id": 104931,
+      "m": 2,
+      "n": "Verbessertes Mondfeuer",
+      "s": 16821,
+      "to": [
+       104932
+      ],
+      "x": 1620,
+      "y": 2730
+     },
+     {
+      "ic": 136075,
+      "id": 104932,
+      "m": 5,
+      "n": "Rache",
+      "s": 16909,
+      "x": 1620,
+      "y": 3930
+     },
+     {
+      "ic": 135753,
+      "id": 104933,
+      "m": 5,
+      "n": "Verbessertes Sternenfeuer",
+      "s": 16850,
+      "x": 2220,
+      "y": 3930
+     },
+     {
+      "ic": 136062,
+      "id": 104934,
+      "m": 1,
+      "n": "Anmut der Natur",
+      "s": 16880,
+      "x": 1620,
+      "y": 4530
+     },
+     {
+      "ic": 236151,
+      "id": 104935,
+      "m": 3,
+      "n": "Finsternis",
+      "s": 408248,
+      "x": 2220,
+      "y": 4530
+     },
+     {
+      "ic": 136057,
+      "id": 104936,
+      "m": 5,
+      "n": "Mondfuror",
+      "s": 16896,
+      "x": 1620,
+      "y": 5130
+     },
+     {
+      "ic": 136036,
+      "id": 104937,
+      "m": 1,
+      "n": "Moonkingestalt",
+      "s": 24858,
+      "x": 1620,
+      "y": 5730
+     },
+     {
+      "ic": 132190,
+      "id": 104938,
+      "m": 5,
+      "n": "Wildheit",
+      "s": 16934,
+      "x": 5620,
+      "y": 2130
+     },
+     {
+      "ic": 135881,
+      "id": 104939,
+      "m": 5,
+      "n": "Ingrimm",
+      "s": 17056,
+      "x": 6220,
+      "y": 2130
+     },
+     {
+      "ic": 132089,
+      "id": 104940,
+      "m": 3,
+      "n": "Instinkt der Wildnis",
+      "s": 16947,
+      "x": 5620,
+      "y": 2730
+     },
+     {
+      "ic": 132114,
+      "id": 104941,
+      "m": 2,
+      "n": "Brutaler Hieb",
+      "s": 16940,
+      "x": 6220,
+      "y": 2730
+     },
+     {
+      "ic": 134355,
+      "id": 104942,
+      "m": 3,
+      "n": "Dickes Fell",
+      "s": 16929,
+      "x": 6820,
+      "y": 2730
+     },
+     {
+      "ic": 136095,
+      "id": 104943,
+      "m": 2,
+      "n": "Schnelligkeit der Wildnis",
+      "s": 17002,
+      "x": 5020,
+      "y": 2730
+     },
+     {
+      "ic": 132183,
+      "id": 104944,
+      "m": 1,
+      "n": "Wilde Attacke",
+      "s": 1238122,
+      "x": 6220,
+      "y": 3330
+     },
+     {
+      "ic": 136231,
+      "id": 104945,
+      "m": 3,
+      "n": "Schreddernde Angriffe",
+      "s": 16966,
+      "x": 5020,
+      "y": 3330
+     },
+     {
+      "ic": 134297,
+      "id": 104946,
+      "m": 2,
+      "n": "Geschärfte Klauen",
+      "s": 16942,
+      "to": [
+       104947
+      ],
+      "x": 6820,
+      "y": 3330
+     },
+     {
+      "ic": 132152,
+      "id": 104947,
+      "m": 2,
+      "n": "Blutraserei",
+      "s": 16958,
+      "x": 6820,
+      "y": 3930
+     },
+     {
+      "ic": 132141,
+      "id": 104948,
+      "m": 2,
+      "n": "Ungezähmte Wut",
+      "s": 16998,
+      "to": [
+       104949
+      ],
+      "x": 5620,
+      "y": 3330
+     },
+     {
+      "ic": 132131,
+      "id": 104949,
+      "m": 1,
+      "n": "Aufschlitzen",
+      "s": 1328617,
+      "x": 5620,
+      "y": 3930
+     },
+     {
+      "ic": 132138,
+      "id": 104950,
+      "m": 2,
+      "n": "Instinkt der Natur",
+      "s": 1223242,
+      "x": 6820,
+      "y": 4530
+     },
+     {
+      "ic": 1033484,
+      "id": 104951,
+      "m": 1,
+      "n": "Predatory Discipline",
+      "s": 1328613,
+      "to": [
+       113563
+      ],
+      "x": 6220,
+      "y": 3930
+     },
+     {
+      "ic": 132185,
+      "id": 104952,
+      "m": 3,
+      "n": "Raubtierschläge",
+      "s": 16972,
+      "to": [
+       104953
+      ],
+      "x": 5020,
+      "y": 3930
+     },
+     {
+      "ic": 236164,
+      "id": 104953,
+      "m": 5,
+      "n": "Beißen und Reißen",
+      "s": 1223246,
+      "x": 5020,
+      "y": 5130
+     },
+     {
+      "ic": 132091,
+      "id": 104954,
+      "m": 5,
+      "n": "Natürliche Reaktion",
+      "s": 417051,
+      "x": 6820,
+      "y": 5130
+     },
+     {
+      "ic": 136112,
+      "id": 104955,
+      "m": 1,
+      "n": "Rudelführer",
+      "s": 17007,
+      "to": [
+       104956
+      ],
+      "x": 5620,
+      "y": 4530
+     },
+     {
+      "ic": 132278,
+      "id": 104956,
+      "m": 1,
+      "n": "Urtümlicher Biss",
+      "s": 407995,
+      "x": 5620,
+      "y": 5730
+     },
+     {
+      "ic": 136042,
+      "id": 104957,
+      "m": 5,
+      "n": "Naturfokus",
+      "s": 17063,
+      "x": 9680,
+      "y": 2130
+     },
+     {
+      "ic": 135879,
+      "id": 104958,
+      "m": 5,
+      "n": "Herz der Wildnis",
+      "s": 17003,
+      "x": 10280,
+      "y": 2130
+     },
+     {
+      "ic": 134196,
+      "id": 110844,
+      "m": 2,
+      "n": "Wildes Wachstum",
+      "s": 17245,
+      "x": 1020,
+      "y": 4530
+     },
+     {
+      "ic": 538514,
+      "id": 113563,
+      "m": 1,
+      "n": "Machtverschiebung",
+      "s": 1322605,
+      "x": 6220,
+      "y": 5730
+     }
+    ],
+    "tree": 1089,
+    "v": 2
+   },
+   "talentLog": {},
+   "time": {
+    "byLevel": {
+     "8": {
+      "combat": 158,
+      "dead": 3,
+      "ghost": 12,
+      "resting": 4283.5,
+      "solo": 7613.5,
+      "tracked": 7613.5
+     }
+    }
+   },
+   "wear": {
+    "items": {
+     "1369": {
+      "byLevel": {
+       "8": 7574.8
+      },
+      "first": 1794062831,
+      "il": 5,
+      "last": 1794070545,
+      "link": "|cnIQ0:|Hitem:1369::::::::8:1484:::::::::|h[Struppiger Ledergürtel]|h|r",
+      "q": 0,
+      "seconds": 7574.8,
+      "slot": 6
+     },
+     "2302": {
+      "byLevel": {
+       "8": 7574.8
+      },
+      "first": 1794062831,
+      "il": 8,
+      "last": 1794070545,
+      "link": "|cnIQ1:|Hitem:2302::::::::8:1484::::::::Player-6939-00CD5CC2:|h[Handgenähte Lederstiefel]|h|r",
+      "q": 1,
+      "seconds": 7574.8,
+      "slot": 8
+     },
+     "257282": {
+      "byLevel": {
+       "8": 7574.8
+      },
+      "first": 1794062831,
+      "il": 5,
+      "last": 1794070545,
+      "link": "|cnIQ1:|Hitem:257282::::::::8:1484::11:::::::|h[Stecken des Novizen]|h|r",
+      "q": 1,
+      "seconds": 7574.8,
+      "slot": 16
+     },
+     "271666": {
+      "byLevel": {
+       "8": 7574.8
+      },
+      "first": 1794062831,
+      "il": 1,
+      "last": 1794070545,
+      "link": "|cnIQ0:|Hitem:271666::::::::8:1484::75:::::::|h[Hose des Überlebenskünstlers von Thendal]|h|r",
+      "q": 0,
+      "seconds": 7574.8,
+      "slot": 7
+     },
+     "271668": {
+      "byLevel": {
+       "8": 7574.8
+      },
+      "first": 1794062831,
+      "il": 1,
+      "last": 1794070545,
+      "link": "|cnIQ1:|Hitem:271668::::::::8:1484::75:::::::|h[Hemd des Überlebenskünstlers von Thendal]|h|r",
+      "q": 1,
+      "seconds": 7574.8,
+      "slot": 4
+     },
+     "5957": {
+      "byLevel": {
+       "8": 7574.8
+      },
+      "first": 1794062831,
+      "il": 10,
+      "last": 1794070545,
+      "link": "|cnIQ2:|Hitem:5957::::::::8:1484::::::::Player-6939-00CD5CC2:|h[Handgenähte Lederweste]|h|r",
+      "q": 2,
+      "seconds": 7574.8,
+      "slot": 5
+     },
+     "7276": {
+      "byLevel": {
+       "8": 7574.8
+      },
+      "first": 1794062831,
+      "il": 9,
+      "last": 1794070545,
+      "link": "|cnIQ1:|Hitem:7276::::::::8:1484::::::::Player-6939-00CD5CC2:|h[Handgenähter Lederumhang]|h|r",
+      "q": 1,
+      "seconds": 7574.8,
+      "slot": 15
+     },
+     "7277": {
+      "byLevel": {
+       "8": 7574.8
+      },
+      "first": 1794062831,
+      "il": 9,
+      "last": 1794070545,
+      "link": "|cnIQ1:|Hitem:7277::::::::8:1484::::::::Player-6939-00CD5CC2:|h[Handgenähte Armschienen]|h|r",
+      "q": 1,
+      "seconds": 7574.8,
+      "slot": 9
+     }
+    },
+    "pending": {},
+    "slots": [
+     {},
+     {},
+     {},
+     [
+      {
+       "from": 1794062831,
+       "fromLevel": 8,
+       "id": 271668
+      }
+     ],
+     [
+      {
+       "from": 1794062831,
+       "fromLevel": 8,
+       "id": 5957
+      }
+     ],
+     [
+      {
+       "from": 1794062831,
+       "fromLevel": 8,
+       "id": 1369
+      }
+     ],
+     [
+      {
+       "from": 1794062831,
+       "fromLevel": 8,
+       "id": 271666
+      }
+     ],
+     [
+      {
+       "from": 1794062831,
+       "fromLevel": 8,
+       "id": 2302
+      }
+     ],
+     [
+      {
+       "from": 1794062831,
+       "fromLevel": 8,
+       "id": 7277
+      }
+     ],
+     {},
+     {},
+     {},
+     {},
+     {},
+     [
+      {
+       "from": 1794062831,
+       "fromLevel": 8,
+       "id": 7276
+      }
+     ],
+     [
+      {
+       "from": 1794062831,
+       "fromLevel": 8,
+       "id": 257282
+      }
+     ],
+     {},
+     {},
+     {}
+    ]
+   },
+   "xp": {
+    "byLevel": {
+     "8": {
+      "kill": 1006,
+      "other": 65,
+      "quest": 410,
+      "rested": 614,
+      "total": 1481
+     }
+    }
+   }
+  },
+  "zoneTime": {
+   "Die Insel Zephras": 7620
+  }
+ },
+ "updatedAt": 1794072701
+}

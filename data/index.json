@@ -1,0 +1,30 @@
+{
+ "characters": [
+  {
+   "armoryUrl": null,
+   "class": "DRUID",
+   "created": 1794062823,
+   "deaths": 1,
+   "displayName": "Eliza Coppersmith",
+   "faction": "Alliance",
+   "file": "data/eliza-coppersmith.json",
+   "id": "eliza-coppersmith",
+   "lastSeen": 1794070545,
+   "level": 8,
+   "mode": "normal",
+   "name": "Eliza",
+   "playedSeconds": 7636,
+   "portrait": {
+    "kind": "none"
+   },
+   "race": "Skyborne",
+   "realmName": null,
+   "realmType": "PvE",
+   "status": "active",
+   "surname": "Coppersmith"
+  }
+ ],
+ "generatedAt": 1794070642,
+ "schemaVersion": 1,
+ "title": "Chronik der Ewigen"
+}

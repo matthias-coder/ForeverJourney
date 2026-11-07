@@ -1,0 +1,3 @@
+# Screenshots, die nicht veroeffentlicht werden sollen.
+# Ein Dateiname pro Zeile (z. B. WoWScrnShot_010126_120000.jpg).
+# Zeilen mit # am Anfang werden ignoriert.
