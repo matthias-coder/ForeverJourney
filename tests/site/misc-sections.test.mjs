@@ -48,5 +48,5 @@ test('gold by level rows', () => {
 });
 test('fun rows skip objects and format durations', () => {
   assert.deepEqual(funRows({ state: { fun: { activeSec: 7594.7, aliveActSec: 90, chat: { AFK: 4 }, byLevel: {} } } }),
-    [{ label: 'Aktive Zeit', value: '2h 6m' }, { label: 'aliveActSec', value: '1 min' }]);
+    [{ label: 'Aktive Zeit', value: '2h 6m' }, { label: 'Aktiv am Stück lebendig', value: '1 min' }]);
 });

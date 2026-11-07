@@ -7,6 +7,8 @@ const KNOWN = {
   mailSent: ['Briefe verschickt'], activeSec: ['Aktive Zeit', DUR], aliveSec: ['Am Stück lebendig', DUR],
   bestAlive: ['Längste Zeit ohne Tod', DUR], combatSec: ['Zeit im Kampf', DUR],
   craftSec: ['Zeit beim Handwerk', DUR], ghostSec: ['Zeit als Geist', DUR],
+  aliveActSec: ['Aktiv am Stück lebendig', DUR], bestAliveAct: ['Längste aktive Zeit ohne Tod', DUR],
+  mapOpened: ['Karte geöffnet'],
 };
 
 // Known scalar keys first (German labels), then remaining scalars under their raw key.
