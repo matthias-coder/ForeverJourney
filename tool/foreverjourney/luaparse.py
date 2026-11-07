@@ -23,13 +23,37 @@ _ESC_RE = re.compile(r"\\(\d{1,3}|.)", re.DOTALL)
 
 
 def _unescape(raw: str) -> str:
-    def sub(m):
+    out = bytearray()
+    pos = 0
+    body = raw[1:-1]
+    for m in _ESC_RE.finditer(body):
+        out += body[pos:m.start()].encode("utf-8")
         e = m.group(1)
         if e.isdigit():
-            return chr(int(e))
-        return _ESCAPES.get(e, e)
+            out.append(int(e) & 0xFF)
+        else:
+            out += _ESCAPES.get(e, e).encode("utf-8")
+        pos = m.end()
+    out += body[pos:].encode("utf-8")
+    return out.decode("utf-8", errors="replace")
 
-    return _ESC_RE.sub(sub, raw[1:-1])
+
+class BoolKey:
+    """Table key `true`/`false`; kept distinct from the integer keys 1/0."""
+
+    __slots__ = ("value",)
+
+    def __init__(self, value: bool):
+        self.value = value
+
+    def __eq__(self, other):
+        return isinstance(other, BoolKey) and other.value == self.value
+
+    def __hash__(self):
+        return hash(("BoolKey", self.value))
+
+    def __repr__(self):
+        return f"BoolKey({self.value})"
 
 
 def _tokenize(text: str):
@@ -47,9 +71,10 @@ def _tokenize(text: str):
 
 
 class _Parser:
-    def __init__(self, tokens):
+    def __init__(self, tokens, end=0):
         self.t = tokens
         self.i = 0
+        self.end = end
 
     def peek(self):
         return self.t[self.i] if self.i < len(self.t) else None
@@ -57,7 +82,7 @@ class _Parser:
     def next(self):
         tok = self.peek()
         if tok is None:
-            raise LuaParseError("unexpected end of input")
+            raise LuaParseError(f"unexpected end of input at {self.end}")
         self.i += 1
         return tok
 
@@ -111,10 +136,12 @@ class _Parser:
                 break
             tok = self.peek()
             if tok is None:
-                raise LuaParseError("unexpected end of input in table")
+                raise LuaParseError(f"unexpected end of input in table at {self.end}")
             if tok[0] == "punct" and tok[1] == "[":
                 self.next()
                 key = self.parse_value()
+                if isinstance(key, bool):
+                    key = BoolKey(key)
                 self.expect("]")
                 self.expect("=")
                 entries[key] = self.parse_value()
@@ -134,15 +161,15 @@ class _Parser:
             elif not self.at_punct("}"):
                 nxt = self.peek()
                 if nxt is None:
-                    raise LuaParseError("unexpected end of input in table")
+                    raise LuaParseError(f"unexpected end of input in table at {self.end}")
                 raise LuaParseError(f"expected ',' or '}}' at {nxt[2]}")
-        if entries and set(entries) == set(range(1, len(entries) + 1)):
+        if entries and all(type(k) is int for k in entries) and set(entries) == set(range(1, len(entries) + 1)):
             return [entries[k] for k in range(1, len(entries) + 1)]
         return entries
 
 
 def parse_saved_variables(text: str) -> dict[str, object]:
-    p = _Parser(_tokenize(text))
+    p = _Parser(_tokenize(text), len(text))
     result = {}
     while p.peek() is not None:
         kind, name, pos = p.next()
@@ -155,4 +182,7 @@ def parse_saved_variables(text: str) -> dict[str, object]:
 
 def load_export(path: Path) -> dict:
     text = Path(path).read_text(encoding="utf-8", errors="ignore")
-    return parse_saved_variables(text)["MyCharForeverExportDB"]
+    variables = parse_saved_variables(text)
+    if "MyCharForeverExportDB" not in variables:
+        raise LuaParseError("MyCharForeverExportDB not found (incomplete file?)")
+    return variables["MyCharForeverExportDB"]
