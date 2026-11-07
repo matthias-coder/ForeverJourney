@@ -46,6 +46,20 @@ export function recoverState(book) {
   book.book?.querySelectorAll?.('.lid').forEach((l) => l.remove());
 }
 
+// After busy is released: a queued navigation runs first, then a pending re-pagination.
+export function drain(book) {
+  if (book.queued) {
+    const target = book.queued;
+    book.queued = null;
+    return book.goto(target);
+  }
+  if (book.again) {
+    book.again = false;
+    return book.repaginate();
+  }
+  return undefined;
+}
+
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const NARROW = '(max-width: 820px)';
 
@@ -129,11 +143,7 @@ export class Book {
     } finally {
       this.busy = false;
     }
-    if (this.queued) {
-      const next = this.queued;
-      this.queued = null;
-      await this.goto(next);
-    }
+    await drain(this);
   }
 
   async run(target) {
@@ -191,7 +201,7 @@ export class Book {
     } finally {
       this.busy = false;
     }
-    if (this.again) { this.again = false; await this.repaginate(); }
+    await drain(this);
   }
 
   entryName() {

@@ -25,3 +25,17 @@ test('recoverState clears stale route, lid and closed class', async () => {
   assert.equal(fake.route, null); assert.equal(fake.nav, null);
   assert.ok(!classes.has('closed')); assert.deepEqual(removed, ['lid']);
 });
+test('drain runs a queued navigation before a pending re-pagination', async () => {
+  const { drain } = await import('../../assets/js/book.js');
+  const calls = [];
+  const fake = { queued: { view: 'chapter', id: 'a' }, again: true, goto: async (t) => calls.push(['goto', t.id]), repaginate: async () => calls.push(['repaginate']) };
+  await drain(fake);
+  assert.deepEqual(calls, [['goto', 'a']]);
+  assert.equal(fake.queued, null);
+  assert.equal(fake.again, true); // goto's own drain handles it next
+  fake.queued = null;
+  await drain(fake);
+  assert.deepEqual(calls, [['goto', 'a'], ['repaginate']]);
+  assert.equal(fake.again, false);
+  assert.equal(await drain(fake), undefined);
+});
