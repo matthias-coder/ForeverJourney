@@ -39,7 +39,7 @@ Siehe [tool/README.md](tool/README.md).
 ## Credits
 
 Alle Spieldaten werden vom Addon MyCharForever von Devchris aufgezeichnet
-([CurseForge](https://www.curseforge.com/wow/addons/mycharforever)). ForeverJourney ist ein
+([CurseForge](https://www.curseforge.com/wow/addons/mycharforever-an-automatic-character-chronicle)). ForeverJourney ist ein
 unabhängiges Projekt und kein offizieller Teil von MyCharForever. Das Export-Format wird mit
 freundlicher Dokumentation des Autors genutzt.
 
