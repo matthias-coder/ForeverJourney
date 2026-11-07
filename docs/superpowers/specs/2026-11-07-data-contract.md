@@ -102,7 +102,10 @@ Direkte Übernahme folgender Export-Gruppen unter ihrem Addon-Namen, unveränder
 Nie übernommen: `settings`.
 
 Lua-Tabellen mit Zahlen-Schlüsseln (z. B. `levels[5]`) werden als JSON-Objekt mit String-Schlüsseln
-(`"5"`) geschrieben. Lua-Arrays (1..n lückenlos) werden JSON-Arrays.
+(`"5"`) geschrieben. Stufen-indizierte Tabellen sind immer Objekte mit den Schlüsseln `"1"`..`"n"`,
+auch wenn der Parser eine Liste liefert: jeder Schlüssel `byLevel` in beliebiger Tiefe sowie die
+Top-Level-Schlüssel `levels`, `levelSnapshots`, `gearByLevel`, `levelActivity` und `goldByLevel`.
+Alle übrigen Lua-Arrays (1..n lückenlos) werden JSON-Arrays.
 
 ### `lists` – kumulativ, werden beim Lauf vereinigt
 

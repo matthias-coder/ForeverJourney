@@ -59,3 +59,9 @@ def test_level_keyed_lists_become_objects_and_pvp_history_split():
     assert r["state"]["pvp"] == {"kills": 3} and r["lists"]["pvpHistory"] == [{"time": 5}]
     assert r["lists"]["journeyGhost"] == [True]
     assert "segments" not in r["state"]["journeyMeta"]
+
+def test_nested_by_level_list_becomes_object():
+    from foreverjourney.merge import _norm
+    out = _norm({"fun": {"byLevel": [{"a": 1}, {"a": 2}]}, "other": [1, 2], "levels": [{"x": 1}]})
+    assert out["fun"]["byLevel"] == {"1": {"a": 1}, "2": {"a": 2}}
+    assert out["other"] == [1, 2] and out["levels"] == {"1": {"x": 1}}

@@ -13,12 +13,10 @@ STATE_KEYS: tuple[str, ...] = (
     "journeyMeta",
 )
 
-# Paths (dotted, relative to state) whose tables are keyed by level: always JSON objects.
-_LEVEL_KEYED = {
-    "levels", "levelSnapshots", "gearByLevel", "levelActivity", "goldByLevel",
-    "professions.byLevel", "tracking.time.byLevel", "afk.stationary.byLevel",
-    "statistics.byLevel",
-}
+# Tables keyed by level are always JSON objects with string keys "1".."n", even when the Lua
+# parser produced a list: any dict key named "byLevel" (at any depth) plus these top-level keys.
+_LEVEL_KEYED_TOP = {"levels", "levelSnapshots", "gearByLevel", "levelActivity", "goldByLevel"}
+_LEVEL_KEYED_ANY = "byLevel"
 
 
 def _first_t(seg) -> object:
@@ -49,14 +47,15 @@ LIST_SPECS: dict[str, tuple[Callable[[dict], object], str]] = {
 }
 
 
-def _norm(value, path: str = ""):
+def _norm(value, path: str = "", key: str | None = None):
     """Normalize Lua-parsed data: int keys -> str keys; level-keyed lists -> objects."""
     if isinstance(value, list):
-        if path in _LEVEL_KEYED:
+        if key == _LEVEL_KEYED_ANY or path in _LEVEL_KEYED_TOP:
             return {str(i + 1): _norm(v, f"{path}.{i + 1}") for i, v in enumerate(value)}
         return [_norm(v, path + ".[]") for v in value]
     if isinstance(value, dict):
-        return {str(k): _norm(v, f"{path}.{k}" if path else str(k)) for k, v in value.items()}
+        return {str(k): _norm(v, f"{path}.{k}" if path else str(k), str(k))
+                for k, v in value.items()}
     return value
 
 
