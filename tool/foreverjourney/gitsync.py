@@ -1,0 +1,78 @@
+"""Git synchronisation: commit and push data/ and shots/ with offline tolerance."""
+import os
+import subprocess
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+
+TIMEOUT = 120
+
+
+@dataclass
+class SyncResult:
+    committed: bool
+    pushed: bool
+    message: str
+
+
+def _git(repo_dir: Path, *args: str) -> subprocess.CompletedProcess:
+    env = {**os.environ, "GIT_TERMINAL_PROMPT": "0"}
+    return subprocess.run(
+        ["git", *args], cwd=repo_dir, capture_output=True, text=True,
+        timeout=TIMEOUT, env=env,
+    )
+
+
+def _err(p: subprocess.CompletedProcess) -> str:
+    return (p.stderr or p.stdout or "").strip() or f"git exited with {p.returncode}"
+
+
+def commit_and_push(repo_dir: Path, message: str,
+                    paths: list[str] = ["data", "shots"]) -> SyncResult:
+    repo_dir = Path(repo_dir)
+    existing = [p for p in paths if (repo_dir / p).exists()]
+    if existing:
+        add = _git(repo_dir, "add", "--", *existing)
+        if add.returncode != 0:
+            return SyncResult(False, False, f"git add failed: {_err(add)}")
+    if _git(repo_dir, "diff", "--cached", "--quiet").returncode == 0:
+        return SyncResult(False, False, "nothing to commit")
+    commit = _git(repo_dir, "commit", "-m", message)
+    if commit.returncode != 0:
+        return SyncResult(False, False, f"git commit failed: {_err(commit)}")
+    try:
+        push = _git(repo_dir, "push")
+    except subprocess.TimeoutExpired:
+        return SyncResult(True, False, f"git push timed out after {TIMEOUT} s")
+    if push.returncode != 0:
+        return SyncResult(True, False, f"git push failed: {_err(push)}")
+    return SyncResult(True, True, "pushed")
+
+
+def _dir_size(path: Path) -> int:
+    total = 0
+    for root, _, files in os.walk(path):
+        for f in files:
+            try:
+                total += os.path.getsize(os.path.join(root, f))
+            except OSError:
+                pass
+    return total
+
+
+def repo_size_mb(repo_dir: Path) -> float:
+    repo_dir = Path(repo_dir)
+    return (_dir_size(repo_dir / ".git") + _dir_size(repo_dir / "shots")) / (1024 * 1024)
+
+
+def check_credentials(repo_dir: Path) -> str | None:
+    p = _git(Path(repo_dir), "config", "--get-all", "credential.helper")
+    if p.returncode == 0 and p.stdout.strip():
+        return None
+    return ("Kein Git-Credential-Helper konfiguriert. Ohne gespeicherte Zugangsdaten "
+            "schlaegt der Push fehl. Bitte einmalig 'gh auth setup-git' ausfuehren "
+            "(nach 'gh auth login').")
+
+
+def commit_message(display_name: str, now: int) -> str:
+    return f"chronicle: {display_name} {datetime.fromtimestamp(now).strftime('%Y-%m-%d')}"
