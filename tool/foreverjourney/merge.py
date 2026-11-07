@@ -94,6 +94,7 @@ def export_to_record(export: dict, char_cfg: CharConfig | None) -> dict:
     meta = copy.deepcopy(export["meta"])
     meta.pop("profileKey", None)
     meta["clientFlavor"] = _flavor(meta)
+    meta["exportedAt"] = export.get("exportedAt")
     data = export.get("data", {})
     cid = char_id(meta)
 
