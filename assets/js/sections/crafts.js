@@ -20,17 +20,14 @@ export function professionRows(record) {
   });
 }
 
-// state.gathering is optional; accepts { kinds: {kind: n | {count}} } or the map directly.
+// state.gathering.kinds[kind] = { events, quantity, ... }; gathering is optional.
 export function gatheringRows(record) {
-  const g = record.state?.gathering;
-  const kinds = g?.kinds ?? g;
+  const kinds = record.state?.gathering?.kinds;
   if (!kinds || typeof kinds !== 'object') return [];
-  return Object.entries(kinds)
-    .map(([kind, v]) => ({
-      kind, label: Object.hasOwn(GATHER, kind) ? GATHER[kind] : kind,
-      count: typeof v === 'object' ? v?.count : v,
-    }))
-    .filter((r) => Number.isFinite(r.count));
+  return Object.entries(kinds).map(([kind, v]) => ({
+    kind, label: Object.hasOwn(GATHER, kind) ? GATHER[kind] : kind,
+    quantity: v?.quantity ?? v?.count ?? 0, events: v?.events ?? 0,
+  }));
 }
 
 export function buildCraftsPages(record, ctx) {
@@ -46,7 +43,7 @@ export function buildCraftsPages(record, ctx) {
   }
   if (gather.length) {
     blocks.push({ el: el('h3', null, 'Sammeln'), kind: 'sub' });
-    blocks.push(...tableBlocks(['Tätigkeit', 'Anzahl'], gather.map((r) => [r.label, r.count]), 'gather'));
+    blocks.push(...tableBlocks(['Tätigkeit', 'Menge', 'Vorgänge'], gather.map((r) => [r.label, r.quantity, r.events]), 'gather'));
   }
   return spreadsFrom(blocks, 'Handwerk', ctx);
 }
