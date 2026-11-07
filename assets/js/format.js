@@ -35,3 +35,8 @@ export function fmtGold(copper) {
   parts.push(g || s ? `${pad(k)}k` : `${k}k`);
   return parts.join(' ');
 }
+// 'YYYY-MM-DD' (as made by dayKey) -> 'November 2026'
+export function fmtMonthKey(key) {
+  const [y, m] = key.split('-');
+  return `${MONTHS[Number(m) - 1]} ${y}`;
+}

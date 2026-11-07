@@ -1,7 +1,9 @@
 import { el, credits } from './dom.js';
 import { SECTIONS, parseHash, toHash } from './router.js';
-import { DataError } from './data.js';
+import { DataError, playerTime } from './data.js';
 import { renderRegister } from './sections/register.js';
+import { buildSections } from './sections/index.js';
+import { measureInDom } from './paginate.js';
 import { renderChapter, firstPageNumbers, SECTION_TITLES } from './sections/chapter.js';
 
 const sameRoute = (a, b) => a.view === b.view && a.id === b.id && a.section === b.section && a.page === b.page;
@@ -53,7 +55,7 @@ export class Book {
     this.loadIndex = loadIndex;
     this.loadCharacter = loadCharacter;
     this.index = null;
-    // sections: Record<string, Page[]>; filled by buildSections(record, entry) from Task 4 on.
+    // sections: Record<string, Page[]> from buildSections; a Page is { title, left: Node, right: Node }.
     this.current = null;
     this.route = null;
     this.busy = false;
@@ -134,7 +136,7 @@ export class Book {
       const entry = (this.index.characters ?? []).find((c) => c.id === target.id);
       if (entry) {
         const record = await this.loadCharacter(entry);
-        this.current = { id: entry.id, entry, record, sections: {} };
+        this.current = { id: entry.id, entry, record, sections: await this.buildSectionsFor(record, entry) };
       }
     }
     const route = resolveRoute(target, this.index, this.pageCounts());
@@ -145,6 +147,25 @@ export class Book {
     const useKind = kind === 'lid' && window.matchMedia?.(NARROW).matches ? 'fade' : kind;
     await this.transition(useKind, this.embossing(route), draw);
     this.route = route;
+  }
+
+  // Builds all section spreads, measuring in a hidden probe spread that matches the real page size.
+  async buildSectionsFor(record, entry) {
+    await document.fonts?.ready;
+    const probe = el('div', 'spread probe');
+    probe.setAttribute('aria-hidden', 'true');
+    const page = el('div', 'page left');
+    const inner = el('div');
+    page.appendChild(inner);
+    probe.append(page, el('div', 'page right'));
+    this.book.appendChild(probe);
+    try {
+      const cs = getComputedStyle(page);
+      const pageHeight = page.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+      return buildSections(record, entry, { utcOffset: playerTime(record), pageHeight, measure: measureInDom(inner) });
+    } finally {
+      probe.remove();
+    }
   }
 
   entryName() {
@@ -170,7 +191,7 @@ export class Book {
       pn = ['1', '2'];
       document.title = `${this.entryName()} – Chronik der Ewigen`;
     } else {
-      // Section pages come from buildSections (Task 4 ff.): a Page is { left: Node, right: Node }.
+      // Section spreads come from buildSections.
       pages = this.current.sections[route.section][route.page - 1];
       const first = firstPageNumbers(counts)[route.section] + (route.page - 1) * 2;
       pn = [String(first), String(first + 1)];
