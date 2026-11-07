@@ -5,7 +5,7 @@ festhält: ein Heldenregister, je Charakter Kapitel, Tagebuch und Bilder. Die Se
 statisches HTML/CSS/JS ohne Build-Schritt und liest die JSON-Daten und Bilder direkt aus
 diesem Repo. Ein kleines lokales Tool hält die Daten aktuell.
 
-**Seite:** `https://<user>.github.io/ForeverJourney/`
+**Seite:** https://matthias-coder.github.io/ForeverJourney/
 
 ## Aufbau des Repos
 
@@ -16,6 +16,21 @@ diesem Repo. Ein kleines lokales Tool hält die Daten aktuell.
 | `shots/<char>/` | verkleinerte Bilder und Vorschaubilder |
 | `tool/` | Python-Tool für Windows (Tray, Sync, Autostart), siehe [tool/README.md](tool/README.md) |
 | `docs/superpowers/` | Design-Dokument und Pläne |
+
+## Seite lokal ansehen
+
+Vom Repo-Root aus einen statischen Server starten und die Seite im Browser öffnen:
+
+```bash
+python -m http.server 8080
+# danach im Browser: http://localhost:8080/#/
+```
+
+Die Tests der Seite laufen mit Node (ohne Abhängigkeiten):
+
+```bash
+node --test "tests/site/*.test.mjs"
+```
 
 ## Einrichtung des Tools
 
