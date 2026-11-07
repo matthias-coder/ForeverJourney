@@ -15,6 +15,25 @@ export function transitionKind(from, to) {
   return from.id !== to.id ? 'lid' : 'fade';
 }
 
+// Decides how the first / next draw starts. Fresh load (route null): a cover shut by beginLoading
+// must be opened ('open-lid'); otherwise draw straight away. Narrow screens never use the lid.
+export function startKind(from, to, { hasShutLid = false, narrow = false } = {}) {
+  if (!from) return hasShutLid && !narrow ? 'open-lid' : 'none';
+  const kind = transitionKind(from, to);
+  return kind === 'lid' && narrow ? 'fade' : kind;
+}
+
+// Re-paginate only when the page size really changed. Narrow: width only (mobile URL bar
+// changes the height constantly); wide: width or height by more than 1 px.
+export function shouldRepaginate(prev, next, narrow) {
+  if (!prev) return true;
+  if (narrow) return Math.abs(next.width - prev.width) > 0;
+  return Math.abs(next.width - prev.width) > 1 || Math.abs(next.height - prev.height) > 1;
+}
+
+// The URL hash needs rewriting when it differs from the canonical one.
+export const needsCanonicalHash = (route, currentHash) => toHash(route) !== currentHash;
+
 // Unknown id -> register; section without pages -> chapter; page beyond the end -> last page.
 export function resolveRoute(route, index, pageCounts) {
   if (route.view === 'register') return route;
@@ -101,9 +120,15 @@ export class Book {
       if (target) { e.preventDefault(); this.navigate(target); }
     });
     let timer;
+    let size = { width: window.innerWidth, height: window.innerHeight };
     window.addEventListener('resize', () => {
       clearTimeout(timer);
-      timer = setTimeout(() => this.repaginate(), 250);
+      timer = setTimeout(() => {
+        const next = { width: window.innerWidth, height: window.innerHeight };
+        if (!shouldRepaginate(size, next, !!window.matchMedia?.(NARROW).matches)) return;
+        size = next;
+        this.repaginate();
+      }, 250);
     });
     await this.goto(parseHash(location.hash));
   }
@@ -181,12 +206,13 @@ export class Book {
       }
     }
     const route = resolveRoute(target, this.index, this.pageCounts());
-    if (toHash(route) !== toHash(target)) history.replaceState(null, '', toHash(route));
-    const kind = this.route ? transitionKind(this.route, route) : 'none';
+    if (needsCanonicalHash(route, location.hash)) history.replaceState(null, '', toHash(route));
+    const narrow = !!window.matchMedia?.(NARROW).matches;
+    const hasShutLid = !!this.book.querySelector('.lid.shut');
+    const kind = startKind(this.route, route, { hasShutLid, narrow });
     if (kind === 'none' && this.route) return;
     const draw = () => this.draw(route);
-    const useKind = kind === 'lid' && window.matchMedia?.(NARROW).matches ? 'fade' : kind;
-    await this.transition(useKind, this.embossing(route), draw);
+    await this.transition(kind === 'open-lid' ? 'lid' : kind, this.embossing(route), draw);
     this.route = route;
   }
 

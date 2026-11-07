@@ -52,3 +52,27 @@ test('keyTarget: arrows navigate unless lightbox, typing or modifiers', async ()
   assert.equal(keyTarget({ key: 'ArrowLeft' }, { prev: null, next: null }), null);
   assert.equal(keyTarget({ key: 'ArrowLeft' }, null), null);
 });
+import { startKind, shouldRepaginate, needsCanonicalHash } from '../../assets/js/book.js';
+test('startKind opens a shut cover on a fresh load', () => {
+  const to = { view: 'chapter', id: 'a' };
+  assert.equal(startKind(null, to, { hasShutLid: true, narrow: false }), 'open-lid');
+  assert.equal(startKind(null, to, { hasShutLid: true, narrow: true }), 'none');
+  assert.equal(startKind(null, { view: 'register' }, { hasShutLid: false, narrow: false }), 'none');
+  assert.equal(startKind({ view: 'register' }, to, { narrow: false }), 'lid');
+  assert.equal(startKind({ view: 'register' }, to, { narrow: true }), 'fade');
+  assert.equal(startKind(to, to, {}), 'none');
+});
+test('shouldRepaginate ignores mobile height-only changes', () => {
+  const a = { width: 375, height: 700 };
+  assert.equal(shouldRepaginate(a, { width: 375, height: 790 }, true), false);
+  assert.equal(shouldRepaginate(a, { width: 380, height: 700 }, true), true);
+  const w = { width: 1400, height: 900 };
+  assert.equal(shouldRepaginate(w, { width: 1401, height: 901 }, false), false);
+  assert.equal(shouldRepaginate(w, { width: 1400, height: 850 }, false), true);
+  assert.equal(shouldRepaginate(w, { width: 1300, height: 900 }, false), true);
+});
+test('needsCanonicalHash flags bogus sections', () => {
+  const route = { view: 'chapter', id: 'a' };
+  assert.equal(needsCanonicalHash(route, '#/c/a/bogus/2'), true);
+  assert.equal(needsCanonicalHash(route, '#/c/a'), false);
+});
