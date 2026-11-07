@@ -24,6 +24,33 @@ def test_missing_required_rejected(tmp_path):
     with pytest.raises(ConfigError):
         load_config(write(tmp_path, 'wow_dir = "w"\n'))
 
+@pytest.mark.parametrize("opt,value", [("mode", "ironman"), ("status", "dead")])
+def test_invalid_mode_or_status_rejected(tmp_path, opt, value):
+    body = f'wow_dir = "w"\naccount = "A"\nrepo_dir = "r"\n[characters.x]\n{opt} = "{value}"\n'
+    with pytest.raises(ConfigError):
+        load_config(write(tmp_path, body))
+
+def test_unknown_top_level_key_rejected(tmp_path):
+    with pytest.raises(ConfigError, match="max_widht"):
+        load_config(write(tmp_path, 'wow_dir = "w"\naccount = "A"\nrepo_dir = "r"\nmax_widht = 800\n'))
+
+def test_init_only_field_rejected(tmp_path):
+    with pytest.raises(ConfigError, match="account_dir"):
+        load_config(write(tmp_path, 'wow_dir = "w"\naccount = "A"\nrepo_dir = "r"\naccount_dir = "x"\n'))
+
+def test_invalid_toml_wrapped(tmp_path):
+    with pytest.raises(ConfigError):
+        load_config(write(tmp_path, 'wow_dir = "w\n'))
+
+def test_non_string_path_rejected(tmp_path):
+    with pytest.raises(ConfigError):
+        load_config(write(tmp_path, 'wow_dir = 5\naccount = "A"\nrepo_dir = "r"\n'))
+
+def test_example_config_loads():
+    example = Path(__file__).resolve().parent.parent / "config.example.toml"
+    cfg = load_config(example)
+    assert cfg.account == "DEIN_ACCOUNT"
+
 def test_find_export_files(tmp_path):
     cfg = load_config(write(tmp_path, f'wow_dir = "{tmp_path.as_posix()}/wow"\naccount = "ACC"\nrepo_dir = "r"\n'))
     for realm, name in [("Eisenbart", "Thorgrim"), ("Mondschatten", "Lunara")]:

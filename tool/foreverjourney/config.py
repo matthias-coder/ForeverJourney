@@ -1,5 +1,5 @@
 import tomllib
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, fields
 from pathlib import Path
 
 REALM_TYPES = {"PvP", "PvE", "RP-PvP", "RP-PvE"}
@@ -59,16 +59,37 @@ def _char_config(char_id: str, raw: dict) -> CharConfig:
     return cc
 
 
+REQUIRED_OPTIONS = ("wow_dir", "account", "repo_dir")
+
+
 def load_config(path: Path) -> Config:
-    data = tomllib.loads(path.read_text(encoding="utf-8"))
-    for key in ("wow_dir", "account", "repo_dir"):
+    try:
+        data = tomllib.loads(path.read_text(encoding="utf-8"))
+    except tomllib.TOMLDecodeError as e:
+        raise ConfigError(f"invalid TOML in {path}: {e}") from e
+    for key in REQUIRED_OPTIONS:
         if key not in data:
             raise ConfigError(f"missing required option: {key}")
-    kwargs = {k: v for k, v in data.items() if k != "characters"}
+        if not isinstance(data[key], str):
+            raise ConfigError(f"option {key} must be a string")
+    init_fields = {f.name for f in fields(Config) if f.init}
+    kwargs = {}
+    for key, value in data.items():
+        if key == "characters":
+            continue
+        if key not in init_fields:
+            raise ConfigError(f"unknown option: {key}")
+        kwargs[key] = value
     kwargs["wow_dir"] = Path(data["wow_dir"])
     kwargs["repo_dir"] = Path(data["repo_dir"])
-    characters = {cid: _char_config(cid, raw)
-                  for cid, raw in data.get("characters", {}).items()}
+    raw_chars = data.get("characters", {})
+    if not isinstance(raw_chars, dict):
+        raise ConfigError("option characters must be a table")
+    characters = {}
+    for cid, raw in raw_chars.items():
+        if not isinstance(raw, dict):
+            raise ConfigError(f"[characters.{cid}] must be a table")
+        characters[cid] = _char_config(cid, raw)
     return Config(characters=characters, **kwargs)
 
 
