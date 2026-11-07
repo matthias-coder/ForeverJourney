@@ -1,3 +1,4 @@
+import logging
 import re
 import time
 from dataclasses import dataclass, field
@@ -10,6 +11,7 @@ from .config import Config
 _NAME_RE = re.compile(r"^WoWScrnShot_(\d{2})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})\.\w+$")
 _EXTS = {".jpg", ".jpeg", ".tga", ".png"}
 _MARGIN = 60
+_log = logging.getLogger("foreverjourney.shots")
 
 
 @dataclass
@@ -114,8 +116,12 @@ def update_shots(record: dict, cfg: Config, repo_dir: Path, exclude: set[str]) -
     rel = f"shots/{record['id']}"
     added = []
     for c in select_candidates(record, cfg.screenshot_dir, exclude):
-        f, t, w, h = process_image(c.path, repo_dir / rel, c.name,
-                                   cfg.max_width, cfg.thumb_width, cfg.jpeg_quality)
+        try:
+            f, t, w, h = process_image(c.path, repo_dir / rel, c.name,
+                                       cfg.max_width, cfg.thumb_width, cfg.jpeg_quality)
+        except (OSError, ValueError) as e:  # corrupt/truncated file: skip, retry next run
+            _log.warning("skipping unreadable screenshot %s: %s", c.name, e)
+            continue
         entry = {"file": f"{rel}/{f.name}", "thumb": f"{rel}/{t.name}", "width": w, "height": h}
         entry.update(c.meta)
         entry["source"] = c.source
