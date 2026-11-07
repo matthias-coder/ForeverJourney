@@ -39,7 +39,7 @@ def _seg_sort(entry: dict) -> object:
 # with journeyGhost (entries are {"seg": [...], "ghost": bool}).
 LIST_SPECS: dict[str, tuple[Callable[[dict], object], str]] = {
     "events": (lambda e: (e.get("time"), e.get("type")), "time"),
-    "sessions": (lambda e: e.get("startTime", e.get("start")), "startTime"),
+    "sessions": (lambda e: e.get("startTime"), "startTime"),
     "journal": (lambda e: (e.get("time"), e.get("title")), "time"),
     "screenshots": (lambda e: e.get("expectedFileName") or e.get("time"), "time"),
     "dungeons": (lambda e: e.get("entered"), "entered"),

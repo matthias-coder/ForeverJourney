@@ -37,13 +37,22 @@ MyCharForeverExportDB = {
 		},
 		["levels"] = {
 			{
+				["firstSeen"] = 1791792000,
 				["duration"] = 3600,
+				["zone"] = "Dun Morogh",
+				["mapID"] = 1426,
 			}, -- [1]
 			{
+				["firstSeen"] = 1791795600,
 				["duration"] = 3600,
+				["zone"] = "Dun Morogh",
+				["mapID"] = 1426,
 			}, -- [2]
 			{
+				["firstSeen"] = 1791799200,
 				["duration"] = 0,
+				["zone"] = "Dun Morogh",
+				["mapID"] = 1426,
 			}, -- [3]
 		},
 		["levelSnapshots"] = {
@@ -90,8 +99,13 @@ MyCharForeverExportDB = {
 		},
 		["sessions"] = {
 			{
-				["start"] = 1791830400,
-				["end"] = 1791834000,
+				["startTime"] = 1791830400,
+				["endTime"] = 1791834000,
+				["duration"] = 3600,
+				["levelStart"] = 1,
+				["levelEnd"] = 3,
+				["zoneStart"] = "Dun Morogh",
+				["zoneEnd"] = "Dun Morogh",
 			}, -- [1]
 		},
 		["journal"] = {
@@ -124,7 +138,15 @@ MyCharForeverExportDB = {
 		["dungeons"] = {
 		},
 		["goldHistory"] = {
-			["2026-10-12"] = 11208,
+			["2026-10-12"] = {
+				["first"] = 0,
+				["last"] = 11208,
+				["min"] = 0,
+				["max"] = 11208,
+				["level"] = 3,
+				["firstTime"] = 1791830400,
+				["lastTime"] = 1791834000,
+			},
 		},
 		["journey"] = {
 			["format"] = 2,
