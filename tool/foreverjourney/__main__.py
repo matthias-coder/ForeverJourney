@@ -34,26 +34,28 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--config", type=Path, default=TOOL_DIR / "config.toml")
     args = ap.parse_args(argv)
     log = _setup_logging(console=args.command != "tray")
+
+    def fail(msg: str) -> int:
+        log.error(msg)
+        print(msg, file=sys.stderr)
+        if args.command == "tray":  # no console in tray mode: make the error visible
+            windows_toast("ForeverJourney: Konfigurationsfehler", msg)
+        return 2
+
     try:
         cfg = load_config(args.config)
     except FileNotFoundError:
         msg = (f"Konfiguration {args.config} fehlt. Bitte config.example.toml nach config.toml "
                "kopieren und ausfüllen.")
-        log.error(msg)
-        print(msg, file=sys.stderr)
-        return 2
+        return fail(msg)
     except (ConfigError, OSError) as e:
         msg = f"Konfiguration {args.config} ist ungültig: {e}. Siehe config.example.toml."
-        log.error(msg)
-        print(msg, file=sys.stderr)
-        return 2
+        return fail(msg)
     missing = [p for p in (cfg.account_dir, cfg.repo_dir) if not p.exists()]
     if missing:
         msg = ("Pfade existieren nicht: " + ", ".join(str(p) for p in missing)
                + ". Bitte config.toml prüfen (siehe config.example.toml).")
-        log.error(msg)
-        print(msg, file=sys.stderr)
-        return 2
+        return fail(msg)
     notifier = (lambda t, x: None) if args.command == "sync" else windows_toast
     app = App(cfg, notifier=notifier, log=log)
     if args.command == "sync":

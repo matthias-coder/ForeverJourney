@@ -28,6 +28,7 @@ def run_tray(app: App, site_url: str | None) -> None:
 
     def quit_app(icon, item=None):
         app.stop()
+        app.wait_idle()  # let a running sync (git) finish before exiting
         icon.stop()
 
     items = [pystray.MenuItem("Jetzt synchronisieren", sync)]

@@ -45,7 +45,9 @@ def test_process_image_resizes_and_writes_thumb(tmp_path):
     src = tmp_path / "WoWScrnShot_101226_204411.tga"; make_img(src)
     f, t, w, h = process_image(src, tmp_path / "out", src.name, 1600, 320, 80)
     assert f.name == "WoWScrnShot_101226_204411.jpg" and t.name == "t_WoWScrnShot_101226_204411.jpg"
-    assert (w, h) == (1600, 900) and Image.open(t).size[0] == 320
+    assert (w, h) == (1600, 900) 
+    with Image.open(t) as im:
+        assert im.size[0] == 320
     assert f.stat().st_size < 400_000
 
 def test_update_shots_and_exclusions(tmp_path):
