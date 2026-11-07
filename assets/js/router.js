@@ -1,4 +1,4 @@
-export const SECTIONS = ['diary', 'photos', 'deaths', 'levels', 'dungeons', 'gold', 'crafting', 'companions', 'moments', 'route', 'stats'];
+export const SECTIONS = ['diary', 'gallery', 'deaths', 'levels', 'dungeons', 'gold', 'crafts', 'companions', 'iconic', 'journey', 'fun'];
 
 export function parseHash(hash) {
   const parts = String(hash || '').replace(/^#\/?/, '').split('/').filter(Boolean);
