@@ -25,3 +25,21 @@ export function parseItemLink(link, fallbackColor) {
   const hex = /\|cff([0-9a-fA-F]{6})/.exec(s)?.[1];
   return { name, color: hex ? `#${hex.toLowerCase()}` : fallbackColor };
 }
+
+// Rows (arrays of cell values) -> table blocks of `per` rows; every chunk repeats the header.
+export function tableBlocks(headers, rows, kind, per = 10) {
+  const blocks = [];
+  for (let i = 0; i < rows.length; i += per) {
+    const table = el('table', 'tbl');
+    const head = el('tr');
+    for (const h of headers) head.appendChild(el('th', null, h));
+    table.appendChild(head);
+    for (const r of rows.slice(i, i + per)) {
+      const tr = el('tr');
+      for (const c of r) tr.appendChild(el('td', null, String(c)));
+      table.appendChild(tr);
+    }
+    blocks.push({ el: table, kind });
+  }
+  return blocks;
+}

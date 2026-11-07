@@ -4,11 +4,18 @@ import { buildGalleryPages } from './gallery.js';
 import { buildDeathsPages } from './deaths.js';
 import { buildLevelPages } from './levels.js';
 import { buildDungeonPages } from './dungeons.js';
+import { buildGoldPages } from './gold.js';
+import { buildCraftsPages } from './crafts.js';
+import { buildCompanionsPages } from './companions.js';
+import { buildIconicPages } from './iconic.js';
+import { buildFunPages } from './fun.js';
 
 const BUILDERS = {
   diary: buildDiaryPages, gallery: buildGalleryPages, deaths: buildDeathsPages,
   levels: buildLevelPages, dungeons: buildDungeonPages,
-}; // Tasks 7-8 add their sections here
+  gold: buildGoldPages, crafts: buildCraftsPages, companions: buildCompanionsPages,
+  iconic: buildIconicPages, fun: buildFunPages,
+}; // Task 8 adds journey
 
 const TITLES = {
   diary: 'Tagebuch', gallery: 'Fotogalerie', deaths: 'Tode', levels: 'Levelaufstiege', dungeons: 'Verliese',
