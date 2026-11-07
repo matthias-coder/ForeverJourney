@@ -47,3 +47,37 @@ def test_check_credentials_hint_and_none(tmp_path, monkeypatch):
     assert hint and "gh auth setup-git" in hint
     git(work, "config", "credential.helper", "store")
     assert check_credentials(work) is None
+
+def test_commit_excludes_foreign_staged_file(tmp_path):
+    work, _ = make_repos(tmp_path)
+    (work / "data").mkdir(); (work / "data" / "index.json").write_text("{}")
+    (work / "foreign.txt").write_text("f"); git(work, "add", "foreign.txt")
+    r = commit_and_push(work, "chronicle: x")
+    assert r.committed and r.pushed
+    assert "foreign.txt" not in git(work, "show", "--name-only", "--format=", "HEAD")
+    assert "foreign.txt" in git(work, "diff", "--cached", "--name-only")
+
+def test_foreign_staged_file_alone_is_nothing_to_commit(tmp_path):
+    work, _ = make_repos(tmp_path)
+    (work / "foreign.txt").write_text("f"); git(work, "add", "foreign.txt")
+    assert commit_and_push(work, "chronicle: x").committed is False
+
+def test_current_branch(tmp_path):
+    from foreverjourney.gitsync import current_branch
+    work, _ = make_repos(tmp_path)
+    assert current_branch(work) == "main"
+    git(work, "checkout", "-q", "-b", "other")
+    assert current_branch(work) == "other"
+    assert current_branch(tmp_path / "nonexistent-dir") is None
+
+def test_commit_without_identity_reports_failure(tmp_path, monkeypatch):
+    work, _ = make_repos(tmp_path)
+    git(work, "config", "--unset", "user.email"); git(work, "config", "--unset", "user.name")
+    empty = tmp_path / "empty.gitconfig"; empty.write_text("")
+    monkeypatch.setenv("GIT_CONFIG_GLOBAL", str(empty)); monkeypatch.setenv("GIT_CONFIG_SYSTEM", str(empty))
+    for var in ("GIT_AUTHOR_NAME", "GIT_AUTHOR_EMAIL", "GIT_COMMITTER_NAME", "GIT_COMMITTER_EMAIL", "EMAIL"):
+        monkeypatch.delenv(var, raising=False)
+    git(work, "config", "user.useConfigOnly", "true")
+    (work / "data").mkdir(); (work / "data" / "index.json").write_text("{}")
+    r = commit_and_push(work, "chronicle: x")
+    assert r.committed is False and r.pushed is False and r.message

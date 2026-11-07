@@ -36,9 +36,12 @@ def commit_and_push(repo_dir: Path, message: str,
         add = _git(repo_dir, "add", "--", *existing)
         if add.returncode != 0:
             return SyncResult(False, False, f"git add failed: {_err(add)}")
-    if _git(repo_dir, "diff", "--cached", "--quiet").returncode == 0:
+    # Only our own paths with staged changes; foreign staged files stay out of the commit.
+    staged = [p for p in existing
+              if _git(repo_dir, "diff", "--cached", "--quiet", "--", p).returncode != 0]
+    if not staged:
         return SyncResult(False, False, NOTHING_TO_COMMIT)
-    commit = _git(repo_dir, "commit", "-m", message)
+    commit = _git(repo_dir, "commit", "-m", message, "--", *staged)
     if commit.returncode != 0:
         return SyncResult(False, False, f"git commit failed: {_err(commit)}")
     try:
@@ -48,6 +51,16 @@ def commit_and_push(repo_dir: Path, message: str,
     if push.returncode != 0:
         return SyncResult(True, False, f"git push failed: {_err(push)}")
     return SyncResult(True, True, "pushed")
+
+
+def current_branch(repo_dir: Path) -> str | None:
+    """Name of the checked-out branch, or None (detached HEAD, no repo, git error)."""
+    try:
+        p = _git(Path(repo_dir), "symbolic-ref", "--short", "-q", "HEAD")
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    name = p.stdout.strip()
+    return name if p.returncode == 0 and name else None
 
 
 def push_pending(repo_dir: Path) -> SyncResult:
@@ -90,6 +103,20 @@ def check_credentials(repo_dir: Path) -> str | None:
     return ("Kein Git-Credential-Helper konfiguriert. Ohne gespeicherte Zugangsdaten "
             "schlaegt der Push fehl. Bitte einmalig 'gh auth setup-git' ausfuehren "
             "(nach 'gh auth login').")
+
+
+def is_diverged(message: str) -> bool:
+    low = message.lower()
+    return "rejected" in low or "non-fast-forward" in low
+
+
+DIVERGED_HINT = ("Das Remote-Repository ist weiter als dein lokales (divergiert). "
+                 "Bitte im Repo 'git pull --rebase' ausfuehren, danach klappt der Push wieder.")
+
+
+def no_upstream_hint(branch: str | None) -> str:
+    return ("Kein Upstream-Branch konfiguriert, Push nicht moeglich. "
+            f"Bitte einmalig 'git push -u origin {branch or 'main'}' ausfuehren.")
 
 
 def commit_message(display_name: str, now: int) -> str:
