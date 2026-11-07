@@ -91,7 +91,7 @@
       { "expectedFileName": "WoWScrnShot_101226_204411.jpg", "fileNameSource": "saved", "reason": "LEVEL_UP", "level": 2, "mapID": 1426, "zone": "Dun Morogh", "subZone": "Kharanos", "time": 1791830651, "savedAt": 1791830651, "x": 0.42, "y": 0.61 },
       { "expectedFileName": "WoWScrnShot_101226_210000.jpg", "fileNameSource": "saved", "reason": "PORTRAIT", "level": 3, "mapID": 1426, "zone": "Dun Morogh", "subZone": "Kharanos", "time": 1791831600, "savedAt": 1791831600, "x": 0.42, "y": 0.61, "portrait": { "zoom": 1.6, "x": 50, "y": 30 } }
     ],
-    "dungeons": [],
+    "dungeons": [{"dungeon":"Die Todesminen","entered":1791832000,"left":1791837640,"duration":5640,"deaths":0,"bosses":["Edwin VanCleef"],"completed":true,"loot":[{"itemLink":"[Kurzschwert des Kapitäns]","quality":2,"quantity":1}]}],
     "worldDrops": [],
     "journeySegments": [
       [[1791830400, 1426, 0.42, 0.61, 1], [1791831200, 1426, 0.43, 0.62, 3]]

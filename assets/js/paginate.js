@@ -22,7 +22,7 @@ export function measureInDom(container) {
   return (block) => {
     if (block.height != null) return block.height;
     const probe = document.createElement('div');
-    probe.style.cssText = 'visibility:hidden;position:absolute;left:0;right:0;top:0;';
+    probe.style.visibility = 'hidden'; // normal flow: same width as the page content box
     probe.appendChild(block.el);
     container.appendChild(probe);
     const cs = getComputedStyle(block.el);

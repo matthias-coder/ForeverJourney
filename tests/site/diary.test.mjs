@@ -17,6 +17,12 @@ test('sentences', () => {
   assert.equal(sentence({ type: 'DUNGEON', dungeon: 'Die Todesminen', duration: 5640, deaths: 0, completed: true }, rec), 'Die Todesminen abgeschlossen (1h 34m, 0 Tode).');
   assert.equal(sentence({ type: 'ZONE_FIRST', zone: 'Loch Modan' }, rec), 'Zum ersten Mal in Loch Modan.');
 });
+test('dungeon run from the addon schema lands on its day', () => {
+  const day = buildDays(rec).find((d) => d.key === '2026-10-12');
+  const dng = day.items.find((i) => i.kind === 'dungeon');
+  assert.equal(dng.text, 'Die Todesminen abgeschlossen (1h 34m, 0 Tode).');
+  assert.equal(dng.time, 1791832000);
+});
 test('further sentences', () => {
   assert.equal(sentence({ type: 'DEATH', data: { cause: 'drowned' } }, rec), 'Gestorben: ertrunken.');
   assert.equal(sentence({ type: 'DEATH', killerName: 'Muskelprotz' }, rec), 'Von Muskelprotz getötet.');

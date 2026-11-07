@@ -58,9 +58,9 @@ function rawItems(record) {
   }
   for (const d of lists.dungeons ?? []) {
     raw.push({
-      type: 'DUNGEON', time: d.startTime ?? d.time, level: d.level, zone: d.zone,
-      dungeon: d.name ?? d.dungeon ?? d.instanceName ?? 'Verlies',
-      duration: d.duration ?? ((d.endTime ?? 0) - (d.startTime ?? 0)),
+      type: 'DUNGEON', time: d.entered ?? d.startTime ?? d.time, level: d.level, zone: d.zone,
+      dungeon: d.dungeon ?? d.name ?? 'Verlies',
+      duration: d.duration ?? ((d.left ?? 0) - (d.entered ?? 0)),
       deaths: d.deaths ?? 0, completed: !!d.completed,
     });
   }

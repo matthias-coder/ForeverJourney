@@ -71,6 +71,11 @@ export class Book {
       return;
     }
     window.addEventListener('hashchange', () => this.goto(parseHash(location.hash)));
+    let timer;
+    window.addEventListener('resize', () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => this.repaginate(), 250);
+    });
     await this.goto(parseHash(location.hash));
   }
 
@@ -166,6 +171,27 @@ export class Book {
     } finally {
       probe.remove();
     }
+  }
+
+  // Rebuilds the section spreads for the new page size and redraws the current route without transition.
+  async repaginate() {
+    if (this.busy) { this.again = true; return; }
+    if (!this.current || !this.route || this.route.view === 'register') return;
+    this.busy = true;
+    try {
+      const { record, entry } = this.current;
+      this.current.sections = await this.buildSectionsFor(record, entry);
+      const route = resolveRoute(this.route, this.index, this.pageCounts());
+      if (toHash(route) !== toHash(this.route)) history.replaceState(null, '', toHash(route));
+      this.draw(route);
+      this.route = route;
+    } catch (e) {
+      recoverState(this);
+      this.showError(e);
+    } finally {
+      this.busy = false;
+    }
+    if (this.again) { this.again = false; await this.repaginate(); }
   }
 
   entryName() {
