@@ -30,6 +30,11 @@ def test_summarize_fields_and_portrait():
     r["config"]["armoryUrl"] = "https://example/armory/x"
     assert summarize(r, True, NOW)["portrait"]["kind"] == "armory"
 
+def test_display_name_prefers_meta_label():
+    r = rec()
+    r["meta"]["displayName"] = "Orkalla Ewigborn"
+    assert summarize(r, True, NOW)["displayName"] == "Orkalla Ewigborn"
+
 def test_build_index_order():
     a = rec(); b = rec(status="retired"); c = rec()
     c["lists"]["sessions"][0]["endTime"] = 1793908800; c["meta"]["exportedAt"] = 1793908800  # older than a

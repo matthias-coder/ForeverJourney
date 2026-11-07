@@ -55,7 +55,7 @@ def summarize(record: dict, export_present: bool, now: int) -> dict:
         "file": f"data/{record['id']}.json",
         "name": meta["name"],
         "surname": meta["realm"],
-        "displayName": f"{meta['name']} {meta['realm']}",
+        "displayName": meta.get("displayName") or f"{meta['name']} {meta['realm']}",
         "class": meta["class"],
         "race": meta["race"],
         "faction": meta["faction"],
