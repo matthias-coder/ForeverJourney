@@ -9,16 +9,18 @@
  "goldHistory": {
   "2026-11-07": {
    "categories": {
+    "merchantSell": 327,
+    "other": 200,
     "quest": 65
    },
-   "categorizedNet": 65,
+   "categorizedNet": 592,
    "date": "2026-11-07",
    "first": 475,
    "firstTime": 1794062823,
-   "last": 540,
-   "lastTime": 1794077507,
+   "last": 1067,
+   "lastTime": 1794078646,
    "level": 8,
-   "max": 540,
+   "max": 1067,
    "min": 475,
    "minLevel": 8
   }
@@ -377,6 +379,142 @@
     "time": 1794077713,
     "type": "LOGOUT",
     "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {},
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "",
+    "time": 1794077722,
+    "type": "LOGIN",
+    "x": 0.4678733348846436,
+    "y": 0.4530494809150696,
+    "zone": ""
+   },
+   {
+    "data": {},
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Shen'dar",
+    "time": 1794077724,
+    "type": "ZONE_CHANGED",
+    "x": 0.4678733348846436,
+    "y": 0.4530494809150696,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "level": 8,
+     "reason": "DEATH",
+     "screenshotIndex": 8
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Shen'darhochland",
+    "time": 1794078108,
+    "type": "SCREENSHOT",
+    "x": 0.5575296878814697,
+    "y": 0.6259099245071411,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "deathNumber": 2
+    },
+    "killerGUID": "Creature-0-7099-2991-2-254626-C21AD0E2A6",
+    "killerName": "Auftragsmörder der Al'Aketh",
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Shen'darhochland",
+    "time": 1794078108,
+    "type": "DEATH",
+    "x": 0.5575296878814697,
+    "y": 0.6259099245071411,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "money": 200,
+     "questID": 93317,
+     "title": "Krabbensaison",
+     "xp": 600
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Valanaar",
+    "time": 1794078399,
+    "type": "QUEST_TURNED_IN",
+    "x": 0.6064056754112244,
+    "y": 0.7274595499038696,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "level": 8,
+     "reason": "DEATH",
+     "screenshotIndex": 9
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Schattenwindwald",
+    "time": 1794079073,
+    "type": "SCREENSHOT",
+    "x": 0.6099151372909546,
+    "y": 0.3898841738700867,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "deathNumber": 3
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Schattenwindwald",
+    "time": 1794079073,
+    "type": "DEATH",
+    "x": 0.6099151372909546,
+    "y": 0.3898841738700867,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "money": 0,
+     "questID": 94484,
+     "title": "Unangenehme Stille",
+     "xp": 220
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Schattenwindwald",
+    "time": 1794079185,
+    "type": "QUEST_TURNED_IN",
+    "x": 0.6172330379486084,
+    "y": 0.3921931385993958,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {
+     "useNumber": 2
+    },
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Schattenwindwald",
+    "time": 1794079211,
+    "type": "HEARTHSTONE",
+    "x": 0.6172330379486084,
+    "y": 0.3921931385993958,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "data": {},
+    "level": 8,
+    "mapID": 2521,
+    "subZone": "Shen'dar",
+    "time": 1794079255,
+    "type": "LOGOUT",
+    "x": 0.4305119514465332,
+    "y": 0.4324839115142822,
+    "zone": "Die Insel Zephras"
    }
   ],
   "journal": [
@@ -417,6 +555,10 @@
    false,
    false,
    false,
+   false,
+   true,
+   false,
+   true,
    false
   ],
   "journeySegments": [
@@ -551,10 +693,235 @@
      8
     ],
     [
-     1794077508,
+     1794078108,
      2521,
-     0.4679,
-     0.453,
+     0.5575,
+     0.6259,
+     8
+    ]
+   ],
+   [
+    [
+     1794078117,
+     2521,
+     0.5508,
+     0.684,
+     8
+    ],
+    [
+     1794078137,
+     2521,
+     0.5702,
+     0.6572,
+     8
+    ],
+    [
+     1794078157,
+     2521,
+     0.5776,
+     0.6149,
+     8
+    ],
+    [
+     1794078172,
+     2521,
+     0.5641,
+     0.6226,
+     8
+    ]
+   ],
+   [
+    [
+     1794078172,
+     2521,
+     0.5641,
+     0.6226,
+     8
+    ],
+    [
+     1794078188,
+     2521,
+     0.568,
+     0.6117,
+     8
+    ],
+    [
+     1794078208,
+     2521,
+     0.5806,
+     0.6319,
+     8
+    ],
+    [
+     1794078346,
+     2521,
+     0.5796,
+     0.6963,
+     8
+    ],
+    [
+     1794078376,
+     2521,
+     0.5908,
+     0.7292,
+     8
+    ],
+    [
+     1794078701,
+     2521,
+     0.6178,
+     0.7427,
+     8
+    ],
+    [
+     1794078736,
+     2521,
+     0.6158,
+     0.7001,
+     8
+    ],
+    [
+     1794078751,
+     2521,
+     0.5966,
+     0.6749,
+     8
+    ],
+    [
+     1794078771,
+     2521,
+     0.5884,
+     0.627,
+     8
+    ],
+    [
+     1794078826,
+     2521,
+     0.5887,
+     0.5092,
+     8
+    ],
+    [
+     1794078836,
+     2521,
+     0.6058,
+     0.505,
+     8
+    ],
+    [
+     1794078851,
+     2521,
+     0.5897,
+     0.4912,
+     8
+    ],
+    [
+     1794078912,
+     2521,
+     0.582,
+     0.3546,
+     8
+    ],
+    [
+     1794078927,
+     2521,
+     0.569,
+     0.3239,
+     8
+    ],
+    [
+     1794078957,
+     2521,
+     0.5842,
+     0.261,
+     8
+    ],
+    [
+     1794079007,
+     2521,
+     0.5696,
+     0.3222,
+     8
+    ],
+    [
+     1794079027,
+     2521,
+     0.5872,
+     0.346,
+     8
+    ],
+    [
+     1794079052,
+     2521,
+     0.5922,
+     0.3768,
+     8
+    ],
+    [
+     1794079073,
+     2521,
+     0.6099,
+     0.3899,
+     8
+    ]
+   ],
+   [
+    [
+     1794079077,
+     2521,
+     0.5538,
+     0.4508,
+     8
+    ],
+    [
+     1794079092,
+     2521,
+     0.5739,
+     0.4532,
+     8
+    ],
+    [
+     1794079117,
+     2521,
+     0.553,
+     0.4514,
+     8
+    ],
+    [
+     1794079137,
+     2521,
+     0.5537,
+     0.4131,
+     8
+    ],
+    [
+     1794079172,
+     2521,
+     0.606,
+     0.394,
+     8
+    ]
+   ],
+   [
+    [
+     1794079172,
+     2521,
+     0.606,
+     0.394,
+     8
+    ],
+    [
+     1794079182,
+     2521,
+     0.6172,
+     0.3922,
+     8
+    ],
+    [
+     1794079212,
+     2521,
+     0.4305,
+     0.4325,
      8
     ]
    ]
@@ -661,6 +1028,32 @@
     "x": 0.550756573677063,
     "y": 0.683986485004425,
     "zone": "Die Insel Zephras"
+   },
+   {
+    "expectedFileName": "WoWScrnShot_110726_200148.jpg",
+    "fileNameSource": "saved",
+    "level": 8,
+    "mapID": 2521,
+    "reason": "DEATH",
+    "savedAt": 1794078108,
+    "subZone": "Shen'darhochland",
+    "time": 1794078108,
+    "x": 0.5575296878814697,
+    "y": 0.6259099245071411,
+    "zone": "Die Insel Zephras"
+   },
+   {
+    "expectedFileName": "WoWScrnShot_110726_201753.jpg",
+    "fileNameSource": "saved",
+    "level": 8,
+    "mapID": 2521,
+    "reason": "DEATH",
+    "savedAt": 1794079073,
+    "subZone": "Schattenwindwald",
+    "time": 1794079073,
+    "x": 0.6099151372909546,
+    "y": 0.3898841738700867,
+    "zone": "Die Insel Zephras"
    }
   ],
   "sessions": [
@@ -726,6 +1119,15 @@
     "startTime": 1794077507,
     "zoneEnd": "Die Insel Zephras",
     "zoneStart": ""
+   },
+   {
+    "duration": 1532,
+    "endTime": 1794079255,
+    "levelEnd": 8,
+    "levelStart": 8,
+    "startTime": 1794077722,
+    "zoneEnd": "Die Insel Zephras",
+    "zoneStart": ""
    }
   ],
   "worldDrops": []
@@ -748,7 +1150,7 @@
   "clientFlavor": "forever",
   "dbVersion": 9,
   "displayName": "Eliza Coppersmith",
-  "exportedAt": 1794077713,
+  "exportedAt": 1794079255,
   "faction": "Alliance",
   "gameBuild": 16001,
   "name": "Eliza",
@@ -848,6 +1250,32 @@
    "time": 1794068995,
    "width": 1600,
    "zone": "Die Insel Zephras"
+  },
+  "WoWScrnShot_110726_200148.jpg": {
+   "file": "shots/eliza-coppersmith/WoWScrnShot_110726_200148.jpg",
+   "height": 1000,
+   "level": 8,
+   "mapID": 2521,
+   "reason": "DEATH",
+   "source": "export",
+   "subZone": "Shen'darhochland",
+   "thumb": "shots/eliza-coppersmith/t_WoWScrnShot_110726_200148.jpg",
+   "time": 1794078108,
+   "width": 1600,
+   "zone": "Die Insel Zephras"
+  },
+  "WoWScrnShot_110726_201753.jpg": {
+   "file": "shots/eliza-coppersmith/WoWScrnShot_110726_201753.jpg",
+   "height": 1000,
+   "level": 8,
+   "mapID": 2521,
+   "reason": "DEATH",
+   "source": "export",
+   "subZone": "Schattenwindwald",
+   "thumb": "shots/eliza-coppersmith/t_WoWScrnShot_110726_201753.jpg",
+   "time": 1794079073,
+   "width": 1600,
+   "zone": "Die Insel Zephras"
   }
  },
  "state": {
@@ -857,7 +1285,7 @@
    },
    "stationary": {
     "byLevel": {
-     "8": 7474.326000000059
+     "8": 8084.444000000134
     },
     "longest": {
      "level": 8,
@@ -865,7 +1293,7 @@
      "time": 1794068677
     },
     "since": 1794062823,
-    "total": 7474.326000000059
+    "total": 8084.444000000134
    },
    "total": 3956.002000000037,
    "trackingSince": 1794062823
@@ -886,7 +1314,7 @@
    "created": 1794062823,
    "firstSeenLevel": 8,
    "guid": "Player-6939-00CD5CC2",
-   "lastSeen": 1794077713,
+   "lastSeen": 1794079255,
    "name": "Eliza",
    "popupAsked": {
     "achievement": true
@@ -895,12 +1323,27 @@
    "raceFile": "Skyborne",
    "raceID": 95,
    "realm": "Coppersmith",
-   "sex": 3
+   "sex": 3,
+   "welcomeShown": true,
+   "whatsNewSeen": "1.1.4"
   },
   "combat": {
    "critterIDs": {},
    "critterRun": 0,
    "deathsByMob": {
+    "npc:254626": {
+     "count": 1,
+     "guid": "Creature-0-7099-2991-2-254626-C21AD0E2A6",
+     "name": "Auftragsmörder der Al'Aketh",
+     "npcID": 254626
+    },
+    "npc:256092": {
+     "count": 1,
+     "guess": 1,
+     "guid": "Creature-0-7099-2991-2-256092-747589F7D2",
+     "name": "Schattenwindkreischling",
+     "npcID": 256092
+    },
     "npc:270201": {
      "count": 1,
      "guid": "Creature-0-7099-2991-2-270201-FC47BC8318",
@@ -911,26 +1354,21 @@
    "kills": {
     "mobs": {
      "npc:254588": {
-      "count": 5,
+      "count": 8,
       "guid": "Creature-0-0-0-0-254588-0000000000",
       "name": "Windweisenkriecher",
       "npcID": 254588
      }
     },
-    "total": 5
-   },
-   "streak": {
-    "count": 5,
-    "key": "npc:254588",
-    "name": "Windweisenkriecher"
+    "total": 8
    },
    "streakBest": {
-    "count": 5,
+    "count": 8,
     "critter": 0,
     "level": 8,
     "name": "Windweisenkriecher",
     "revenge": 0,
-    "time": 1794069897
+    "time": 1794077913
    }
   },
   "companions": {
@@ -945,35 +1383,37 @@
    }
   },
   "fun": {
-   "activeSec": 7795.093000000053,
-   "aliveActSec": 1101.617999999988,
-   "aliveSec": 1717.576000000001,
+   "activeSec": 9257.150000000081,
+   "aliveActSec": 80.07600000000093,
+   "aliveSec": 80.07600000000093,
    "bestAlive": 6062.494000000064,
-   "bestAliveAct": 1101.617999999988,
+   "bestAliveAct": 1462.157999999996,
    "byLevel": {
     "8": {
-     "activeSec": 7795.093000000053,
+     "activeSec": 9257.150000000081,
      "chat": {
       "AFK": 4
      },
      "chatTotal": 4,
-     "combatSec": 165.1880000000238,
+     "combatSec": 335.4560000000348,
      "craftSec": 35.36100000003353,
-     "ghostSec": 10.0109999999986,
+     "ghostSec": 165.189000000013,
      "greyLoot": {
+      "2213": 1,
       "2646": 1,
       "2774": 1,
-      "4873": 2,
-      "4874": 3
+      "4873": 4,
+      "4874": 4
      },
-     "jumps": 8,
+     "jumps": 18,
      "lootQ": {
-      "0": 7,
-      "1": 7
+      "0": 11,
+      "1": 11
      },
-     "mapOpened": 20,
+     "mapOpened": 79,
      "questDiff": {
-      "yellow": 2
+      "orange": 1,
+      "yellow": 3
      }
     }
    },
@@ -981,7 +1421,7 @@
     "AFK": 4
    },
    "chatTotal": 4,
-   "combatSec": 165.1880000000238,
+   "combatSec": 335.4560000000348,
    "craftSec": 35.36100000003353,
    "deathDungeon": {},
    "destroyed": {},
@@ -990,23 +1430,25 @@
    "emotes": {},
    "fall": {
     "bestHeight": 588.4580490430354,
-    "count": 2
+    "count": 5
    },
    "flasks": {},
    "follow": {},
    "followCount": {},
-   "ghostSec": 10.0109999999986,
+   "ghostSec": 165.189000000013,
    "greyLoot": {
+    "2213": 1,
     "2646": 1,
     "2774": 1,
-    "4873": 2,
-    "4874": 3
+    "4873": 4,
+    "4874": 4
    },
    "hourSec": {
     "15": 681.457000000024,
     "16": 3590.445000000036,
     "17": 3322.84599999999,
-    "19": 200.3450000000012
+    "19": 470.7580000000016,
+    "20": 1191.644000000029
    },
    "items": {
     "1251": {
@@ -1033,9 +1475,6 @@
     "255663": {
      "t": 1794062827
     },
-    "257941": {
-     "t": 1794069375
-    },
     "263428": {
      "t": 1794062827
     },
@@ -1048,8 +1487,11 @@
     "263511": {
      "t": 1794069079
     },
-    "2646": {
-     "t": 1794069902
+    "263512": {
+     "t": 1794078402
+    },
+    "263513": {
+     "t": 1794078402
     },
     "264908": {
      "t": 1794062827
@@ -1060,20 +1502,11 @@
     "2675": {
      "t": 1794069375
     },
-    "2774": {
-     "t": 1794069375
-    },
     "279978": {
      "t": 1794062827
     },
     "2934": {
      "t": 1794062827
-    },
-    "4873": {
-     "t": 1794069375
-    },
-    "4874": {
-     "t": 1794069418
     },
     "5469": {
      "t": 1794062827
@@ -1088,17 +1521,18 @@
      "t": 1794062827
     }
    },
-   "jumps": 8,
+   "jumps": 18,
    "lootQ": {
-    "0": 7,
-    "1": 7
+    "0": 11,
+    "1": 11
    },
-   "mapOpened": 20,
+   "mapOpened": 79,
    "mates": {},
    "potions": {},
    "quality": {},
    "questDiff": {
-    "yellow": 2
+    "orange": 1,
+    "yellow": 3
    },
    "rolls": {
     "hundreds": 0,
@@ -1117,21 +1551,71 @@
     "cloak": false,
     "helm": false,
     "level": 8,
-    "slots": {},
+    "slots": {
+     "1": null,
+     "15": {
+      "l": "|cnIQ1:|Hitem:7276::::::::8:1484::::::::Player-6939-00CD5CC2:|h[Handgenähter Lederumhang]|h|r",
+      "s": 158805,
+      "v": 63521
+     },
+     "16": {
+      "l": "|cnIQ1:|Hitem:257282::::::::8:1484::11:::::::|h[Stecken des Novizen]|h|r",
+      "s": 301119,
+      "v": 63388
+     },
+     "2": null,
+     "3": null,
+     "4": {
+      "l": "|cnIQ1:|Hitem:271668::::::::8:1484::75:::::::|h[Hemd des Überlebenskünstlers von Thendal]|h|r"
+     },
+     "5": {
+      "l": "|cnIQ2:|Hitem:5957::::::::8:1484::::::::Player-6939-00CD5CC2:|h[Handgenähte Lederweste]|h|r",
+      "s": 158279,
+      "v": 64841
+     },
+     "6": {
+      "l": "|cnIQ0:|Hitem:1369::::::::8:1484:::::::::|h[Struppiger Ledergürtel]|h|r",
+      "s": 156272,
+      "v": 63450
+     },
+     "7": {
+      "l": "|cnIQ0:|Hitem:271666::::::::8:1484::75:::::::|h[Hose des Überlebenskünstlers von Thendal]|h|r",
+      "s": 307621,
+      "v": 130047
+     },
+     "8": {
+      "l": "|cnIQ1:|Hitem:2302::::::::8:1484::::::::Player-6939-00CD5CC2:|h[Handgenähte Lederstiefel]|h|r",
+      "s": 156759,
+      "v": 63320
+     },
+     "9": {
+      "l": "|cnIQ1:|Hitem:7277::::::::8:1484::::::::Player-6939-00CD5CC2:|h[Handgenähte Armschienen]|h|r",
+      "s": 158806,
+      "v": 65467
+     }
+    },
     "src": "live",
-    "t": 1794077713
+    "t": 1794079255
    }
   },
   "goldByLevel": {
    "8": {
-    "earned": 65,
+    "earned": 592,
     "maxEarn": {
-     "amount": 65,
-     "category": "quest",
-     "time": 1794069076
+     "amount": 327,
+     "category": "merchantSell",
+     "time": 1794078646
     },
     "spent": 0,
     "src": {
+     "merchantSell": {
+      "e": 327,
+      "s": 0
+     },
+     "other": {
+      "e": 200,
+      "s": 0
+     },
      "quest": {
       "e": 65,
       "s": 0
@@ -1139,9 +1623,12 @@
     }
    }
   },
+  "iconic": {
+   "moments": {}
+  },
   "journeyMeta": {
    "epsilon": 0.007,
-   "exportedPoints": 19,
+   "exportedPoints": 50,
    "fields": [
     "timestamp",
     "mapID",
@@ -1150,7 +1637,7 @@
     "level"
    ],
    "format": 2,
-   "originalPoints": 49,
+   "originalPoints": 194,
    "simplified": true
   },
   "levelActivity": {
@@ -1178,9 +1665,66 @@
       "x": 0.6821094751358032,
       "y": 0.6638897061347961,
       "zone": "Die Insel Zephras"
+     },
+     {
+      "ctx": {
+       "activity": "cast",
+       "activityDetail": "Zorn",
+       "broken": 0,
+       "buffs": 0,
+       "durability": 55,
+       "ghost": true,
+       "group": "solo",
+       "myLevel": 8,
+       "playedSec": 17333,
+       "runSec": 65,
+       "sessionSec": 385
+      },
+      "killerGUID": "Creature-0-7099-2991-2-254626-C21AD0E2A6",
+      "killerName": "Auftragsmörder der Al'Aketh",
+      "mapID": 2521,
+      "subZone": "Shen'darhochland",
+      "time": 1794078108,
+      "x": 0.5575296878814697,
+      "y": 0.6259099245071411,
+      "zone": "Die Insel Zephras"
+     },
+     {
+      "ctx": {
+       "activity": "cast",
+       "activityDetail": "Zorn",
+       "broken": 0,
+       "buffs": 0,
+       "durability": 47,
+       "ghost": true,
+       "group": "solo",
+       "myLevel": 8,
+       "playedSec": 18298,
+       "runSec": 102,
+       "sessionSec": 1351
+      },
+      "mapID": 2521,
+      "subZone": "Schattenwindwald",
+      "time": 1794079073,
+      "x": 0.6099151372909546,
+      "y": 0.3898841738700867,
+      "zone": "Die Insel Zephras"
      }
     ],
     "deathsByMob": {
+     "npc:254626": {
+      "count": 1,
+      "guid": "Creature-0-7099-2991-2-254626-C21AD0E2A6",
+      "name": "Auftragsmörder der Al'Aketh",
+      "npcID": 254626
+     },
+     "npc:256092": {
+      "count": 1,
+      "guess": 1,
+      "guid": "Creature-0-7099-2991-2-256092-747589F7D2",
+      "name": "Schattenwindkreischling",
+      "npcID": 256092
+     },
      "npc:270201": {
       "count": 1,
       "guid": "Creature-0-7099-2991-2-270201-FC47BC8318",
@@ -1192,13 +1736,13 @@
     "journal": {},
     "mobKillTypes": {
      "npc:254588": {
-      "count": 5,
+      "count": 8,
       "guid": "Creature-0-0-0-0-254588-0000000000",
       "name": "Windweisenkriecher",
       "npcID": 254588
      }
     },
-    "mobKills": 5,
+    "mobKills": 8,
     "quests": [
      {
       "money": 65,
@@ -1216,6 +1760,24 @@
       "time": 1794069097,
       "title": "Grundlagen des Zeltens: Erste Hilfe",
       "xp": 270,
+      "zone": "Die Insel Zephras"
+     },
+     {
+      "money": 200,
+      "questID": 93317,
+      "subZone": "Valanaar",
+      "time": 1794078399,
+      "title": "Krabbensaison",
+      "xp": 600,
+      "zone": "Die Insel Zephras"
+     },
+     {
+      "money": 0,
+      "questID": 94484,
+      "subZone": "Schattenwindwald",
+      "time": 1794079185,
+      "title": "Unangenehme Stille",
+      "xp": 220,
       "zone": "Die Insel Zephras"
      }
     ],
@@ -1249,10 +1811,14 @@
      {
       "sessionIndex": 7,
       "time": 1794077507
+     },
+     {
+      "sessionIndex": 8,
+      "time": 1794077722
      }
     ],
     "zoneSeconds": {
-     "Die Insel Zephras": 7825
+     "Die Insel Zephras": 9300
     },
     "zones": {
      "Die Insel Zephras": {
@@ -1267,13 +1833,13 @@
   "levelSnapshots": {},
   "levels": {
    "8": {
-    "blizzardLevelTime": 8458,
-    "duration": 7846.543999999965,
+    "blizzardLevelTime": 8664,
+    "duration": 9379.409999999974,
     "firstSeen": 1794062823,
     "level": 8,
     "mapID": 2521,
-    "playedTotalLastSeen": 16743,
-    "sessions": 7,
+    "playedTotalLastSeen": 16949,
+    "sessions": 8,
     "x": 0.6216447353363037,
     "y": 0.727863609790802,
     "zone": ""
@@ -1281,24 +1847,28 @@
   },
   "locationTime": {
    "categories": {
-    "resting": 4290,
-    "world": 3535
+    "resting": 4350,
+    "world": 4950
    },
    "maps": {
     "2521": {
-     "seconds": 7825,
+     "seconds": 9300,
      "zone": "Die Insel Zephras"
     }
    },
    "subZones": {
-    "Die Insel Zephras > Böenbeerentiefland": 95,
+    "Die Insel Zephras > Böenbeerentiefland": 375,
     "Die Insel Zephras > Die Ostpylonenwacht": 25,
-    "Die Insel Zephras > Shen'dar": 1250,
-    "Die Insel Zephras > Valanaar": 5995,
-    "Die Insel Zephras > Windweisensee": 460
+    "Die Insel Zephras > Ruinen von Ban'aethal": 135,
+    "Die Insel Zephras > Schattenwindwald": 195,
+    "Die Insel Zephras > Schrein von Akir": 75,
+    "Die Insel Zephras > Shen'dar": 1405,
+    "Die Insel Zephras > Shen'darhochland": 95,
+    "Die Insel Zephras > Valanaar": 6320,
+    "Die Insel Zephras > Windweisensee": 675
    },
    "zones": {
-    "Die Insel Zephras": 7825
+    "Die Insel Zephras": 9300
    }
   },
   "professions": {
@@ -1326,7 +1896,7 @@
      "firstSeen": 1794062824,
      "icon": 135966,
      "key": "id:129",
-     "lastSeen": 1794077508,
+     "lastSeen": 1794077899,
      "maxSkill": 75,
      "name": "Erste Hilfe",
      "skill": 21,
@@ -1336,7 +1906,7 @@
      "firstSeen": 1794062824,
      "icon": 136247,
      "key": "id:165",
-     "lastSeen": 1794077508,
+     "lastSeen": 1794077899,
      "maxSkill": 75,
      "name": "Lederverarbeitung",
      "skill": 25,
@@ -1346,7 +1916,7 @@
      "firstSeen": 1794062824,
      "icon": 134366,
      "key": "id:393",
-     "lastSeen": 1794077508,
+     "lastSeen": 1794077899,
      "maxSkill": 150,
      "name": "Kürschnerei",
      "skill": 61,
@@ -1395,7 +1965,7 @@
     }
    ],
    "initialized": true,
-   "lastScan": 1794077508,
+   "lastScan": 1794077899,
    "milestones": {
     "id:129:FIRST_SEEN:21": {
      "key": "id:129",
@@ -1466,6 +2036,20 @@
     }
    ]
   },
+  "services": {
+   "conjured": {},
+   "firsts": {},
+   "spells": {
+    "markOfTheWild": {
+     "cat": "buff",
+     "first": 1794077874,
+     "last": 1794077874,
+     "n": 1,
+     "name": "Mal der Wildnis",
+     "others": 0
+    }
+   }
+  },
   "social": {
    "addonUsers": {
     "group": 0,
@@ -1488,9 +2072,9 @@
    "emotes": {
     "byToken": {
      "OPENFIRE": 1,
-     "READ": 20
+     "READ": 79
     },
-    "total": 21
+    "total": 80
    },
    "group": {
     "joined": 0,
@@ -1913,7 +2497,7 @@
    },
    "current": {
     "level": 8,
-    "time": 1794077516,
+    "time": 1794077734,
     "values": {
      "107": "159",
      "1197": "159",
@@ -2224,22 +2808,22 @@
    ]
   },
   "stats": {
-   "deaths": 1,
+   "deaths": 3,
    "dungeonCompletions": 0,
    "dungeonGoldRepaired": true,
    "dungeonVisits": 0,
    "firstLogin": 1794062823,
-   "lastKnownMoney": 540,
+   "lastKnownMoney": 1067,
    "levelUps": 0,
-   "totalSessionTime": 7845,
-   "zoneChanges": 4
+   "totalSessionTime": 9377,
+   "zoneChanges": 5
   },
   "tracking": {
    "capitals": {},
    "durability": {
     "byLevel": {
      "8": {
-      "min": 16,
+      "min": 0,
       "rep": 0
      }
     }
@@ -2333,14 +2917,6 @@
       "title": "Blutzoll",
       "trk": 1.6
      },
-     "q93317": {
-      "id": 93317,
-      "level": 8,
-      "qlevel": 9,
-      "time": 1794062825,
-      "title": "Krabbensaison",
-      "trk": 1.6
-     },
      "q93318": {
       "id": 93318,
       "level": 8,
@@ -2357,24 +2933,48 @@
       "title": "Ein wenig Schönheit",
       "trk": 1.6
      },
-     "q94484": {
-      "id": 94484,
+     "q94485": {
+      "id": 94485,
+      "level": 8,
+      "qlevel": 12,
+      "time": 1794079190,
+      "title": "Die Tränen einer Dame",
+      "trk": 9219.1
+     },
+     "q94486": {
+      "id": 94486,
       "level": 8,
       "qlevel": 11,
-      "time": 1794062825,
-      "title": "Unangenehme Stille",
-      "trk": 1.6
+      "time": 1794079192,
+      "title": "Verbindende Federn",
+      "trk": 9221.1
+     },
+     "q94487": {
+      "id": 94487,
+      "level": 8,
+      "qlevel": 11,
+      "time": 1794079194,
+      "title": "Ungewollt und unwürdig",
+      "trk": 9223.1
+     },
+     "q98512": {
+      "id": 98512,
+      "level": 8,
+      "qlevel": 11,
+      "time": 1794078192,
+      "title": "Auftragsmörder der Al'Aketh",
+      "trk": 8287.1
      }
     },
     "byLevel": {},
-    "done": 2,
+    "done": 4,
     "longest": {
      "from": 8,
-     "id": 97965,
-     "sec": 6177.9,
+     "id": 94484,
+     "sec": 9211.5,
      "span": 0,
-     "time": 1794069097,
-     "title": "Grundlagen des Zeltens: Erste Hilfe",
+     "time": 1794079185,
+     "title": "Unangenehme Stille",
      "to": 8
     },
     "widest": {
@@ -2909,12 +3509,13 @@
    "time": {
     "byLevel": {
      "8": {
-      "combat": 158,
-      "dead": 3,
-      "ghost": 12,
-      "resting": 4283.5,
-      "solo": 7820.5,
-      "tracked": 7820.5
+      "combat": 323,
+      "dead": 14,
+      "ghost": 168,
+      "resting": 4340.5,
+      "solo": 9283.1,
+      "swim": 62,
+      "tracked": 9283.1
      }
     }
    },
@@ -2922,98 +3523,98 @@
     "items": {
      "1369": {
       "byLevel": {
-       "8": 7774.8
+       "8": 9229.8
       },
       "first": 1794062831,
       "il": 5,
-      "last": 1794077713,
+      "last": 1794079254,
       "link": "|cnIQ0:|Hitem:1369::::::::8:1484:::::::::|h[Struppiger Ledergürtel]|h|r",
       "q": 0,
-      "seconds": 7774.8,
+      "seconds": 9229.8,
       "slot": 6
      },
      "2302": {
       "byLevel": {
-       "8": 7774.8
+       "8": 9229.8
       },
       "first": 1794062831,
       "il": 8,
-      "last": 1794077713,
+      "last": 1794079254,
       "link": "|cnIQ1:|Hitem:2302::::::::8:1484::::::::Player-6939-00CD5CC2:|h[Handgenähte Lederstiefel]|h|r",
       "q": 1,
-      "seconds": 7774.8,
+      "seconds": 9229.8,
       "slot": 8
      },
      "257282": {
       "byLevel": {
-       "8": 7774.8
+       "8": 9229.8
       },
       "first": 1794062831,
       "il": 5,
-      "last": 1794077713,
+      "last": 1794079254,
       "link": "|cnIQ1:|Hitem:257282::::::::8:1484::11:::::::|h[Stecken des Novizen]|h|r",
       "q": 1,
-      "seconds": 7774.8,
+      "seconds": 9229.8,
       "slot": 16
      },
      "271666": {
       "byLevel": {
-       "8": 7774.8
+       "8": 9229.8
       },
       "first": 1794062831,
       "il": 1,
-      "last": 1794077713,
+      "last": 1794079254,
       "link": "|cnIQ0:|Hitem:271666::::::::8:1484::75:::::::|h[Hose des Überlebenskünstlers von Thendal]|h|r",
       "q": 0,
-      "seconds": 7774.8,
+      "seconds": 9229.8,
       "slot": 7
      },
      "271668": {
       "byLevel": {
-       "8": 7774.8
+       "8": 9229.8
       },
       "first": 1794062831,
       "il": 1,
-      "last": 1794077713,
+      "last": 1794079254,
       "link": "|cnIQ1:|Hitem:271668::::::::8:1484::75:::::::|h[Hemd des Überlebenskünstlers von Thendal]|h|r",
       "q": 1,
-      "seconds": 7774.8,
+      "seconds": 9229.8,
       "slot": 4
      },
      "5957": {
       "byLevel": {
-       "8": 7774.8
+       "8": 9229.8
       },
       "first": 1794062831,
       "il": 10,
-      "last": 1794077713,
+      "last": 1794079254,
       "link": "|cnIQ2:|Hitem:5957::::::::8:1484::::::::Player-6939-00CD5CC2:|h[Handgenähte Lederweste]|h|r",
       "q": 2,
-      "seconds": 7774.8,
+      "seconds": 9229.8,
       "slot": 5
      },
      "7276": {
       "byLevel": {
-       "8": 7774.8
+       "8": 9229.8
       },
       "first": 1794062831,
       "il": 9,
-      "last": 1794077713,
+      "last": 1794079254,
       "link": "|cnIQ1:|Hitem:7276::::::::8:1484::::::::Player-6939-00CD5CC2:|h[Handgenähter Lederumhang]|h|r",
       "q": 1,
-      "seconds": 7774.8,
+      "seconds": 9229.8,
       "slot": 15
      },
      "7277": {
       "byLevel": {
-       "8": 7774.8
+       "8": 9229.8
       },
       "first": 1794062831,
       "il": 9,
-      "last": 1794077713,
+      "last": 1794079254,
       "link": "|cnIQ1:|Hitem:7277::::::::8:1484::::::::Player-6939-00CD5CC2:|h[Handgenähte Armschienen]|h|r",
       "q": 1,
-      "seconds": 7774.8,
+      "seconds": 9229.8,
       "slot": 9
      }
     },
@@ -3091,18 +3692,18 @@
    "xp": {
     "byLevel": {
      "8": {
-      "kill": 1006,
-      "other": 65,
-      "quest": 410,
-      "rested": 614,
-      "total": 1481
+      "kill": 1497,
+      "other": 330,
+      "quest": 1010,
+      "rested": 630,
+      "total": 2837
      }
     }
    }
   },
   "zoneTime": {
-   "Die Insel Zephras": 7825
+   "Die Insel Zephras": 9300
   }
  },
- "updatedAt": 1794077721
+ "updatedAt": 1794079262
 }

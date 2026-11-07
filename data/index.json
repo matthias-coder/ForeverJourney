@@ -4,16 +4,16 @@
    "armoryUrl": null,
    "class": "DRUID",
    "created": 1794062823,
-   "deaths": 1,
+   "deaths": 3,
    "displayName": "Eliza Coppersmith",
    "faction": "Alliance",
    "file": "data/eliza-coppersmith.json",
    "id": "eliza-coppersmith",
-   "lastSeen": 1794077713,
+   "lastSeen": 1794079255,
    "level": 8,
    "mode": "normal",
    "name": "Eliza",
-   "playedSeconds": 7845,
+   "playedSeconds": 9377,
    "portrait": {
     "kind": "none"
    },
@@ -24,7 +24,7 @@
    "surname": "Coppersmith"
   }
  ],
- "generatedAt": 1794077721,
+ "generatedAt": 1794079262,
  "schemaVersion": 1,
  "title": "Chronik der Ewigen"
 }
