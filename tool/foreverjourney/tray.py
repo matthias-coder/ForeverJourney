@@ -42,5 +42,5 @@ def run_tray(app: App, site_url: str | None) -> None:
     icon = pystray.Icon("ForeverJourney", Image.open(ICON_PATH), "ForeverJourney",
                         pystray.Menu(*items))
     app.start_watching()
-    sync()  # catch up on changes made while the tool was not running
+    threading.Thread(target=app.run_sync, args=("start",), daemon=True).start()  # catch-up sync, deferred while WoW runs
     icon.run()
