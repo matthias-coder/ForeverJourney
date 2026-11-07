@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "id": "thorgrim-eisenbart",
+  "meta": {
+    "class": "WARRIOR",
+    "clientFlavor": "forever",
+    "displayName": "Thorgrim Eisenbart",
+    "exportedAt": 1793998860,
+    "faction": "Alliance",
+    "name": "Thorgrim",
+    "race": "Dwarf",
+    "realm": "Eisenbart",
+    "utcOffset": 3600
+  },
+  "config": {
+    "status": "active",
+    "mode": "normal",
+    "realmType": "PvE",
+    "realmName": "Ewigborn",
+    "armoryUrl": null
+  },
+  "maps": {
+    "1426": { "name": "Dun Morogh", "parent": 1414 }
+  },
+  "state": {
+    "character": {
+      "class": "Krieger",
+      "classFile": "WARRIOR",
+      "created": 1791792000,
+      "lastSeen": 1791834000,
+      "name": "Thorgrim",
+      "race": "Zwerg",
+      "raceFile": "Dwarf",
+      "realm": "Eisenbart"
+    },
+    "levels": {
+      "1": { "level": 1, "duration": 1800, "zone": "Dun Morogh", "mapID": 1426, "firstSeen": 1791792000 },
+      "2": { "level": 2, "duration": 1200, "zone": "Dun Morogh", "mapID": 1426, "firstSeen": 1791830651 },
+      "3": { "level": 3, "duration": 600, "zone": "Dun Morogh", "mapID": 1426, "firstSeen": 1791831100 }
+    },
+    "levelSnapshots": {
+      "1": { "level": 1, "playedTotal": 3600, "money": 0 },
+      "2": { "level": 2, "playedTotal": 7200, "money": 11208 }
+    },
+    "gearByLevel": {},
+    "levelActivity": {
+      "3": {
+        "bosses": {},
+        "deaths": [
+          {
+            "ctx": { "activity": "idle", "durability": 80, "myLevel": 3, "playedSec": 5400, "sessionSec": 3600 },
+            "mapID": 1426,
+            "subZone": "Kharanos",
+            "time": 1791831200,
+            "cause": "fall",
+            "x": 0.42,
+            "y": 0.61,
+            "zone": "Dun Morogh"
+          }
+        ],
+        "deathsByMob": {},
+        "dungeons": {},
+        "journal": {},
+        "mobKillTypes": {}
+      }
+    },
+    "stats": { "deaths": 1, "kills": 12, "quests": 2 },
+    "afk": { "total": 120 },
+    "goldByLevel": {
+      "1": { "first": 0, "last": 1200, "level": 1 },
+      "2": { "first": 1200, "last": 6000, "level": 2 },
+      "3": { "first": 6000, "last": 11208, "level": 3 }
+    },
+    "fun": {},
+    "companions": { "owned": 0, "summoned": 0 }
+  },
+  "lists": {
+    "events": [
+      { "time": 1791830400, "type": "LOGIN", "level": 1, "mapID": 1426, "zone": "Dun Morogh", "subZone": "Kharanos", "x": 0.42, "y": 0.61, "data": {} },
+      { "time": 1791830651, "type": "LEVEL_UP", "level": 2, "mapID": 1426, "zone": "Dun Morogh", "subZone": "Kharanos", "x": 0.42, "y": 0.61, "data": { "newLevel": 2 } },
+      { "time": 1791831200, "type": "DEATH", "level": 3, "mapID": 1426, "zone": "Dun Morogh", "subZone": "Kharanos", "x": 0.42, "y": 0.61, "data": { "cause": "fall" } },
+      { "time": 1791834000, "type": "LOGOUT", "level": 3, "mapID": 1426, "zone": "Dun Morogh", "subZone": "Kharanos", "x": 0.42, "y": 0.61, "data": {} }
+    ],
+    "sessions": [
+      { "startTime": 1791830400, "endTime": 1791834000, "duration": 3600, "levelStart": 1, "levelEnd": 3, "zoneStart": "Dun Morogh", "zoneEnd": "Dun Morogh" }
+    ],
+    "journal": [
+      { "time": 1791831200, "auto": true, "source": "FIRST_DEATH", "level": 3, "mapID": 1426, "zone": "Dun Morogh", "subZone": "Kharanos", "title": "Erster Tod", "text": "Der erste Sturz ist der tiefste. Thorgrim steht wieder auf, schwer atmend, aber bereit.", "screenshotFile": null, "screenshotIndex": null }
+    ],
+    "screenshots": [
+      { "expectedFileName": "WoWScrnShot_101226_204411.jpg", "fileNameSource": "saved", "reason": "LEVEL_UP", "level": 2, "mapID": 1426, "zone": "Dun Morogh", "subZone": "Kharanos", "time": 1791830651, "savedAt": 1791830651, "x": 0.42, "y": 0.61 },
+      { "expectedFileName": "WoWScrnShot_101226_210000.jpg", "fileNameSource": "saved", "reason": "PORTRAIT", "level": 3, "mapID": 1426, "zone": "Dun Morogh", "subZone": "Kharanos", "time": 1791831600, "savedAt": 1791831600, "x": 0.42, "y": 0.61, "portrait": { "zoom": 1.6, "x": 50, "y": 30 } }
+    ],
+    "dungeons": [],
+    "worldDrops": [],
+    "journeySegments": [
+      [[1791830400, 1426, 0.42, 0.61, 1], [1791831200, 1426, 0.43, 0.62, 3]]
+    ],
+    "journeyGhost": [false],
+    "pvpHistory": []
+  },
+  "goldHistory": {
+    "2026-10-12": {
+      "date": "2026-10-12",
+      "first": 0,
+      "firstTime": 1791830400,
+      "last": 11208,
+      "lastTime": 1791834000,
+      "level": 3,
+      "min": 0,
+      "max": 11208
+    }
+  },
+  "shots": {
+    "WoWScrnShot_101226_204411.jpg": {
+      "file": "shots/thorgrim-eisenbart/WoWScrnShot_101226_204411.jpg",
+      "thumb": "shots/thorgrim-eisenbart/t_WoWScrnShot_101226_204411.jpg",
+      "width": 1600,
+      "height": 900,
+      "time": 1791830651,
+      "reason": "LEVEL_UP",
+      "level": 2,
+      "zone": "Dun Morogh",
+      "subZone": "Kharanos",
+      "mapID": 1426,
+      "source": "export"
+    },
+    "WoWScrnShot_101226_210000.jpg": {
+      "file": "shots/thorgrim-eisenbart/WoWScrnShot_101226_210000.jpg",
+      "thumb": "shots/thorgrim-eisenbart/t_WoWScrnShot_101226_210000.jpg",
+      "width": 1600,
+      "height": 900,
+      "time": 1791831600,
+      "reason": "PORTRAIT",
+      "level": 3,
+      "zone": "Dun Morogh",
+      "subZone": "Kharanos",
+      "mapID": 1426,
+      "source": "export",
+      "portrait": { "zoom": 1.6, "x": 50, "y": 30 }
+    }
+  },
+  "updatedAt": 1794063600
+}

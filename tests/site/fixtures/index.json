@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": 1794063600,
+  "title": "Chronik der Ewigen",
+  "characters": [
+    {
+      "id": "thorgrim-eisenbart",
+      "file": "data/thorgrim-eisenbart.json",
+      "name": "Thorgrim",
+      "surname": "Eisenbart",
+      "displayName": "Thorgrim Eisenbart",
+      "class": "WARRIOR",
+      "race": "Dwarf",
+      "faction": "Alliance",
+      "level": 3,
+      "status": "active",
+      "mode": "normal",
+      "realmType": "PvE",
+      "realmName": "Ewigborn",
+      "armoryUrl": null,
+      "portrait": {
+        "kind": "shot",
+        "file": "shots/thorgrim-eisenbart/WoWScrnShot_101226_210000.jpg",
+        "thumb": "shots/thorgrim-eisenbart/t_WoWScrnShot_101226_210000.jpg",
+        "crop": { "zoom": 1.6, "x": 50, "y": 30 }
+      },
+      "playedSeconds": 7200,
+      "deaths": 1,
+      "created": 1791792000,
+      "lastSeen": 1793998860
+    }
+  ]
+}
