@@ -15,7 +15,7 @@ test('durations and gold', () => {
 test('names', () => {
   assert.equal(className('WARRIOR'), 'Krieger'); assert.equal(raceName('Dwarf'), 'Zwerg'); assert.equal(raceName('Murloc'), 'Murloc');
   assert.equal(qualityColor(2), '#1eff00'); assert.equal(reasonLabel('ICONIC_hogger'), 'Ikonischer Moment'); assert.equal(reasonLabel('X_Y'), 'X_Y');
-  assert.equal(reasonLabel('CHRONICLE_START'), 'Beginn der Chronik'); assert.equal(raceName('Skyborne'), 'Skyborne');
+  assert.equal(reasonLabel('CHRONICLE_START'), 'Beginn der Chronik'); assert.equal(raceName('Skyborne'), 'Skyborne'); assert.equal(reasonLabel('DEATH'), 'Tod');
 });
 test('prototype keys do not leak', () => {
   assert.equal(raceName('constructor'), 'constructor'); assert.equal(reasonLabel('toString'), 'toString');

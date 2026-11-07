@@ -12,7 +12,7 @@ const REASONS = {
   LEVEL_UP: 'Levelaufstieg', FIRST_DEATH: 'Erster Tod', DUNGEON_COMPLETE: 'Verlies abgeschlossen',
   PORTRAIT: 'Porträt', GAME: 'Schnappschuss', PERIODIC: 'Unterwegs', ACHIEVEMENT: 'Erfolg',
   GUILD_JOIN: 'Gildenbeitritt', GUILD_LEFT: 'Gildenaustritt', COMEBACK: 'Rückkehr',
-  CHRONICLE_START: 'Beginn der Chronik',
+  CHRONICLE_START: 'Beginn der Chronik', DEATH: 'Tod',
 };
 
 export const className = (file) => (Object.hasOwn(CLASSES, file) ? CLASSES[file][0] : file);
