@@ -9,11 +9,11 @@
    "faction": "Alliance",
    "file": "data/eliza-coppersmith.json",
    "id": "eliza-coppersmith",
-   "lastSeen": 1794070545,
+   "lastSeen": 1794077713,
    "level": 8,
    "mode": "normal",
    "name": "Eliza",
-   "playedSeconds": 7636,
+   "playedSeconds": 7845,
    "portrait": {
     "kind": "none"
    },
@@ -24,7 +24,7 @@
    "surname": "Coppersmith"
   }
  ],
- "generatedAt": 1794070642,
+ "generatedAt": 1794077721,
  "schemaVersion": 1,
  "title": "Chronik der Ewigen"
 }
