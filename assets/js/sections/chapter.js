@@ -1,5 +1,5 @@
 import { el } from '../dom.js';
-import { SECTIONS } from '../router.js';
+import { SECTIONS, toHash } from '../router.js';
 import { className, raceName } from '../names.js';
 import { fmtDate, fmtDuration, fmtGold } from '../format.js';
 import { playerTime } from '../data.js';
@@ -41,7 +41,7 @@ export function chapterFacts(record, entry) {
     played: fmtDuration(entry.playedSeconds ?? 0),
     deaths: String(entry.deaths ?? 0),
     dungeons: `${dungeons.length} / ${dungeons.filter((d) => d.completed).length}`,
-    gold: gold ? fmtGold(gold.last) : '–',
+    gold: gold?.last != null ? fmtGold(gold.last) : '–',
     zones: String(count(st.firstVisitedZones)),
     longest: longest
       ? `Stufe ${longest.level}: ${fmtDuration(longest.duration)}${afk != null ? ` (davon ${fmtDuration(afk)} AFK)` : ''}`
@@ -51,7 +51,7 @@ export function chapterFacts(record, entry) {
   };
 }
 
-export function renderChapter(record, entry, pageCounts, onOpen = () => {}) {
+export function renderChapter(record, entry, pageCounts) {
   const f = chapterFacts(record, entry);
   const left = el('div');
   const hero = el('div', 'hero');
@@ -84,10 +84,12 @@ export function renderChapter(record, entry, pageCounts, onOpen = () => {}) {
     if (!nums[s]) continue;
     n += 1;
     const li = el('li');
-    li.appendChild(el('span', 't', `${n}. ${SECTION_TITLES[s]}`));
-    li.appendChild(el('span', 'dots'));
-    li.appendChild(el('span', 'n', String(nums[s])));
-    li.addEventListener('click', () => onOpen({ view: 'section', id: entry.id, section: s, page: 1 }));
+    const a = el('a', 'toclink');
+    a.href = toHash({ view: 'section', id: entry.id, section: s, page: 1 });
+    a.appendChild(el('span', 't', `${n}. ${SECTION_TITLES[s]}`));
+    a.appendChild(el('span', 'dots'));
+    a.appendChild(el('span', 'n', String(nums[s])));
+    li.appendChild(a);
     toc.appendChild(li);
   }
   if (n) right.appendChild(toc);

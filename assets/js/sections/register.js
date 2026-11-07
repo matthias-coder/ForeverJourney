@@ -1,4 +1,4 @@
-import { el, credits } from '../dom.js';
+import { el } from '../dom.js';
 import { className, raceName } from '../names.js';
 import { fmtDateShort, fmtDuration } from '../format.js';
 import { renderPortrait } from '../portrait.js';
@@ -31,7 +31,6 @@ export function renderRegister(index) {
   left.appendChild(el('div', 'orn', '✦ ✦ ✦'));
   left.appendChild(el('p', null, 'Dieses Buch hält die Reisen der Ewigen fest: Jeder Held bekommt sein eigenes Kapitel mit Tagebuch, Bildern, Toden, Levelaufstiegen und mehr.'));
   left.appendChild(el('p', null, 'Es schreibt sich von selbst. Ein Programm liest nach jeder Spielsitzung die Aufzeichnungen des Addons und fügt neue Seiten hinzu.'));
-  left.appendChild(credits('p', 'small'));
 
   const right = el('div');
   right.appendChild(el('h2', null, 'Heldenregister'));

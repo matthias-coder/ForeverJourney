@@ -36,6 +36,14 @@ export function neighbours(route, pageCounts) {
   return { prev: i > 0 ? stops[i - 1] : null, next: i >= 0 && i < stops.length - 1 ? stops[i + 1] : null };
 }
 
+// Resets transient state after a failed navigation so a later hashchange to the old route redraws.
+export function recoverState(book) {
+  book.route = null;
+  book.nav = null;
+  book.book?.classList?.remove('closed');
+  book.book?.querySelectorAll?.('.lid').forEach((l) => l.remove());
+}
+
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const NARROW = '(max-width: 820px)';
 
@@ -109,6 +117,7 @@ export class Book {
     try {
       await this.run(target);
     } catch (e) {
+      recoverState(this);
       this.showError(e);
     } finally {
       this.busy = false;
@@ -138,15 +147,18 @@ export class Book {
     this.route = route;
   }
 
+  entryName() {
+    return this.current.entry.displayName ?? this.current.entry.name;
+  }
+
   embossing(route) {
     if (route.view === 'register') return { title: 'Chronik der Ewigen', sub: 'Heldenregister' };
-    const title = this.current.entry.displayName ?? this.current.entry.name;
+    const title = this.entryName();
     return { title, sub: route.view === 'chapter' ? 'Inhalt' : SECTION_TITLES[route.section] };
   }
 
   draw(route) {
     const counts = this.pageCounts();
-    const open = (r) => this.navigate(r);
     let pages;
     let pn;
     if (route.view === 'register') {
@@ -154,15 +166,15 @@ export class Book {
       pn = ['', ''];
       document.title = 'Chronik der Ewigen';
     } else if (route.view === 'chapter') {
-      pages = renderChapter(this.current.record, this.current.entry, counts, open);
+      pages = renderChapter(this.current.record, this.current.entry, counts);
       pn = ['1', '2'];
-      document.title = `${this.current.entry.displayName} – Chronik der Ewigen`;
+      document.title = `${this.entryName()} – Chronik der Ewigen`;
     } else {
       // Section pages come from buildSections (Task 4 ff.): a Page is { left: Node, right: Node }.
       pages = this.current.sections[route.section][route.page - 1];
       const first = firstPageNumbers(counts)[route.section] + (route.page - 1) * 2;
       pn = [String(first), String(first + 1)];
-      document.title = `${SECTION_TITLES[route.section]} – ${this.current.entry.displayName}`;
+      document.title = `${SECTION_TITLES[route.section]} – ${this.entryName()}`;
     }
     this.renderSpread(pages.left, pages.right, pn);
     this.nav = neighbours(route, counts);

@@ -13,3 +13,15 @@ test('test_resolve_route_clamps_page', () => {
   assert.deepEqual(resolveRoute({ view: 'section', id: 'a', section: 'gold', page: 1 }, idx, pc), { view: 'chapter', id: 'a' });
   assert.deepEqual(resolveRoute({ view: 'chapter', id: 'zzz' }, idx, pc), { view: 'register' });
 });
+test('recoverState clears stale route, lid and closed class', async () => {
+  const { recoverState } = await import('../../assets/js/book.js');
+  const removed = [];
+  const classes = new Set(['book', 'closed']);
+  const fake = {
+    route: { view: 'chapter', id: 'a' }, nav: { prev: null, next: null },
+    book: { classList: { remove: (c) => classes.delete(c) }, querySelectorAll: () => [{ remove: () => removed.push('lid') }] },
+  };
+  recoverState(fake);
+  assert.equal(fake.route, null); assert.equal(fake.nav, null);
+  assert.ok(!classes.has('closed')); assert.deepEqual(removed, ['lid']);
+});
