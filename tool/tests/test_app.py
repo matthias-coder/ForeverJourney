@@ -55,3 +55,55 @@ def test_run_sync_reports_push_failure_and_keeps_commit(tmp_path):
     assert "Push fehlgeschlagen" in msg and "committed" in msg
     log = subprocess.run(["git", "log", "--oneline"], cwd=cfg.repo_dir, capture_output=True, text=True).stdout
     assert "chronicle: Thorgrim Eisenbart" in log
+
+def bare_log(tmp_path):
+    return subprocess.run(["git", "log", "--oneline", "main"], cwd=tmp_path / "remote.git", capture_output=True, text=True).stdout
+
+def test_index_only_change_is_committed_and_pushed(tmp_path):
+    cfg = setup(tmp_path)
+    app = App(cfg, notifier=lambda t, x: None, log=logging.getLogger("t"))
+    app.run_sync("test")
+    next((cfg.account_dir).glob("*/*/SavedVariables/MyCharForever.lua")).unlink()
+    msg = app.run_sync("test")
+    assert "Status aktualisiert" in msg and not app.had_error
+    assert "chronicle: Status " in bare_log(tmp_path)
+    assert app.run_sync("test") == "Keine Änderungen"
+
+def test_wrong_branch_skips_commit(tmp_path):
+    cfg = setup(tmp_path); toasts = []
+    git(cfg.repo_dir, "checkout", "-q", "-b", "feature")
+    app = App(cfg, notifier=lambda t, x: toasts.append((t, x)), log=logging.getLogger("t"))
+    msg = app.run_sync("test")
+    assert "Chronik nicht veröffentlicht" in msg and "feature" in msg and "main" in msg
+    assert not app.had_error and toasts
+    assert "chronicle:" not in bare_log(tmp_path)
+    log = subprocess.run(["git", "log", "--oneline"], cwd=cfg.repo_dir, capture_output=True, text=True).stdout
+    assert "chronicle:" not in log
+
+def test_diverged_remote_names_pull_rebase(tmp_path):
+    cfg = setup(tmp_path); toasts = []
+    other = tmp_path / "other"; git(tmp_path, "clone", "-q", "-b", "main", str(tmp_path / "remote.git"), str(other))
+    git(other, "config", "user.email", "o@o"); git(other, "config", "user.name", "o")
+    (other / "o.txt").write_text("o"); git(other, "add", "."); git(other, "commit", "-q", "-m", "o"); git(other, "push", "-q")
+    app = App(cfg, notifier=lambda t, x: toasts.append((t, x)), log=logging.getLogger("t"))
+    msg = app.run_sync("test")
+    assert "git pull --rebase" in msg and app.had_error
+    assert any("git pull --rebase" in x for _, x in toasts)
+
+def test_no_upstream_hint_shown_once(tmp_path):
+    cfg = setup(tmp_path); toasts = []
+    git(cfg.repo_dir, "branch", "--unset-upstream")
+    app = App(cfg, notifier=lambda t, x: toasts.append((t, x)), log=logging.getLogger("t"))
+    app.run_sync("test"); app.run_sync("test"); app.run_sync("test")
+    hints = [x for _, x in toasts if "git push -u origin main" in x]
+    assert len(hints) == 1
+
+def test_wait_idle_blocks_while_running(tmp_path):
+    import threading, time
+    cfg = setup(tmp_path)
+    app = App(cfg, notifier=lambda t, x: None, log=logging.getLogger("t"))
+    app._lock.acquire()
+    done = threading.Event()
+    threading.Thread(target=lambda: (app.wait_idle(), done.set()), daemon=True).start()
+    time.sleep(0.2); assert not done.is_set()
+    app._lock.release(); assert done.wait(2)

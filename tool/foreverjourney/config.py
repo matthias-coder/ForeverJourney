@@ -34,6 +34,7 @@ class Config:
     stable_seconds: float = 5.0
     poll_seconds: float = 30.0
     site_url: str | None = None
+    branch: str = "main"
     account_dir: Path = field(init=False)
     screenshot_dir: Path = field(init=False)
 

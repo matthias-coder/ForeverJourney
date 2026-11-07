@@ -6,7 +6,8 @@ from datetime import datetime
 from typing import Callable
 
 from .config import Config
-from .gitsync import (NOTHING_TO_COMMIT, check_credentials, commit_and_push, commit_message,
+from .gitsync import (DIVERGED_HINT, NOTHING_TO_COMMIT, check_credentials, commit_and_push,
+                      commit_message, current_branch, is_diverged, no_upstream_hint,
                       push_pending, repo_size_mb)
 from .pipeline import sync_all
 from .watcher import ExportWatcher
@@ -28,6 +29,12 @@ class App:
         self._watcher: ExportWatcher | None = None
         self.last_status = "Noch kein Lauf"
         self.had_error = False
+        self._upstream_hinted = False
+
+    def wait_idle(self) -> None:
+        """Block until a running sync has finished."""
+        with self._lock:
+            pass
 
     def _toast(self, title: str, text: str) -> None:
         try:
@@ -50,16 +57,27 @@ class App:
     def _run(self, reason: str) -> str:
         now = int(time.time())
         self._log.info("sync started (%s)", reason)
-        results = sync_all(self.cfg, now)
+        results, index_changed = sync_all(self.cfg, now)
         errors = [r for r in results if r.error]
         self.had_error = bool(errors)
         for r in errors:
             self._log.error("%s: %s", r.display_name, r.error)
         changed = [r for r in results if r.changed]
         parts: list[str] = []
-        if changed:
+        branch = current_branch(self.cfg.repo_dir)
+        wrong_branch = branch != self.cfg.branch
+        if wrong_branch:
+            warn = (f"Chronik nicht veröffentlicht: Repo steht auf Branch {branch or '(keiner)'}, "
+                    f"erwartet {self.cfg.branch}")
+            self._log.warning(warn)
+            parts.append(warn)
+            self._toast("ForeverJourney: Chronik nicht veröffentlicht", warn)
+        elif changed or index_changed:
             shots = sum(r.added_shots for r in changed)
-            if len(changed) == 1:
+            if not changed:
+                msg = f"chronicle: Status {datetime.fromtimestamp(now):%Y-%m-%d}"
+                head = "Status aktualisiert"
+            elif len(changed) == 1:
                 msg = commit_message(changed[0].display_name, now)
                 head = f"{changed[0].display_name} aktualisiert"
             else:
@@ -75,10 +93,10 @@ class App:
             elif res.committed:
                 self.had_error = True
                 self._log.warning("push failed: %s", res.message)
-                hint = check_credentials(self.cfg.repo_dir)
-                if hint:
-                    self._log.warning(hint)
-                parts.append(f"{head}, committed, Push fehlgeschlagen (später erneut)")
+                hint = self._push_hint(res.message, branch)
+                parts.append(f"{head}, committed, Push fehlgeschlagen (später erneut)"
+                             + (", Remote divergiert: git pull --rebase nötig"
+                                if is_diverged(res.message) else ""))
                 self._toast("ForeverJourney: Push fehlgeschlagen",
                             hint or "Änderungen sind committed und werden später erneut gepusht.")
             elif res.message != NOTHING_TO_COMMIT:
@@ -86,16 +104,27 @@ class App:
                 self._log.error("commit failed: %s", res.message)
                 parts.append(f"{head}, aber Commit fehlgeschlagen: {res.message}")
                 self._toast("ForeverJourney: Fehler", f"Commit fehlgeschlagen: {res.message}")
-        if not parts or not changed:
+        if not parts:
             pending = push_pending(self.cfg.repo_dir)
             if pending.pushed:
                 self._log.info("pending push done")
                 parts.append("Keine Änderungen, ausstehender Push nachgeholt")
                 self._toast("ForeverJourney", "Ausstehender Push nachgeholt")
+            elif pending.message.startswith("no upstream"):
+                hint = no_upstream_hint(branch)
+                self._log.warning("%s (%s)", hint, pending.message)
+                if not self._upstream_hinted:
+                    self._upstream_hinted = True
+                    self._toast("ForeverJourney: Push nicht möglich", hint)
             elif pending.message.startswith("git push"):
                 self.had_error = True
                 self._log.warning("pending push failed: %s", pending.message)
-                parts.append("Keine Änderungen, Push weiterhin fehlgeschlagen (später erneut)")
+                if is_diverged(pending.message):
+                    self._log.warning(DIVERGED_HINT)
+                    parts.append("Push abgelehnt: Remote divergiert, bitte 'git pull --rebase' ausführen")
+                    self._toast("ForeverJourney: Remote divergiert", DIVERGED_HINT)
+                else:
+                    parts.append("Keine Änderungen, Push weiterhin fehlgeschlagen (später erneut)")
             else:
                 self._log.info("push_pending: %s", pending.message)
         for r in errors:
@@ -111,6 +140,19 @@ class App:
             parts.append(warn)
             self._toast("ForeverJourney: Repository wird groß", warn)
         return "; ".join(parts) if parts else NO_CHANGES
+
+    def _push_hint(self, message: str, branch: str | None) -> str | None:
+        """User-facing hint for a failed push (also logged); None if no specific cause is known."""
+        if is_diverged(message):
+            hint = DIVERGED_HINT
+        elif "no upstream" in message.lower():
+            hint = no_upstream_hint(branch)
+            self._upstream_hinted = True
+        else:
+            hint = check_credentials(self.cfg.repo_dir)
+        if hint:
+            self._log.warning(hint)
+        return hint
 
     def start_watching(self) -> None:
         if self._watcher is not None:
